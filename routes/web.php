@@ -19,6 +19,6 @@ Route::middleware('auth')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/{all}', function () {
-    return view('index');
-})->where('all', '^(?!api\/)[\/\w\.-]*');
+Route::get('/', function () {
+    return view('app');
+});

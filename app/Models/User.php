@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Card;
+use App\Models\Card;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -44,11 +44,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * @return HasMany
+     */
     public function boards(): HasMany
     {
-        return $this->hasMany(\App\User::class, 'owner_id');
+        return $this->hasMany(User::class, 'owner_id');
     }
 
+    /**
+     * @return HasMany
+     */
     public function cards(): HasMany
     {
         return $this->hasMany(Card::class, 'owner_id');
