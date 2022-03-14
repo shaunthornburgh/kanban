@@ -143,7 +143,7 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                                     <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
                                 </svg>
-                                <span class="ml-1">New Issue</span>
+                                <span class="ml-1">New Board</span>
                             </button>
                         </div>
                     </div>
@@ -151,7 +151,14 @@
             </div>
             <div class="flex-1 overflow-auto">
                 <main class="p-3 flex inline-flex overflow-hidden h-full space-x-3" v-if="board">
-                    <List :list="list" v-for="list in board.lists" :key="list.id"></List>
+                    <List
+                        :list="list"
+                        v-for="list in board.lists"
+                        :key="list.id"
+                        @card-added="updateQueryCache($event)"
+                        @card-deleted="updateQueryCache($event)"
+                        @card-updated="updateQueryCache($event)"
+                    ></List>
                 </main>
             </div>
         </div>
@@ -161,6 +168,11 @@
 <script>
 import List from "./components/List";
 import BoardQuery from "./graphql/BoardWithListsAndCards.gql";
+import {
+    EVENT_CARD_ADDED,
+    EVENT_CARD_DELETED,
+    EVENT_CARD_UPDATED
+} from "./constants";
 
 export default {
     components: {
@@ -174,6 +186,34 @@ export default {
                     id: 1
                 };
             }
+        }
+    },
+    methods: {
+        updateQueryCache(event) {
+            const data = event.store.readQuery({
+                query: BoardQuery,
+                variables: { id: Number(this.board.id) }
+            });
+
+            const listById = () =>
+                data.board.lists.find(list => (list.id === event.listId));
+
+            switch (event.type) {
+                case EVENT_CARD_ADDED:
+                    listById().cards.push(event.data);
+                    break;
+                case EVENT_CARD_UPDATED:
+                    listById().cards.filter(card => card.id === event.data.id).title =
+                        event.data.title;
+                    break;
+                case EVENT_CARD_DELETED:
+                    listById().cards = listById().cards.filter(
+                        card => card.id !== event.data.id
+                    );
+                    break;
+            }
+
+            event.store.writeQuery({query: BoardQuery, data });
         }
     },
     data() {

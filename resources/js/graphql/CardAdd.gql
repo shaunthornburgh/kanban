@@ -10,5 +10,8 @@
             id
             title
             order
+            owner {
+                id
+            }
         }
     }
