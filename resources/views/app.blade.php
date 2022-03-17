@@ -9,7 +9,7 @@
 </head>
 <body class="bg-gray-100">
     <div id="app">
-        <Board></Board>
+        <router-view></router-view>
     </div>
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
