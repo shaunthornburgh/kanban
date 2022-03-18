@@ -97,12 +97,57 @@
                                     />
                                 </svg>
                             </button>
-                            <button class="ml-6">
-                                <img
-                                    class="h-9 w-9 rounded-full object-cover"
-                                    src="https://images.unsplash.com/photo-1609132718484-cc90df3417f8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2.5&w=144&h=144"
-                                />
-                            </button>
+                            <div class="ml-3 relative">
+                                <div>
+                                    <button v-if="!isLoggedIn" v-on:click="isDropDownOpen=!isDropDownOpen" class="relative z-10 bg-white rounded-full flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" id="user-menu" aria-haspopup="true">
+                                        <span class="inline-block h-8 w-8 rounded-full overflow-hidden bg-gray-100">
+                                            <svg class="h-full w-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+                                            </svg>
+                                        </span>
+                                    </button>
+                                    <button v-if="isLoggedIn" v-on:click="isDropDownOpen=!isDropDownOpen" class="relative z-10 bg-white rounded-full flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" id="user-menu" aria-haspopup="true">
+                                        <span class="sr-only">Open user menu</span>
+                                        <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                                    </button>
+                                    <button v-if="isDropDownOpen" v-on:click="isDropDownOpen=false" tabindex="-1" class="fixed inset-0 h-full w-full cursor-default"></button>
+                                </div>
+                                <div v-if="isDropDownOpen" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
+                                    <div v-if="!isLoggedIn">
+                                        <router-link
+                                            v-if="!isLoggedIn"
+                                            :to="{name: 'auth-login'}"
+                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                            role="menuitem"
+                                        >Sign-in</router-link>
+                                        <router-link
+                                            v-if="!isLoggedIn"
+                                            :to="{name: 'auth-register'}"
+                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                            role="menuitem"
+                                        >Register</router-link>
+                                    </div>
+                                    <div v-if="isLoggedIn">
+                                        <div class="px-4 py-3" role="none">
+                                            <p class="text-sm" role="none">Signed in as {{ name }}</p>
+                                            <p class="text-sm font-medium text-gray-900 truncate" role="none">{{ email }}</p>
+                                        </div>
+                                        <div class="py-1" role="none">
+                                            <a
+                                                href="#"
+                                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                                role="menuitem"
+                                            >Settings</a>
+                                            <a
+                                            href="#"
+                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                            role="menuitem"
+                                            @click="logout"
+                                        >Sign out</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="flex items-center justify-between py-2">
@@ -173,11 +218,18 @@ import {
     EVENT_CARD_DELETED,
     EVENT_CARD_UPDATED
 } from "./constants";
+import { mapState } from "vuex";
+import Logout from "./graphql/Logout.gql";
 
 export default {
     components: {
         List
     },
+    computed: mapState({
+        isLoggedIn: "isLoggedIn",
+        name: state => state.user.name,
+        email: state => state.user.email,
+    }),
     apollo: {
         board: {
             query: BoardQuery,
@@ -189,6 +241,15 @@ export default {
         }
     },
     methods: {
+        async logout() {
+            const response = this.$apollo.mutate ({
+                mutation: Logout,
+            });
+
+            if (response.data?.logout?.id) {
+                this.$store.dispatch("logout");
+            }
+        },
         updateQueryCache(event) {
             const data = event.store.readQuery({
                 query: BoardQuery,
@@ -218,7 +279,8 @@ export default {
     },
     data() {
         return {
-            sidebarOpen: false
+            sidebarOpen: false,
+            isDropDownOpen: false
         }
     }
 };

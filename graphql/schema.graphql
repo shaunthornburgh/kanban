@@ -15,7 +15,7 @@ type Query {
     userBoards(owner_id: ID! @where): [Board!]
         @all
         @can(ability: "viewOwnedBoards", find: "owner_id", model: "App\\Models\\User")
-    board(id: ID! @eq): Board @find @guard
+    board(id: ID! @eq): Board @find
     me: User @auth
 }
 

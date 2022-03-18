@@ -120,6 +120,8 @@ export default {
                         password: this.password
                     }
                 });
+                this.$store.dispatch("setLoggedIn",true);
+                this.$router.push({ name: "board" });
             } catch (err) {
                 this.errors = gqlErrors(err)
             }
