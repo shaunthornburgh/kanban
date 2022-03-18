@@ -8,7 +8,7 @@ import Landing from "./guest/pages/Landing";
 Vue.use(VueRouter);
 
 const routes = [
-    { path: "/", name: "board", component: Board },
+    { path: "/board/:id", name: "board", component: Board },
     { path: "/landing", name: "landing", component: Landing },
     { path: "/login", name: "auth-login", component: Login },
     { path: "/register", name: "auth-register", component: Register }

@@ -220,22 +220,31 @@ import {
 } from "./constants";
 import { mapState } from "vuex";
 import Logout from "./graphql/Logout.gql";
+import {colorMap500} from "./utils";
 
 export default {
     components: {
         List
     },
-    computed: mapState({
-        isLoggedIn: "isLoggedIn",
-        name: state => state.user.name,
-        email: state => state.user.email,
-    }),
+    computed: {
+        bgColor() {
+            return {
+                "bg-white": this.$apollo.loading,
+                [colorMap500[this.board?.color]]: true
+            }
+        },
+        ...mapState({
+            isLoggedIn: "isLoggedIn",
+            name: state => state.user.name,
+            email: state => state.user.email,
+        })
+    },
     apollo: {
         board: {
             query: BoardQuery,
             variables() {
                 return {
-                    id: 1
+                    id: Number(this.$route.params.id)
                 };
             }
         }
