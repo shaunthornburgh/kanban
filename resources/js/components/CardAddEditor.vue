@@ -6,6 +6,7 @@
 import CardAdd from "../graphql/CardAdd.gql";
 import {EVENT_CARD_ADDED} from "../constants";
 import CardEditor from "./CardEditor";
+import {mapState} from "vuex";
 
 export default {
     components: { CardEditor },
@@ -17,6 +18,9 @@ export default {
             title: null
         };
     },
+    computed: mapState({
+        userId: state => state.user.id
+    }),
     mounted() {
         this.$refs.card.focus();
     },
@@ -30,14 +34,15 @@ export default {
                 variables: {
                     title: this.title,
                     listId: this.list.id,
-                    order: this.list.cards.length + 1
+                    order: this.list.cards.length + 1,
+                    ownerId: this.userId
                 },
                 update(store, {data: {cardAdd} }) {
                     self.$emit("added", {
                         store,
                         data: cardAdd,
                         type: EVENT_CARD_ADDED
-                    })
+                    });
                     self.closed();
                 }
             });

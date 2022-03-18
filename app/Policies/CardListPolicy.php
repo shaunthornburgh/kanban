@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Card;
+use App\Models\CardList;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class CardPolicy
+class CardListPolicy
 {
     use HandlesAuthorization;
 
@@ -25,10 +25,10 @@ class CardPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Card  $card
+     * @param  \App\Models\CardList  $cardList
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Card $card)
+    public function view(User $user, CardList $cardList)
     {
         //
     }
@@ -41,41 +41,41 @@ class CardPolicy
      */
     public function create(User $user)
     {
-
+        //
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Card  $card
+     * @param  \App\Models\CardList  $cardList
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Card $card)
+    public function update(User $user, CardList $cardList)
     {
-        return $user->id === $card->owner_id;
+        //
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Card  $card
+     * @param  \App\Models\CardList  $cardList
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Card $card)
+    public function delete(User $user, CardList $cardList)
     {
-        return $user->id === $card->owner_id;
+        //
     }
 
     /**
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Card  $card
+     * @param  \App\Models\CardList  $cardList
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Card $card)
+    public function restore(User $user, CardList $cardList)
     {
         //
     }
@@ -84,11 +84,16 @@ class CardPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Card  $card
+     * @param  \App\Models\CardList  $cardList
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Card $card)
+    public function forceDelete(User $user, CardList $cardList)
     {
         //
+    }
+
+    public function createCard(User $user, CardList $cardList)
+    {
+        return $user->id === $cardList->board->owner_id;
     }
 }
