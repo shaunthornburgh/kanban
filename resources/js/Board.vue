@@ -1,10 +1,10 @@
 <template>
-    <div class="h-screen flex overflow-hidden" id="app">
+    <div class="h-screen flex overflow-hidden" id="app" :class="bgColorSidebar">
         <div :class="sidebarOpen ? 'block' : 'hidden'" class="fixed inset-0 bg-black opacity-50 lg-hidden"></div>
-        <div :class="sidebarOpen ? 'translate-x-0 ease-out transition-medium' : '-translate-x-full ease-in transition-medium'" class="fixed z-30 inset-y-0 left-0 w-64 px-8 py-4 bg-gray-100 border-r overflow-auto lg:static lg:inset-auto lg:translate-x-0">
+        <div :class="[sidebarOpen ? 'translate-x-0 ease-out transition-medium' : '-translate-x-full ease-in transition-medium', borderColor]" class="sidebar fixed z-30 inset-y-0 left-0 w-64 px-8 py-4 border-r overflow-auto lg:static lg:inset-auto lg:translate-x-0">
 
             <div class="-mx-3 pl-3 pr-1 flex items-center justify-between">
-                <span><img class="h-9 w-9" src="images/logo.svg"></span>
+                <span><img class="h-9 w-9" src="/images/logo.svg"></span>
                 <button @click="sidebarOpen = false" class="text-gray-700 lg:hidden">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -12,57 +12,57 @@
                 </button>
             </div>
             <nav class="mt-8">
-                <h3 class="text-xs font-semibold text-gray-600 uppercase tracking-wide">Issues</h3>
+                <h3 class="text-xs font-semibold uppercase tracking-wide" :class="textColor">Issues</h3>
                 <div class="mt-2 -mx-3">
-                    <a href="#" class="flex justify-between items-center px-3 py-2 bg-gray-200 rounded-lg">
-                        <span class="text-sm font-medium text-gray-900">All</span>
-                        <span class="text-xs font-semibold text-gray-700">36</span>
+                    <a href="#" class="flex justify-between items-center px-3 py-2 rounded-lg" :class="buttonHoverColor">
+                        <span class="text-sm font-medium" :class="textColor">All</span>
+                        <span class="text-xs font-semibold" :class="textColor">36</span>
                     </a>
                     <a href="#" class="flex justify-between items-center px-3 py-2 rounded-lg">
-                        <span class="text-sm font-medium text-gray-700">Assigned to me</span>
-                        <span class="text-xs font-semibold text-gray-700">2</span>
+                        <span class="text-sm font-medium" :class="textColor">Assigned to me</span>
+                        <span class="text-xs font-semibold" :class="textColor">2</span>
                     </a>
                     <a href="#" class="flex justify-between items-center px-3 py-2 rounded-lg">
-                        <span class="text-sm font-medium text-gray-700">Created by me</span>
-                        <span class="text-xs font-semibold text-gray-700">1</span>
+                        <span class="text-sm font-medium" :class="textColor">Created by me</span>
+                        <span class="text-xs font-semibold" :class="textColor">1</span>
                     </a>
                     <a href="#" class="flex justify-between items-center px-3 py-2 rounded-lg">
-                        <span class="text-sm font-medium text-gray-700">Archived</span>
+                        <span class="text-sm font-medium" :class="textColor">Archived</span>
                     </a>
                 </div>
-                <h3 class="mt-8 text-xs font-semibold text-gray-600 uppercase tracking-wide">Tags</h3>
+                <h3 class="mt-8 text-xs font-semibold uppercase tracking-wide" :class="textColor">Tags</h3>
                 <div class="mt-2 -mx-3">
                     <a href="#" class="flex justify-between items-center px-3 py-2 rounded-lg">
-                        <span class="text-sm font-medium text-gray-700">Bug</span>
+                        <span class="text-sm font-medium" :class="textColor">Bug</span>
                     </a>
                     <a href="#" class="flex justify-between items-center px-3 py-2 rounded-lg">
-                        <span class="text-sm font-medium text-gray-700">Feature Request</span>
+                        <span class="text-sm font-medium" :class="textColor">Feature Request</span>
                     </a>
                     <a href="#" class="flex justify-between items-center px-3 py-2 rounded-lg">
-                        <span class="text-sm font-medium text-gray-700">Marketing</span>
+                        <span class="text-sm font-medium" :class="textColor">Marketing</span>
                     </a>
                     <a href="#" class="flex justify-between items-center px-3 py-2 rounded-lg">
-                        <span class="text-sm font-medium text-gray-700">v2.0</span>
+                        <span class="text-sm font-medium" :class="textColor">v2.0</span>
                     </a>
                     <a href="#" class="flex justify-between items-center px-3 py-2 rounded-lg">
-                        <span class="text-sm font-medium text-gray-700">Enhancement</span>
+                        <span class="text-sm font-medium" :class="textColor">Enhancement</span>
                     </a>
                     <a href="#" class="flex justify-between items-center px-3 py-2 rounded-lg">
-                        <span class="text-sm font-medium text-gray-700">Design</span>
+                        <span class="text-sm font-medium" :class="textColor">Design</span>
                     </a>
                 </div>
-                <button class="mt-2 -ml-1 flex items-center text-sm font-medium text-gray-600">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500" viewBox="0 0 20 20" fill="none">
+                <button class="mt-2 -ml-1 flex items-center text-sm font-medium" :class="textColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 " viewBox="0 0 20 20" fill="none">
                         <path stroke="currentColor" fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
                     </svg>
                     <span class="ml-1">New Project</span>
                 </button>
             </nav>
         </div>
-        <div class="flex flex-1 flex-col min-w-0 bg-white overflow-hidden">
-            <div class="border-b-2 border-gray-200 flex-shrink-0">
+        <div class="flex flex-1 flex-col min-w-0 overflow-hidden" :class="bgColorMain">
+            <div class="header border-b flex-shrink-0" :class="borderColor">
                 <header class="px-6">
-                    <div class="flex justify-between items-center py-3 border-b border-gray-200">
+                    <div class="flex justify-between items-center py-3 border-b header" :class="borderColor">
                         <div class="flex-1 min-w-0 flex">
                             <button @click="sidebarOpen = true" class="text-gray-600 lg:hidden">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -86,8 +86,8 @@
                             </div>
                         </div>
                         <div class="ml-6 flex-shrink-0 flex items-center">
-                            <button>
-                                <svg class="h-5 w-5 text-gray-500" fill="none" viewBox="0 0 24 24">
+                            <button :class="textColor">
+                                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24">
                                     <path
                                         stroke="currentColor"
                                         stroke-width="2"
@@ -220,17 +220,41 @@ import {
 } from "./constants";
 import { mapState } from "vuex";
 import Logout from "./graphql/Logout.gql";
-import {colorMap500} from "./utils";
+import {colorBorder, colorButtonHover, colorMainBoard, colorSidebar, textColor} from "./utils";
 
 export default {
     components: {
         List
     },
     computed: {
-        bgColor() {
+        bgColorMain() {
             return {
                 "bg-white": this.$apollo.loading,
-                [colorMap500[this.board?.color]]: true
+                [colorMainBoard[this.board?.color]]: true
+            }
+        },
+        bgColorSidebar() {
+            return {
+                "bg-white": this.$apollo.loading,
+                [colorSidebar[this.board?.color]]: true
+            }
+        },
+        buttonHoverColor() {
+            return {
+                "bg-white": this.$apollo.loading,
+                [colorButtonHover[this.board?.color]]: true
+            }
+        },
+        textColor() {
+            return {
+                "bg-white": this.$apollo.loading,
+                [textColor[this.board?.color]]: true
+            }
+        },
+        borderColor() {
+            return {
+                "bg-white": this.$apollo.loading,
+                [colorBorder[this.board?.color]]: true
             }
         },
         ...mapState({

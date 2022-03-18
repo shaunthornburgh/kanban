@@ -31,19 +31,7 @@ export class AuthError extends Error {
 
 }
 
-export const colorMap500 = {
-    teal: "bg-teal-500",
-    orange: "bg-orange-500",
-    gray: "bg-gray-500",
-    yellow: "bg-yellow-500",
-    purple: "bg-purple-500",
-    red: "bg-red-500",
-    green: "bg-green-500",
-    blue: "bg-blue-500",
-    indigo: "bg-indigo-500"
-};
-
-export const colorMap100 = {
+export const colorMainBoard = {
     teal: "bg-teal-100",
     orange: "bg-orange-100",
     gray: "bg-gray-100",
@@ -52,10 +40,11 @@ export const colorMap100 = {
     red: "bg-red-100",
     green: "bg-green-100",
     blue: "bg-blue-100",
-    indigo: "bg-indigo-100"
-};
+    indigo: "bg-indigo-100",
+    white: "bg-white"
+}
 
-export const colorMap200 = {
+export const colorSidebar = {
     teal: "bg-teal-200",
     orange: "bg-orange-200",
     gray: "bg-gray-200",
@@ -64,11 +53,47 @@ export const colorMap200 = {
     red: "bg-red-200",
     green: "bg-green-200",
     blue: "bg-blue-200",
-    indigo: "bg-indigo-200"
-};
+    indigo: "bg-indigo-200",
+    white: "bg-gray-100"
+}
 
-export const colorGrid = [
-    ["teal", "orange", "gray"],
-    ["yellow", "purple", "red"],
-    ["green", "blue", "indigo"]
-];
+export const colorBorder = {
+    teal: "border-teal-400",
+    orange: "border-orange-400",
+    gray: "border-gray-400",
+    yellow: "border-yellow-400",
+    purple: "border-purple-400",
+    red: "border-red-400",
+    green: "border-green-400",
+    blue: "border-blue-400",
+    indigo: "border-indigo-400",
+    white: "border-gray-300"
+}
+
+export const colorButtonHover = {
+    teal: "bg-teal-300",
+    orange: "bg-orange-300",
+    gray: "bg-gray-300",
+    yellow: "bg-yellow-300",
+    purple: "bg-purple-300",
+    red: "bg-red-300",
+    green: "bg-green-300",
+    blue: "bg-blue-300",
+    indigo: "bg-indigo-300",
+    white: "bg-gray-200"
+}
+
+export const textColor = {
+    teal: "text-white",
+    orange: "text-white",
+    gray: "text-white",
+    yellow: "text-white",
+    purple: "text-white",
+    red: "text-white",
+    green: "text-white",
+    blue: "text-white",
+    indigo: "text-white",
+    white: "text-gray-700"
+}
+
+

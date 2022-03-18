@@ -7826,12 +7826,40 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     List: _components_List__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   computed: _objectSpread({
-    bgColor: function bgColor() {
+    bgColorMain: function bgColorMain() {
       var _this$board;
 
       return _defineProperty({
         "bg-white": this.$apollo.loading
-      }, _utils__WEBPACK_IMPORTED_MODULE_5__.colorMap500[(_this$board = this.board) === null || _this$board === void 0 ? void 0 : _this$board.color], true);
+      }, _utils__WEBPACK_IMPORTED_MODULE_5__.colorMainBoard[(_this$board = this.board) === null || _this$board === void 0 ? void 0 : _this$board.color], true);
+    },
+    bgColorSidebar: function bgColorSidebar() {
+      var _this$board2;
+
+      return _defineProperty({
+        "bg-white": this.$apollo.loading
+      }, _utils__WEBPACK_IMPORTED_MODULE_5__.colorSidebar[(_this$board2 = this.board) === null || _this$board2 === void 0 ? void 0 : _this$board2.color], true);
+    },
+    buttonHoverColor: function buttonHoverColor() {
+      var _this$board3;
+
+      return _defineProperty({
+        "bg-white": this.$apollo.loading
+      }, _utils__WEBPACK_IMPORTED_MODULE_5__.colorButtonHover[(_this$board3 = this.board) === null || _this$board3 === void 0 ? void 0 : _this$board3.color], true);
+    },
+    textColor: function textColor() {
+      var _this$board4;
+
+      return _defineProperty({
+        "bg-white": this.$apollo.loading
+      }, _utils__WEBPACK_IMPORTED_MODULE_5__.textColor[(_this$board4 = this.board) === null || _this$board4 === void 0 ? void 0 : _this$board4.color], true);
+    },
+    borderColor: function borderColor() {
+      var _this$board5;
+
+      return _defineProperty({
+        "bg-white": this.$apollo.loading
+      }, _utils__WEBPACK_IMPORTED_MODULE_5__.colorBorder[(_this$board5 = this.board) === null || _this$board5 === void 0 ? void 0 : _this$board5.color], true);
     }
   }, (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapState)({
     isLoggedIn: "isLoggedIn",
@@ -9605,11 +9633,12 @@ var routes = [{
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "AuthError": () => (/* binding */ AuthError),
-/* harmony export */   "colorGrid": () => (/* binding */ colorGrid),
-/* harmony export */   "colorMap100": () => (/* binding */ colorMap100),
-/* harmony export */   "colorMap200": () => (/* binding */ colorMap200),
-/* harmony export */   "colorMap500": () => (/* binding */ colorMap500),
-/* harmony export */   "gqlErrors": () => (/* binding */ gqlErrors)
+/* harmony export */   "colorBorder": () => (/* binding */ colorBorder),
+/* harmony export */   "colorButtonHover": () => (/* binding */ colorButtonHover),
+/* harmony export */   "colorMainBoard": () => (/* binding */ colorMainBoard),
+/* harmony export */   "colorSidebar": () => (/* binding */ colorSidebar),
+/* harmony export */   "gqlErrors": () => (/* binding */ gqlErrors),
+/* harmony export */   "textColor": () => (/* binding */ textColor)
 /* harmony export */ });
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
@@ -9697,18 +9726,7 @@ var AuthError = /*#__PURE__*/function (_Error) {
 
   return _createClass(AuthError);
 }( /*#__PURE__*/_wrapNativeSuper(Error));
-var colorMap500 = {
-  teal: "bg-teal-500",
-  orange: "bg-orange-500",
-  gray: "bg-gray-500",
-  yellow: "bg-yellow-500",
-  purple: "bg-purple-500",
-  red: "bg-red-500",
-  green: "bg-green-500",
-  blue: "bg-blue-500",
-  indigo: "bg-indigo-500"
-};
-var colorMap100 = {
+var colorMainBoard = {
   teal: "bg-teal-100",
   orange: "bg-orange-100",
   gray: "bg-gray-100",
@@ -9717,9 +9735,10 @@ var colorMap100 = {
   red: "bg-red-100",
   green: "bg-green-100",
   blue: "bg-blue-100",
-  indigo: "bg-indigo-100"
+  indigo: "bg-indigo-100",
+  white: "bg-white"
 };
-var colorMap200 = {
+var colorSidebar = {
   teal: "bg-teal-200",
   orange: "bg-orange-200",
   gray: "bg-gray-200",
@@ -9728,9 +9747,45 @@ var colorMap200 = {
   red: "bg-red-200",
   green: "bg-green-200",
   blue: "bg-blue-200",
-  indigo: "bg-indigo-200"
+  indigo: "bg-indigo-200",
+  white: "bg-gray-100"
 };
-var colorGrid = [["teal", "orange", "gray"], ["yellow", "purple", "red"], ["green", "blue", "indigo"]];
+var colorBorder = {
+  teal: "border-teal-400",
+  orange: "border-orange-400",
+  gray: "border-gray-400",
+  yellow: "border-yellow-400",
+  purple: "border-purple-400",
+  red: "border-red-400",
+  green: "border-green-400",
+  blue: "border-blue-400",
+  indigo: "border-indigo-400",
+  white: "border-gray-300"
+};
+var colorButtonHover = {
+  teal: "bg-teal-300",
+  orange: "bg-orange-300",
+  gray: "bg-gray-300",
+  yellow: "bg-yellow-300",
+  purple: "bg-purple-300",
+  red: "bg-red-300",
+  green: "bg-green-300",
+  blue: "bg-blue-300",
+  indigo: "bg-indigo-300",
+  white: "bg-gray-200"
+};
+var textColor = {
+  teal: "text-white",
+  orange: "text-white",
+  gray: "text-white",
+  yellow: "text-white",
+  purple: "text-white",
+  red: "text-white",
+  green: "text-white",
+  blue: "text-white",
+  indigo: "text-white",
+  white: "text-gray-700"
+};
 
 /***/ }),
 
@@ -33503,7 +33558,11 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "h-screen flex overflow-hidden", attrs: { id: "app" } },
+    {
+      staticClass: "h-screen flex overflow-hidden",
+      class: _vm.bgColorSidebar,
+      attrs: { id: "app" },
+    },
     [
       _c("div", {
         staticClass: "fixed inset-0 bg-black opacity-50 lg-hidden",
@@ -33514,10 +33573,13 @@ var render = function () {
         "div",
         {
           staticClass:
-            "fixed z-30 inset-y-0 left-0 w-64 px-8 py-4 bg-gray-100 border-r overflow-auto lg:static lg:inset-auto lg:translate-x-0",
-          class: _vm.sidebarOpen
-            ? "translate-x-0 ease-out transition-medium"
-            : "-translate-x-full ease-in transition-medium",
+            "sidebar fixed z-30 inset-y-0 left-0 w-64 px-8 py-4 border-r overflow-auto lg:static lg:inset-auto lg:translate-x-0",
+          class: [
+            _vm.sidebarOpen
+              ? "translate-x-0 ease-out transition-medium"
+              : "-translate-x-full ease-in transition-medium",
+            _vm.borderColor,
+          ],
         },
         [
           _c(
@@ -33568,36 +33630,255 @@ var render = function () {
             _c(
               "h3",
               {
-                staticClass:
-                  "text-xs font-semibold text-gray-600 uppercase tracking-wide",
+                staticClass: "text-xs font-semibold uppercase tracking-wide",
+                class: _vm.textColor,
               },
               [_vm._v("Issues")]
             ),
             _vm._v(" "),
-            _vm._m(1),
+            _c("div", { staticClass: "mt-2 -mx-3" }, [
+              _c(
+                "a",
+                {
+                  staticClass:
+                    "flex justify-between items-center px-3 py-2 rounded-lg",
+                  class: _vm.buttonHoverColor,
+                  attrs: { href: "#" },
+                },
+                [
+                  _c(
+                    "span",
+                    {
+                      staticClass: "text-sm font-medium",
+                      class: _vm.textColor,
+                    },
+                    [_vm._v("All")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass: "text-xs font-semibold",
+                      class: _vm.textColor,
+                    },
+                    [_vm._v("36")]
+                  ),
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass:
+                    "flex justify-between items-center px-3 py-2 rounded-lg",
+                  attrs: { href: "#" },
+                },
+                [
+                  _c(
+                    "span",
+                    {
+                      staticClass: "text-sm font-medium",
+                      class: _vm.textColor,
+                    },
+                    [_vm._v("Assigned to me")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass: "text-xs font-semibold",
+                      class: _vm.textColor,
+                    },
+                    [_vm._v("2")]
+                  ),
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass:
+                    "flex justify-between items-center px-3 py-2 rounded-lg",
+                  attrs: { href: "#" },
+                },
+                [
+                  _c(
+                    "span",
+                    {
+                      staticClass: "text-sm font-medium",
+                      class: _vm.textColor,
+                    },
+                    [_vm._v("Created by me")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass: "text-xs font-semibold",
+                      class: _vm.textColor,
+                    },
+                    [_vm._v("1")]
+                  ),
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass:
+                    "flex justify-between items-center px-3 py-2 rounded-lg",
+                  attrs: { href: "#" },
+                },
+                [
+                  _c(
+                    "span",
+                    {
+                      staticClass: "text-sm font-medium",
+                      class: _vm.textColor,
+                    },
+                    [_vm._v("Archived")]
+                  ),
+                ]
+              ),
+            ]),
             _vm._v(" "),
             _c(
               "h3",
               {
                 staticClass:
-                  "mt-8 text-xs font-semibold text-gray-600 uppercase tracking-wide",
+                  "mt-8 text-xs font-semibold uppercase tracking-wide",
+                class: _vm.textColor,
               },
               [_vm._v("Tags")]
             ),
             _vm._v(" "),
-            _vm._m(2),
+            _c("div", { staticClass: "mt-2 -mx-3" }, [
+              _c(
+                "a",
+                {
+                  staticClass:
+                    "flex justify-between items-center px-3 py-2 rounded-lg",
+                  attrs: { href: "#" },
+                },
+                [
+                  _c(
+                    "span",
+                    {
+                      staticClass: "text-sm font-medium",
+                      class: _vm.textColor,
+                    },
+                    [_vm._v("Bug")]
+                  ),
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass:
+                    "flex justify-between items-center px-3 py-2 rounded-lg",
+                  attrs: { href: "#" },
+                },
+                [
+                  _c(
+                    "span",
+                    {
+                      staticClass: "text-sm font-medium",
+                      class: _vm.textColor,
+                    },
+                    [_vm._v("Feature Request")]
+                  ),
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass:
+                    "flex justify-between items-center px-3 py-2 rounded-lg",
+                  attrs: { href: "#" },
+                },
+                [
+                  _c(
+                    "span",
+                    {
+                      staticClass: "text-sm font-medium",
+                      class: _vm.textColor,
+                    },
+                    [_vm._v("Marketing")]
+                  ),
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass:
+                    "flex justify-between items-center px-3 py-2 rounded-lg",
+                  attrs: { href: "#" },
+                },
+                [
+                  _c(
+                    "span",
+                    {
+                      staticClass: "text-sm font-medium",
+                      class: _vm.textColor,
+                    },
+                    [_vm._v("v2.0")]
+                  ),
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass:
+                    "flex justify-between items-center px-3 py-2 rounded-lg",
+                  attrs: { href: "#" },
+                },
+                [
+                  _c(
+                    "span",
+                    {
+                      staticClass: "text-sm font-medium",
+                      class: _vm.textColor,
+                    },
+                    [_vm._v("Enhancement")]
+                  ),
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass:
+                    "flex justify-between items-center px-3 py-2 rounded-lg",
+                  attrs: { href: "#" },
+                },
+                [
+                  _c(
+                    "span",
+                    {
+                      staticClass: "text-sm font-medium",
+                      class: _vm.textColor,
+                    },
+                    [_vm._v("Design")]
+                  ),
+                ]
+              ),
+            ]),
             _vm._v(" "),
             _c(
               "button",
               {
-                staticClass:
-                  "mt-2 -ml-1 flex items-center text-sm font-medium text-gray-600",
+                staticClass: "mt-2 -ml-1 flex items-center text-sm font-medium",
+                class: _vm.textColor,
               },
               [
                 _c(
                   "svg",
                   {
-                    staticClass: "h-5 w-5 text-gray-500",
+                    staticClass: "h-5 w-5 ",
                     attrs: {
                       xmlns: "http://www.w3.org/2000/svg",
                       viewBox: "0 0 20 20",
@@ -33626,19 +33907,24 @@ var render = function () {
       _c(
         "div",
         {
-          staticClass: "flex flex-1 flex-col min-w-0 bg-white overflow-hidden",
+          staticClass: "flex flex-1 flex-col min-w-0 overflow-hidden",
+          class: _vm.bgColorMain,
         },
         [
           _c(
             "div",
-            { staticClass: "border-b-2 border-gray-200 flex-shrink-0" },
+            {
+              staticClass: "header border-b flex-shrink-0",
+              class: _vm.borderColor,
+            },
             [
               _c("header", { staticClass: "px-6" }, [
                 _c(
                   "div",
                   {
                     staticClass:
-                      "flex justify-between items-center py-3 border-b border-gray-200",
+                      "flex justify-between items-center py-3 border-b header",
+                    class: _vm.borderColor,
                   },
                   [
                     _c("div", { staticClass: "flex-1 min-w-0 flex" }, [
@@ -33724,11 +34010,11 @@ var render = function () {
                       "div",
                       { staticClass: "ml-6 flex-shrink-0 flex items-center" },
                       [
-                        _c("button", [
+                        _c("button", { class: _vm.textColor }, [
                           _c(
                             "svg",
                             {
-                              staticClass: "h-5 w-5 text-gray-500",
+                              staticClass: "h-5 w-5",
                               attrs: { fill: "none", viewBox: "0 0 24 24" },
                             },
                             [
@@ -34004,7 +34290,7 @@ var render = function () {
                             ]
                           ),
                       _vm._v(" "),
-                      _vm._m(3),
+                      _vm._m(1),
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "flex" }, [
@@ -34088,162 +34374,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("span", [
-      _c("img", { staticClass: "h-9 w-9", attrs: { src: "images/logo.svg" } }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "mt-2 -mx-3" }, [
-      _c(
-        "a",
-        {
-          staticClass:
-            "flex justify-between items-center px-3 py-2 bg-gray-200 rounded-lg",
-          attrs: { href: "#" },
-        },
-        [
-          _c("span", { staticClass: "text-sm font-medium text-gray-900" }, [
-            _vm._v("All"),
-          ]),
-          _vm._v(" "),
-          _c("span", { staticClass: "text-xs font-semibold text-gray-700" }, [
-            _vm._v("36"),
-          ]),
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "a",
-        {
-          staticClass: "flex justify-between items-center px-3 py-2 rounded-lg",
-          attrs: { href: "#" },
-        },
-        [
-          _c("span", { staticClass: "text-sm font-medium text-gray-700" }, [
-            _vm._v("Assigned to me"),
-          ]),
-          _vm._v(" "),
-          _c("span", { staticClass: "text-xs font-semibold text-gray-700" }, [
-            _vm._v("2"),
-          ]),
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "a",
-        {
-          staticClass: "flex justify-between items-center px-3 py-2 rounded-lg",
-          attrs: { href: "#" },
-        },
-        [
-          _c("span", { staticClass: "text-sm font-medium text-gray-700" }, [
-            _vm._v("Created by me"),
-          ]),
-          _vm._v(" "),
-          _c("span", { staticClass: "text-xs font-semibold text-gray-700" }, [
-            _vm._v("1"),
-          ]),
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "a",
-        {
-          staticClass: "flex justify-between items-center px-3 py-2 rounded-lg",
-          attrs: { href: "#" },
-        },
-        [
-          _c("span", { staticClass: "text-sm font-medium text-gray-700" }, [
-            _vm._v("Archived"),
-          ]),
-        ]
-      ),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "mt-2 -mx-3" }, [
-      _c(
-        "a",
-        {
-          staticClass: "flex justify-between items-center px-3 py-2 rounded-lg",
-          attrs: { href: "#" },
-        },
-        [
-          _c("span", { staticClass: "text-sm font-medium text-gray-700" }, [
-            _vm._v("Bug"),
-          ]),
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "a",
-        {
-          staticClass: "flex justify-between items-center px-3 py-2 rounded-lg",
-          attrs: { href: "#" },
-        },
-        [
-          _c("span", { staticClass: "text-sm font-medium text-gray-700" }, [
-            _vm._v("Feature Request"),
-          ]),
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "a",
-        {
-          staticClass: "flex justify-between items-center px-3 py-2 rounded-lg",
-          attrs: { href: "#" },
-        },
-        [
-          _c("span", { staticClass: "text-sm font-medium text-gray-700" }, [
-            _vm._v("Marketing"),
-          ]),
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "a",
-        {
-          staticClass: "flex justify-between items-center px-3 py-2 rounded-lg",
-          attrs: { href: "#" },
-        },
-        [
-          _c("span", { staticClass: "text-sm font-medium text-gray-700" }, [
-            _vm._v("v2.0"),
-          ]),
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "a",
-        {
-          staticClass: "flex justify-between items-center px-3 py-2 rounded-lg",
-          attrs: { href: "#" },
-        },
-        [
-          _c("span", { staticClass: "text-sm font-medium text-gray-700" }, [
-            _vm._v("Enhancement"),
-          ]),
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "a",
-        {
-          staticClass: "flex justify-between items-center px-3 py-2 rounded-lg",
-          attrs: { href: "#" },
-        },
-        [
-          _c("span", { staticClass: "text-sm font-medium text-gray-700" }, [
-            _vm._v("Design"),
-          ]),
-        ]
-      ),
+      _c("img", { staticClass: "h-9 w-9", attrs: { src: "/images/logo.svg" } }),
     ])
   },
   function () {
