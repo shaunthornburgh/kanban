@@ -70,17 +70,30 @@ export const colorBorder = {
     white: "border-gray-300"
 }
 
-export const colorButtonHover = {
-    teal: "bg-teal-300",
-    orange: "bg-orange-300",
-    gray: "bg-gray-300",
-    yellow: "bg-yellow-300",
-    purple: "bg-purple-300",
-    red: "bg-red-300",
-    green: "bg-green-300",
-    blue: "bg-blue-300",
-    indigo: "bg-indigo-300",
-    white: "bg-gray-200"
+export const buttonColor = {
+    teal: "bg-teal-800",
+    orange: "bg-orange-800",
+    gray: "bg-gray-800",
+    yellow: "bg-yellow-800",
+    purple: "bg-purple-800",
+    red: "bg-red-800",
+    green: "bg-green-800",
+    blue: "bg-blue-800",
+    indigo: "bg-indigo-800",
+    white: "bg-gray-800"
+}
+
+export const buttonColorHover = {
+    teal: "hover:bg-teal-700",
+    orange: "hover:bg-orange-700",
+    gray: "hover:bg-gray-700",
+    yellow: "hover:bg-yellow-700",
+    purple: "hover:bg-purple-700",
+    red: "hover:bg-red-700",
+    green: "hover:bg-green-700",
+    blue: "hover:bg-blue-700",
+    indigo: "hover:bg-indigo-700",
+    white: "hover:bg-gray-700"
 }
 
 export const textColor = {
@@ -94,6 +107,19 @@ export const textColor = {
     blue: "text-white",
     indigo: "text-white",
     white: "text-gray-700"
+}
+
+export const circleBorderColor = {
+    teal: "border-white",
+    orange: "border-white",
+    gray: "border-white",
+    yellow: "border-white",
+    purple: "border-white",
+    red: "border-white",
+    green: "border-white",
+    blue: "border-white",
+    indigo: "border-white",
+    white: "border-gray-700"
 }
 
 
