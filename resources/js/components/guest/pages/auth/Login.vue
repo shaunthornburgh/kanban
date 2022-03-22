@@ -92,10 +92,10 @@
 </template>
 
 <script>
-import Header from "./../../layout/Header";
-import Login from "../../../graphql/Login.gql";
-import {gqlErrors} from "../../../utils";
-import Errors from "../../../components/Errors";
+import Header from "../../layout/Header";
+import Login from "../../../../graphql/Login.gql";
+import {gqlErrors} from "../../../../utils";
+import Errors from "../../../Errors";
 
 export default {
     components: {

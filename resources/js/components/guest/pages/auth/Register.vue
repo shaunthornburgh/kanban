@@ -101,10 +101,10 @@
 </template>
 
 <script>
-import Header from "./../../layout/Header";
-import Register from "../../../graphql/Register.gql";
-import {gqlErrors} from "../../../utils";
-import Errors from "../../../components/Errors";
+import Header from "../../layout/Header";
+import Register from "../../../../graphql/Register.gql";
+import {gqlErrors} from "../../../../utils";
+import Errors from "../../../Errors";
 
 export default {
     components: {

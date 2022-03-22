@@ -13,7 +13,7 @@
             </div>
             <nav class="mt-8">
                 <h3 class="text-xs font-semibold uppercase tracking-wide" :class="textColor">Boards</h3>
-                <div class="mt-2 -mx-3">
+                <div class="mt-2 -mx-3" v-if="isLoggedIn">
                     <router-link
                         :to="{name: 'board', params: {id: board.id}}"
                         v-for="board in userBoards"
@@ -88,6 +88,7 @@ export default {
     },
     computed: {
         ...mapState({
+            isLoggedIn: "isLoggedIn",
             userId: state => state.user.id
         }),
     },

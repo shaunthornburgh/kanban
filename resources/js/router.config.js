@@ -1,9 +1,9 @@
 import Vue from "vue";
 import VueRouter from 'vue-router';
 import Board from "./Board";
-import Login from "./guest/pages/auth/Login";
-import Register from "./guest/pages/auth/Register";
-import Landing from "./guest/pages/Landing";
+import Login from "./components/guest/pages/auth/Login";
+import Register from "./components/guest/pages/auth/Register";
+import Landing from "./components/guest/pages/Landing";
 
 Vue.use(VueRouter);
 

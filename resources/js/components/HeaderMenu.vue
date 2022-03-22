@@ -92,7 +92,7 @@
             <div class="flex items-center justify-between py-2">
                 <div class="sm:flex sm:items-center">
                     <h2 class="text-2xl font-semibold text-gray-900 leading-tight">
-                        {{ board.title }}
+                        {{ title }}
                     </h2>
                     <div class="mt-1 flex items-center sm:mt-0 sm:ml-6">
                             <span class="-ml-2 rounded-full border-2 border-white">
@@ -122,24 +122,36 @@
                     </div>
                 </div>
                 <div class="flex">
-                    <button class="flex items-center pl-2 pr-4 py-2 text-sm font-medium text-white rounded-md" :class="[buttonColor, buttonColorHover]">
+                    <button
+                        v-if="isLoggedIn"
+                        @click="showModal = true"
+                        class="flex items-center pl-2 pr-4 py-2 text-sm font-medium text-white rounded-md"
+                        :class="[buttonColor, buttonColorHover]"
+                    >
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
                         </svg>
-                        <span class="ml-1">New Board</span>
+                        <span class="ml-1">Create New Board</span>
                     </button>
                 </div>
             </div>
         </header>
+        <BoardAddModal
+            :show="showModal"
+            @closed="showModal=false"
+        ></BoardAddModal>
     </div>
 </template>
 
 <script>
 import { mapState } from "vuex";
+import BoardAddModal from "./BoardAddModal";
+import Logout from "./../graphql/Logout.gql";
 
 export default {
+    components: {BoardAddModal},
     props: {
-        board: Object,
+        title: String,
         borderColor: Object,
         textColor: Object,
         buttonColor: Object,
@@ -154,8 +166,20 @@ export default {
     data() {
         return {
             sidebarOpen: false,
-            isDropDownOpen: false
+            isDropDownOpen: false,
+            showModal: false
         }
+    },
+    methods: {
+        async logout() {
+            const response = await this.$apollo.mutate({
+                mutation: Logout
+            });
+
+            if (response.data?.logout?.id) {
+                this.$store.dispatch("logout");
+            }
+        },
     }
 }
 </script>

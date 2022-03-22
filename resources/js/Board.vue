@@ -5,8 +5,10 @@
             :textColor="textColor"
         ></UserBoardsMenu>
         <div class="flex flex-1 flex-col min-w-0 overflow-hidden" :class="bgColorMain">
+            <div v-if="$apollo.loading">Loading...</div>
             <HeaderMenu
-                :board="board"
+                v-else
+                :title="board.title"
                 :borderColor="borderColor"
                 :textColor="textColor"
                 :buttonColor="buttonColor"
@@ -22,6 +24,7 @@
                         @card-deleted="updateQueryCache($event)"
                         @card-updated="updateQueryCache($event)"
                     ></List>
+                    <ListAddEditor :board="board.id" @added="updateQueryCache($event)"></ListAddEditor>
                 </main>
             </div>
         </div>
@@ -30,14 +33,15 @@
 
 <script>
 import List from "./components/List";
+import ListAddEditor from "./components/ListAddEditor";
 import BoardQuery from "./graphql/BoardWithListsAndCards.gql";
 import {
     EVENT_CARD_ADDED,
     EVENT_CARD_DELETED,
-    EVENT_CARD_UPDATED
+    EVENT_CARD_UPDATED,
+    EVENT_LIST_ADDED
 } from "./constants";
 import { mapState } from "vuex";
-import Logout from "./graphql/Logout.gql";
 import UserBoards from "./graphql/UserBoards.gql";
 import {circleBorderColor, colorBorder, buttonColor, buttonColorHover, colorMainBoard, colorSidebar, textColor} from "./utils";
 import UserBoardsMenu from "./components/UserBoardsMenu";
@@ -47,7 +51,8 @@ export default {
     components: {
         HeaderMenu,
         List,
-        UserBoardsMenu
+        UserBoardsMenu,
+        ListAddEditor
     },
     computed: {
         bgColorMain() {
@@ -121,15 +126,6 @@ export default {
         }
     },
     methods: {
-        async logout() {
-            const response = this.$apollo.mutate ({
-                mutation: Logout,
-            });
-
-            if (response.data?.logout?.id) {
-                this.$store.dispatch("logout");
-            }
-        },
         updateQueryCache(event) {
             const data = event.store.readQuery({
                 query: BoardQuery,
@@ -140,6 +136,9 @@ export default {
                 data.board.lists.find(list => (list.id === event.listId));
 
             switch (event.type) {
+                case EVENT_LIST_ADDED:
+                    data.board.lists.push(event.data);
+                    break;
                 case EVENT_CARD_ADDED:
                     listById().cards.push(event.data);
                     break;
@@ -154,7 +153,11 @@ export default {
                     break;
             }
 
-            event.store.writeQuery({query: BoardQuery, data });
+            event.store.writeQuery({
+                query: BoardQuery,
+                data,
+                variables: { id: Number(this.board.id) }
+            });
         }
     },
     data() {
