@@ -41,6 +41,13 @@ export const colorMainBoard = {
     green: "bg-green-100",
     blue: "bg-blue-100",
     indigo: "bg-indigo-100",
+    emerald: "bg-emerald-100",
+    lime: "bg-lime-100",
+    sky: "bg-sky-100",
+    violet: "bg-violet-100",
+    slate: "bg-slate-100",
+    rose: "bg-rose-100",
+    stone: "bg-stone-100",
     white: "bg-white"
 }
 
@@ -54,6 +61,13 @@ export const colorSidebar = {
     green: "bg-green-200",
     blue: "bg-blue-200",
     indigo: "bg-indigo-200",
+    emerald: "bg-emerald-200",
+    lime: "bg-lime-200",
+    sky: "bg-sky-200",
+    violet: "bg-violet-200",
+    slate: "bg-slate-200",
+    rose: "bg-rose-200",
+    stone: "bg-stone-200",
     white: "bg-gray-100"
 }
 
@@ -67,6 +81,13 @@ export const colorBorder = {
     green: "border-green-400",
     blue: "border-blue-400",
     indigo: "border-indigo-400",
+    emerald: "border-emerald-400",
+    lime: "border-lime-400",
+    sky: "border-sky-400",
+    violet: "border-violet-400",
+    slate: "border-slate-400",
+    rose: "border-rose-400",
+    stone: "border-stone-400",
     white: "border-gray-300"
 }
 
@@ -80,6 +101,13 @@ export const buttonColor = {
     green: "bg-green-800",
     blue: "bg-blue-800",
     indigo: "bg-indigo-800",
+    emerald: "bg-emerald-800",
+    lime: "bg-lime-800",
+    sky: "bg-sky-800",
+    violet: "bg-violet-800",
+    slate: "bg-slate-800",
+    rose: "bg-rose-800",
+    stone: "bg-stone-800",
     white: "bg-gray-800"
 }
 
@@ -93,6 +121,13 @@ export const buttonColorHover = {
     green: "hover:bg-green-700",
     blue: "hover:bg-blue-700",
     indigo: "hover:bg-indigo-700",
+    emerald: "hover:bg-emerald-700",
+    lime: "hover:bg-lime-700",
+    sky: "hover:bg-sky-700",
+    violet: "hover:bg-violet-700",
+    slate: "hover:bg-slate-700",
+    rose: "hover:bg-rose-700",
+    stone: "hover:bg-stone-700",
     white: "hover:bg-gray-700"
 }
 
@@ -106,6 +141,13 @@ export const textColor = {
     green: "text-white",
     blue: "text-white",
     indigo: "text-white",
+    emerald: "text-white",
+    lime: "text-white",
+    sky: "text-white",
+    violet: "text-white",
+    slate: "text-white",
+    rose: "text-white",
+    stone: "text-white",
     white: "text-gray-700"
 }
 
@@ -119,7 +161,31 @@ export const circleBorderColor = {
     green: "border-white",
     blue: "border-white",
     indigo: "border-white",
+    emerald: "border-white",
+    lime: "border-white",
+    sky: "border-white",
+    violet: "border-white",
+    slate: "border-white",
+    rose: "border-white",
+    stone: "border-white",
     white: "border-gray-700"
 }
 
-
+export const hexValues = {
+    "#1FBC9C": "emerald",
+    "#1CA085": "teal",
+    "#2ECC70": "lime",
+    "#27AF60": "green",
+    "#3398DB": "sky",
+    "#2980B9": "blue",
+    "#A463BF": "violet",
+    "#8E43AD": "purple",
+    "#3D556E": "gray",
+    "#222F3D": "slate",
+    "#F2C511": "yellow",
+    "#F39C19": "orange",
+    "#E84B3C": "red",
+    "#C0382B": "rose",
+    "#DDE6E8": "white",
+    "#BDC3C8": "stone"
+}

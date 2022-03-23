@@ -22,7 +22,11 @@
                     </div>
                     <div class="py-2">
                         <label class="block text-sm font-medium text-gray-700">Color</label>
-                        <v-swatches v-model="color" inline></v-swatches>
+                        <v-swatches
+                            class="py-3"
+                            v-model="color"
+                            inline
+                        ></v-swatches>
                     </div>
                 </div>
             </div>
@@ -50,6 +54,7 @@ import 'vue-swatches/dist/vue-swatches.css'
 import BoardAdd from './../graphql/BoardAdd.gql';
 import UserBoards from './../graphql/UserBoards.gql';
 import {mapState} from 'vuex';
+import {hexValues} from '../utils';
 
 export default {
     props: {
@@ -67,6 +72,7 @@ export default {
     data() {
         return {
             color: null,
+            swatches: Object.keys(hexValues),
             title: null,
         }
     },
@@ -74,10 +80,11 @@ export default {
         addBoard() {
             const self = this;
             this.$apollo.mutate({
+
                 mutation: BoardAdd,
                 variables: {
                     title: this.title,
-                    color: this.color
+                    color: hexValues[this.color]
                 },
                 update(store, { data: { boardAdd } }) {
                     const data = store.readQuery({

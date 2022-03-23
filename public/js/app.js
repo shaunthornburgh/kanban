@@ -7805,7 +7805,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _graphql_BoardAdd_gql__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_graphql_BoardAdd_gql__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _graphql_UserBoards_gql__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../graphql/UserBoards.gql */ "./resources/js/graphql/UserBoards.gql");
 /* harmony import */ var _graphql_UserBoards_gql__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_graphql_UserBoards_gql__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils */ "./resources/js/utils.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -7857,6 +7858,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+
 
 
 
@@ -7871,7 +7877,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     Modal: _Modal__WEBPACK_IMPORTED_MODULE_0__["default"],
     VSwatches: (vue_swatches__WEBPACK_IMPORTED_MODULE_1___default())
   },
-  computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_5__.mapState)({
+  computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapState)({
     userId: function userId(state) {
       return state.user.id;
     }
@@ -7883,6 +7889,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   data: function data() {
     return {
       color: null,
+      swatches: Object.keys(_utils__WEBPACK_IMPORTED_MODULE_5__.hexValues),
       title: null
     };
   },
@@ -7893,7 +7900,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         mutation: (_graphql_BoardAdd_gql__WEBPACK_IMPORTED_MODULE_3___default()),
         variables: {
           title: this.title,
-          color: this.color
+          color: _utils__WEBPACK_IMPORTED_MODULE_5__.hexValues[this.color]
         },
         update: function update(store, _ref) {
           var boardAdd = _ref.data.boardAdd;
@@ -10141,6 +10148,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "colorMainBoard": () => (/* binding */ colorMainBoard),
 /* harmony export */   "colorSidebar": () => (/* binding */ colorSidebar),
 /* harmony export */   "gqlErrors": () => (/* binding */ gqlErrors),
+/* harmony export */   "hexValues": () => (/* binding */ hexValues),
 /* harmony export */   "textColor": () => (/* binding */ textColor)
 /* harmony export */ });
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
@@ -10239,6 +10247,13 @@ var colorMainBoard = {
   green: "bg-green-100",
   blue: "bg-blue-100",
   indigo: "bg-indigo-100",
+  emerald: "bg-emerald-100",
+  lime: "bg-lime-100",
+  sky: "bg-sky-100",
+  violet: "bg-violet-100",
+  slate: "bg-slate-100",
+  rose: "bg-rose-100",
+  stone: "bg-stone-100",
   white: "bg-white"
 };
 var colorSidebar = {
@@ -10251,6 +10266,13 @@ var colorSidebar = {
   green: "bg-green-200",
   blue: "bg-blue-200",
   indigo: "bg-indigo-200",
+  emerald: "bg-emerald-200",
+  lime: "bg-lime-200",
+  sky: "bg-sky-200",
+  violet: "bg-violet-200",
+  slate: "bg-slate-200",
+  rose: "bg-rose-200",
+  stone: "bg-stone-200",
   white: "bg-gray-100"
 };
 var colorBorder = {
@@ -10263,6 +10285,13 @@ var colorBorder = {
   green: "border-green-400",
   blue: "border-blue-400",
   indigo: "border-indigo-400",
+  emerald: "border-emerald-400",
+  lime: "border-lime-400",
+  sky: "border-sky-400",
+  violet: "border-violet-400",
+  slate: "border-slate-400",
+  rose: "border-rose-400",
+  stone: "border-stone-400",
   white: "border-gray-300"
 };
 var buttonColor = {
@@ -10275,6 +10304,13 @@ var buttonColor = {
   green: "bg-green-800",
   blue: "bg-blue-800",
   indigo: "bg-indigo-800",
+  emerald: "bg-emerald-800",
+  lime: "bg-lime-800",
+  sky: "bg-sky-800",
+  violet: "bg-violet-800",
+  slate: "bg-slate-800",
+  rose: "bg-rose-800",
+  stone: "bg-stone-800",
   white: "bg-gray-800"
 };
 var buttonColorHover = {
@@ -10287,6 +10323,13 @@ var buttonColorHover = {
   green: "hover:bg-green-700",
   blue: "hover:bg-blue-700",
   indigo: "hover:bg-indigo-700",
+  emerald: "hover:bg-emerald-700",
+  lime: "hover:bg-lime-700",
+  sky: "hover:bg-sky-700",
+  violet: "hover:bg-violet-700",
+  slate: "hover:bg-slate-700",
+  rose: "hover:bg-rose-700",
+  stone: "hover:bg-stone-700",
   white: "hover:bg-gray-700"
 };
 var textColor = {
@@ -10299,6 +10342,13 @@ var textColor = {
   green: "text-white",
   blue: "text-white",
   indigo: "text-white",
+  emerald: "text-white",
+  lime: "text-white",
+  sky: "text-white",
+  violet: "text-white",
+  slate: "text-white",
+  rose: "text-white",
+  stone: "text-white",
   white: "text-gray-700"
 };
 var circleBorderColor = {
@@ -10311,7 +10361,32 @@ var circleBorderColor = {
   green: "border-white",
   blue: "border-white",
   indigo: "border-white",
+  emerald: "border-white",
+  lime: "border-white",
+  sky: "border-white",
+  violet: "border-white",
+  slate: "border-white",
+  rose: "border-white",
+  stone: "border-white",
   white: "border-gray-700"
+};
+var hexValues = {
+  "#1FBC9C": "emerald",
+  "#1CA085": "teal",
+  "#2ECC70": "lime",
+  "#27AF60": "green",
+  "#3398DB": "sky",
+  "#2980B9": "blue",
+  "#A463BF": "violet",
+  "#8E43AD": "purple",
+  "#3D556E": "gray",
+  "#222F3D": "slate",
+  "#F2C511": "yellow",
+  "#F39C19": "orange",
+  "#E84B3C": "red",
+  "#C0382B": "rose",
+  "#DDE6E8": "white",
+  "#BDC3C8": "stone"
 };
 
 /***/ }),
@@ -35549,6 +35624,7 @@ var render = function () {
                   ),
                   _vm._v(" "),
                   _c("v-swatches", {
+                    staticClass: "py-3",
                     attrs: { inline: "" },
                     model: {
                       value: _vm.color,
