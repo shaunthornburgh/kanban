@@ -88,7 +88,7 @@ export default {
                         id: this.card.id
                     },
                     update(store, {data: {cardDelete}}) {
-                        self.$emit("deleted", {
+                        self.$emit("card-deleted", {
                             store,
                             data: cardDelete,
                             type: EVENT_CARD_DELETED
@@ -108,7 +108,7 @@ export default {
                         title: this.title
                     },
                     update(store, { data: cardUpdate }) {
-                        self.$emit("updated", {
+                        self.$emit("card-updated", {
                             store,
                             data: cardUpdate,
                             type: EVENT_CARD_UPDATED

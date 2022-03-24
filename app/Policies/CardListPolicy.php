@@ -65,7 +65,7 @@ class CardListPolicy
      */
     public function delete(User $user, CardList $cardList)
     {
-        //
+        return $user->id === $cardList->board->owner_id;
     }
 
     /**

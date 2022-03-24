@@ -78,7 +78,7 @@ export default {
                     board: this.board
                 },
                 update(store, {data: { listAdd } }) {
-                    self.$emit("added", { store, data: listAdd, type: EVENT_LIST_ADDED });
+                    self.$emit("list-added", { store, data: listAdd, type: EVENT_LIST_ADDED });
                     self.hideEditor();
                 }
             });

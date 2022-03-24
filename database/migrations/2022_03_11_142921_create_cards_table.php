@@ -20,7 +20,7 @@ class CreateCardsTable extends Migration
             $table->string('title');
             $table->smallInteger('order');
 
-            $table->foreignId('list_id')->constrained('card_lists');
+            $table->foreignId('list_id')->constrained('card_lists')->onDelete('cascade');
             $table->foreignId('owner_id')->constrained('users');
         });
     }

@@ -23,8 +23,9 @@
                         @card-added="updateQueryCache($event)"
                         @card-deleted="updateQueryCache($event)"
                         @card-updated="updateQueryCache($event)"
+                        @list-deleted="updateQueryCache($event)"
                     ></List>
-                    <ListAddEditor :board="board.id" @added="updateQueryCache($event)"></ListAddEditor>
+                    <ListAddEditor :board="board.id" @list-added="updateQueryCache($event)"></ListAddEditor>
                 </main>
             </div>
         </div>
@@ -39,7 +40,8 @@ import {
     EVENT_CARD_ADDED,
     EVENT_CARD_DELETED,
     EVENT_CARD_UPDATED,
-    EVENT_LIST_ADDED
+    EVENT_LIST_ADDED,
+    EVENT_LIST_DELETED
 } from "./constants";
 import { mapState } from "vuex";
 import UserBoards from "./graphql/UserBoards.gql";
@@ -138,6 +140,11 @@ export default {
             switch (event.type) {
                 case EVENT_LIST_ADDED:
                     data.board.lists.push(event.data);
+                    break;
+                case EVENT_LIST_DELETED:
+                    data.board.lists = data.board.lists.filter(
+                        list => list.id !== event.data.id
+                    );
                     break;
                 case EVENT_CARD_ADDED:
                     listById().cards.push(event.data);
