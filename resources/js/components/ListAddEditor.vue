@@ -13,8 +13,6 @@
     <div
         v-else
         class="flex-shrink-0 flex flex-col w-80 bg-gray-100 rounded-md"
-        v-on-clickaway="hideEditor"
-
     >
         <div class="pt-4 pb-3 px-3">
             <textarea
@@ -46,7 +44,6 @@
 </template>
 
 <script>
-import { directive as onClickaway } from 'vue-clickaway';
 import { EVENT_LIST_ADDED } from "../constants";
 
 import ListAdd from "./../graphql/ListAdd.gql";
@@ -59,7 +56,6 @@ export default {
             title: null
         };
     },
-    directives: { onClickaway },
     methods: {
         hideEditor() {
             this.editing = false;

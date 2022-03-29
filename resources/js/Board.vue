@@ -25,7 +25,10 @@
                         @card-updated="updateQueryCache($event)"
                         @list-deleted="updateQueryCache($event)"
                     ></List>
-                    <ListAddEditor :board="board.id" @list-added="updateQueryCache($event)"></ListAddEditor>
+                    <ListAddEditor
+                        :board="board.id"
+                        @list-added="updateQueryCache($event)"
+                    ></ListAddEditor>
                 </main>
             </div>
         </div>
