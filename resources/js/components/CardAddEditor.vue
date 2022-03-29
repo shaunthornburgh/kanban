@@ -4,9 +4,9 @@
 
 <script>
 import CardAdd from "../graphql/CardAdd.gql";
-import {EVENT_CARD_ADDED} from "../constants";
+import { EVENT_CARD_ADDED } from "../constants";
 import CardEditor from "./CardEditor";
-import {mapState} from "vuex";
+import { mapState } from "vuex";
 
 export default {
     components: { CardEditor },
@@ -21,14 +21,10 @@ export default {
     computed: mapState({
         userId: state => state.user.id
     }),
-    mounted() {
-        this.$refs.card.focus();
-    },
     methods: {
         addCard() {
             const self = this;
 
-            this.$emit("click");
             this.$apollo.mutate({
                 mutation: CardAdd,
                 variables: {
