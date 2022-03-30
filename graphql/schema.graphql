@@ -32,6 +32,9 @@ type Mutation {
 
     listAdd(title: String!, board_id: ID!): CardList! @create
     listDelete(id: ID!): CardList @delete @can(ability: "delete", find: "id")
+    listUpdate(id: ID!, title: String): CardList
+        @update
+        @can(ability: "update", find: "id")
 
     login(email: String!, password: String!): User!
     logout: User @guard

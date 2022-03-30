@@ -1,0 +1,6 @@
+mutation ListUpdate($id: ID!, $title: String) {
+    listUpdate(id: $id, title: $title) {
+        id
+        title
+    }
+}

@@ -24,6 +24,7 @@
                         @card-deleted="updateQueryCache($event)"
                         @card-updated="updateQueryCache($event)"
                         @list-deleted="updateQueryCache($event)"
+                        @list-updated="updateQueryCache($event)"
                     ></List>
                     <ListAddEditor
                         v-if="editing"
@@ -47,7 +48,8 @@ import {
     EVENT_CARD_DELETED,
     EVENT_CARD_UPDATED,
     EVENT_LIST_ADDED,
-    EVENT_LIST_DELETED
+    EVENT_LIST_DELETED,
+    EVENT_LIST_UPDATED
 } from "./constants";
 import { mapState } from "vuex";
 import UserBoards from "./graphql/UserBoards.gql";
@@ -153,6 +155,10 @@ export default {
                     data.board.lists = data.board.lists.filter(
                         list => list.id !== event.data.id
                     );
+                    break;
+                case EVENT_LIST_UPDATED:
+                    data.board.lists.filter(list => list.id === event.id).title =
+                        event.data.title;
                     break;
                 case EVENT_CARD_ADDED:
                     listById().cards.push(event.data);

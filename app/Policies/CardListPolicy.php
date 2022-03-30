@@ -53,7 +53,7 @@ class CardListPolicy
      */
     public function update(User $user, CardList $cardList)
     {
-        //
+        return $user->id === $cardList->board->owner_id;
     }
 
     /**

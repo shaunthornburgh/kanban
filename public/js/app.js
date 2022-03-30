@@ -7639,6 +7639,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 
@@ -7764,6 +7765,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           data.board.lists = data.board.lists.filter(function (list) {
             return list.id !== event.data.id;
           });
+          break;
+
+        case _constants__WEBPACK_IMPORTED_MODULE_3__.EVENT_LIST_UPDATED:
+          data.board.lists.filter(function (list) {
+            return list.id === event.id;
+          }).title = event.data.title;
           break;
 
         case _constants__WEBPACK_IMPORTED_MODULE_3__.EVENT_CARD_ADDED:
@@ -8571,10 +8578,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Card__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Card */ "./resources/js/components/Card.vue");
 /* harmony import */ var _CardAddButton__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CardAddButton */ "./resources/js/components/CardAddButton.vue");
 /* harmony import */ var _CardAddEditor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./CardAddEditor */ "./resources/js/components/CardAddEditor.vue");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _graphql_ListDelete_gql__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../graphql/ListDelete.gql */ "./resources/js/graphql/ListDelete.gql");
 /* harmony import */ var _graphql_ListDelete_gql__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_graphql_ListDelete_gql__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../constants */ "./resources/js/constants.js");
+/* harmony import */ var _ListEditor__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./ListEditor */ "./resources/js/components/ListEditor.vue");
+/* harmony import */ var _graphql_ListUpdate_gql__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../graphql/ListUpdate.gql */ "./resources/js/graphql/ListUpdate.gql");
+/* harmony import */ var _graphql_ListUpdate_gql__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_graphql_ListUpdate_gql__WEBPACK_IMPORTED_MODULE_7__);
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -8619,6 +8629,30 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
 
 
 
@@ -8627,6 +8661,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
+    ListEditor: _ListEditor__WEBPACK_IMPORTED_MODULE_6__["default"],
     CardAddButton: _CardAddButton__WEBPACK_IMPORTED_MODULE_2__["default"],
     Card: _Card__WEBPACK_IMPORTED_MODULE_1__["default"],
     CardAddEditor: _CardAddEditor__WEBPACK_IMPORTED_MODULE_3__["default"]
@@ -8636,10 +8671,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   data: function data() {
     return {
-      editing: false
+      cardEditing: false,
+      listEditing: false,
+      title: this.list.title
     };
   },
-  computed: (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapState)({
+  computed: (0,vuex__WEBPACK_IMPORTED_MODULE_8__.mapState)({
     canAddCard: function canAddCard(state) {
       return this.list.board.owner.id === state.user.id;
     },
@@ -8648,7 +8685,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   }),
   methods: {
-    listDelete: function listDelete() {
+    listUpdate: function listUpdate() {
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
@@ -8661,17 +8698,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context.prev = 1;
                 _context.next = 4;
                 return _this.$apollo.mutate({
-                  mutation: (_graphql_ListDelete_gql__WEBPACK_IMPORTED_MODULE_4___default()),
+                  mutation: (_graphql_ListUpdate_gql__WEBPACK_IMPORTED_MODULE_7___default()),
                   variables: {
-                    id: _this.list.id
+                    id: _this.list.id,
+                    title: _this.title
                   },
                   update: function update(store, _ref) {
-                    var listDelete = _ref.data.listDelete;
-                    self.$emit("list-deleted", {
+                    var listUpdate = _ref.data;
+                    self.$emit("list-updated", {
                       store: store,
-                      data: listDelete,
-                      type: _constants__WEBPACK_IMPORTED_MODULE_5__.EVENT_LIST_DELETED
+                      data: listUpdate,
+                      type: _constants__WEBPACK_IMPORTED_MODULE_5__.EVENT_LIST_UPDATED
                     });
+                    self.listEditing = false;
                   }
                 });
 
@@ -8689,6 +8728,49 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             }
           }
         }, _callee, null, [[1, 6]]);
+      }))();
+    },
+    listDelete: function listDelete() {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+        var self;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                self = _this2;
+                _context2.prev = 1;
+                _context2.next = 4;
+                return _this2.$apollo.mutate({
+                  mutation: (_graphql_ListDelete_gql__WEBPACK_IMPORTED_MODULE_4___default()),
+                  variables: {
+                    id: _this2.list.id
+                  },
+                  update: function update(store, _ref2) {
+                    var listDelete = _ref2.data.listDelete;
+                    self.$emit("list-deleted", {
+                      store: store,
+                      data: listDelete,
+                      type: _constants__WEBPACK_IMPORTED_MODULE_5__.EVENT_LIST_DELETED
+                    });
+                  }
+                });
+
+              case 4:
+                _context2.next = 8;
+                break;
+
+              case 6:
+                _context2.prev = 6;
+                _context2.t0 = _context2["catch"](1);
+
+              case 8:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[1, 6]]);
       }))();
     }
   }
@@ -10180,13 +10262,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "EVENT_CARD_DELETED": () => (/* binding */ EVENT_CARD_DELETED),
 /* harmony export */   "EVENT_CARD_UPDATED": () => (/* binding */ EVENT_CARD_UPDATED),
 /* harmony export */   "EVENT_LIST_ADDED": () => (/* binding */ EVENT_LIST_ADDED),
-/* harmony export */   "EVENT_LIST_DELETED": () => (/* binding */ EVENT_LIST_DELETED)
+/* harmony export */   "EVENT_LIST_DELETED": () => (/* binding */ EVENT_LIST_DELETED),
+/* harmony export */   "EVENT_LIST_UPDATED": () => (/* binding */ EVENT_LIST_UPDATED)
 /* harmony export */ });
 var EVENT_CARD_ADDED = 'EVENT_CARD_ADDED';
 var EVENT_CARD_DELETED = 'EVENT_CARD_DELETED';
 var EVENT_CARD_UPDATED = 'EVENT_CARD_UPDATED';
 var EVENT_LIST_ADDED = 'EVENT_LIST_ADDED';
 var EVENT_LIST_DELETED = 'EVENT_LIST_DELETED';
+var EVENT_LIST_UPDATED = 'EVENT_LIST_UPDATED';
 
 /***/ }),
 
@@ -11857,6 +11941,138 @@ gql["default"] = gql;
     
     module.exports = doc;
     
+
+
+/***/ }),
+
+/***/ "./resources/js/graphql/ListUpdate.gql":
+/*!*********************************************!*\
+  !*** ./resources/js/graphql/ListUpdate.gql ***!
+  \*********************************************/
+/***/ ((module) => {
+
+
+    var doc = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"ListUpdate"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}},"directives":[]},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"title"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}},"directives":[]}],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"listUpdate"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}},{"kind":"Argument","name":{"kind":"Name","value":"title"},"value":{"kind":"Variable","name":{"kind":"Name","value":"title"}}}],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"title"},"arguments":[],"directives":[]}]}}]}}],"loc":{"start":0,"end":122}};
+    doc.loc.source = {"body":"mutation ListUpdate($id: ID!, $title: String) {\n    listUpdate(id: $id, title: $title) {\n        id\n        title\n    }\n}\n","name":"GraphQL request","locationOffset":{"line":1,"column":1}};
+  
+
+    var names = {};
+    function unique(defs) {
+      return defs.filter(
+        function(def) {
+          if (def.kind !== 'FragmentDefinition') return true;
+          var name = def.name.value
+          if (names[name]) {
+            return false;
+          } else {
+            names[name] = true;
+            return true;
+          }
+        }
+      )
+    }
+  
+
+    // Collect any fragment/type references from a node, adding them to the refs Set
+    function collectFragmentReferences(node, refs) {
+      if (node.kind === "FragmentSpread") {
+        refs.add(node.name.value);
+      } else if (node.kind === "VariableDefinition") {
+        var type = node.type;
+        if (type.kind === "NamedType") {
+          refs.add(type.name.value);
+        }
+      }
+
+      if (node.selectionSet) {
+        node.selectionSet.selections.forEach(function(selection) {
+          collectFragmentReferences(selection, refs);
+        });
+      }
+
+      if (node.variableDefinitions) {
+        node.variableDefinitions.forEach(function(def) {
+          collectFragmentReferences(def, refs);
+        });
+      }
+
+      if (node.definitions) {
+        node.definitions.forEach(function(def) {
+          collectFragmentReferences(def, refs);
+        });
+      }
+    }
+
+    var definitionRefs = {};
+    (function extractReferences() {
+      doc.definitions.forEach(function(def) {
+        if (def.name) {
+          var refs = new Set();
+          collectFragmentReferences(def, refs);
+          definitionRefs[def.name.value] = refs;
+        }
+      });
+    })();
+
+    function findOperation(doc, name) {
+      for (var i = 0; i < doc.definitions.length; i++) {
+        var element = doc.definitions[i];
+        if (element.name && element.name.value == name) {
+          return element;
+        }
+      }
+    }
+
+    function oneQuery(doc, operationName) {
+      // Copy the DocumentNode, but clear out the definitions
+      var newDoc = {
+        kind: doc.kind,
+        definitions: [findOperation(doc, operationName)]
+      };
+      if (doc.hasOwnProperty("loc")) {
+        newDoc.loc = doc.loc;
+      }
+
+      // Now, for the operation we're running, find any fragments referenced by
+      // it or the fragments it references
+      var opRefs = definitionRefs[operationName] || new Set();
+      var allRefs = new Set();
+      var newRefs = new Set();
+
+      // IE 11 doesn't support "new Set(iterable)", so we add the members of opRefs to newRefs one by one
+      opRefs.forEach(function(refName) {
+        newRefs.add(refName);
+      });
+
+      while (newRefs.size > 0) {
+        var prevRefs = newRefs;
+        newRefs = new Set();
+
+        prevRefs.forEach(function(refName) {
+          if (!allRefs.has(refName)) {
+            allRefs.add(refName);
+            var childRefs = definitionRefs[refName] || new Set();
+            childRefs.forEach(function(childRef) {
+              newRefs.add(childRef);
+            });
+          }
+        });
+      }
+
+      allRefs.forEach(function(refName) {
+        var op = findOperation(doc, refName);
+        if (op) {
+          newDoc.definitions.push(op);
+        }
+      });
+
+      return newDoc;
+    }
+    
+    module.exports = doc;
+    
+        module.exports.ListUpdate = oneQuery(doc, "ListUpdate");
+        
 
 
 /***/ }),
@@ -35739,6 +35955,9 @@ var render = function () {
                           "list-deleted": function ($event) {
                             return _vm.updateQueryCache($event)
                           },
+                          "list-updated": function ($event) {
+                            return _vm.updateQueryCache($event)
+                          },
                         },
                       })
                     }),
@@ -36930,43 +37149,100 @@ var render = function () {
     "div",
     { staticClass: "flex-shrink-0 flex flex-col w-80 bg-gray-100 rounded-md" },
     [
-      _c("div", { staticClass: "flex justify-between pt-3 pb-1 px-3" }, [
-        _c(
-          "h3",
-          { staticClass: "flex-shrink-0 text-sm font-medium text-gray-700" },
-          [_vm._v(_vm._s(_vm.list.title))]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          { staticClass: "text-gray-600 hover:text-gray-800 cursor pointer" },
-          [
-            _vm.canDeleteList
-              ? _c(
-                  "svg",
-                  {
-                    staticClass: "h-5 w-5",
-                    attrs: {
-                      xmlns: "http://www.w3.org/2000/svg",
-                      viewBox: "0 0 20 20",
-                      fill: "currentColor",
-                    },
-                    on: { click: _vm.listDelete },
-                  },
-                  [
-                    _c("path", {
+      !_vm.listEditing
+        ? _c("div", { staticClass: "flex justify-between pt-3 pb-1 px-3" }, [
+            _c(
+              "h3",
+              {
+                staticClass: "flex-shrink-0 text-sm font-medium text-gray-700",
+              },
+              [_vm._v(_vm._s(_vm.list.title))]
+            ),
+            _vm._v(" "),
+            _c("div", [
+              _c(
+                "button",
+                {
+                  staticClass:
+                    "text-gray-600 hover:text-gray-800 cursor pointer",
+                },
+                [
+                  _c(
+                    "svg",
+                    {
+                      staticClass: "h-5 w-5 pr-1",
                       attrs: {
-                        "fill-rule": "evenodd",
-                        d: "M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z",
-                        "clip-rule": "evenodd",
+                        xmlns: "http://www.w3.org/2000/svg",
+                        viewBox: "0 0 20 20",
+                        fill: "currentColor",
                       },
-                    }),
-                  ]
-                )
-              : _vm._e(),
-          ]
-        ),
-      ]),
+                      on: {
+                        click: function ($event) {
+                          _vm.listEditing = true
+                        },
+                      },
+                    },
+                    [
+                      _c("path", {
+                        attrs: {
+                          d: "M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z",
+                        },
+                      }),
+                    ]
+                  ),
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass:
+                    "text-gray-600 hover:text-gray-800 cursor pointer",
+                },
+                [
+                  _vm.canDeleteList
+                    ? _c(
+                        "svg",
+                        {
+                          staticClass: "h-5 w-5",
+                          attrs: {
+                            xmlns: "http://www.w3.org/2000/svg",
+                            viewBox: "0 0 20 20",
+                            fill: "currentColor",
+                          },
+                          on: { click: _vm.listDelete },
+                        },
+                        [
+                          _c("path", {
+                            attrs: {
+                              "fill-rule": "evenodd",
+                              d: "M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z",
+                              "clip-rule": "evenodd",
+                            },
+                          }),
+                        ]
+                      )
+                    : _vm._e(),
+                ]
+              ),
+            ]),
+          ])
+        : _c("ListEditor", {
+            attrs: { label: "Save List" },
+            on: {
+              closed: function ($event) {
+                _vm.listEditing = false
+              },
+              saved: _vm.listUpdate,
+            },
+            model: {
+              value: _vm.title,
+              callback: function ($$v) {
+                _vm.title = $$v
+              },
+              expression: "title",
+            },
+          }),
       _vm._v(" "),
       _c("div", { staticClass: "flex-1 min-h-0 overflow-y-auto" }, [
         _c(
@@ -36994,12 +37270,12 @@ var render = function () {
               })
             }),
             _vm._v(" "),
-            _vm.editing
+            _vm.cardEditing
               ? _c("CardAddEditor", {
                   attrs: { list: _vm.list },
                   on: {
                     closed: function ($event) {
-                      _vm.editing = false
+                      _vm.cardEditing = false
                     },
                     added: function ($event) {
                       return _vm.$emit(
@@ -37011,11 +37287,11 @@ var render = function () {
                 })
               : _vm._e(),
             _vm._v(" "),
-            !_vm.editing && _vm.canAddCard
+            !_vm.cardEditing && _vm.canAddCard
               ? _c("CardAddButton", {
                   on: {
                     click: function ($event) {
-                      _vm.editing = true
+                      _vm.cardEditing = true
                     },
                   },
                 })
@@ -37024,7 +37300,8 @@ var render = function () {
           2
         ),
       ]),
-    ]
+    ],
+    1
   )
 }
 var staticRenderFns = []
@@ -37147,8 +37424,8 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "w-80" }, [
-    _c("div", { staticClass: "pt-1" }, [
+  return _c("div", { staticClass: "w-80 pb-2" }, [
+    _c("div", { staticClass: "pt-2 px-3" }, [
       _c("input", {
         ref: "list",
         staticClass:
