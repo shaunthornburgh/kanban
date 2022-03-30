@@ -8,7 +8,7 @@
             <div v-if="$apollo.loading">Loading...</div>
             <HeaderMenu
                 v-else
-                :title="board.title"
+                :board="board"
                 :borderColor="borderColor"
                 :textColor="textColor"
                 :buttonColor="buttonColor"
@@ -25,6 +25,7 @@
                         @card-updated="updateQueryCache($event)"
                         @list-deleted="updateQueryCache($event)"
                         @list-updated="updateQueryCache($event)"
+                        @board-updated="updateQueryCache($event)"
                     ></List>
                     <ListAddEditor
                         v-if="listEditing"
@@ -52,7 +53,8 @@ import {
     EVENT_CARD_UPDATED,
     EVENT_LIST_ADDED,
     EVENT_LIST_DELETED,
-    EVENT_LIST_UPDATED
+    EVENT_LIST_UPDATED,
+    EVENT_BOARD_UPDATED
 } from "./constants";
 import { mapState } from "vuex";
 import UserBoards from "./graphql/UserBoards.gql";
@@ -177,6 +179,9 @@ export default {
                     listById().cards = listById().cards.filter(
                         card => card.id !== event.data.id
                     );
+                    break;
+                case EVENT_BOARD_UPDATED:
+                    data.board.title = event.data.title;
                     break;
             }
 

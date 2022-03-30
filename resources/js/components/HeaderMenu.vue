@@ -91,16 +91,37 @@
             </div>
             <div class="flex items-center justify-between py-2">
                 <div class="sm:flex sm:items-center">
-                    <h2 class="text-2xl font-semibold text-gray-900 leading-tight">
-                        {{ title }}
-                    </h2>
+                    <BoardEditor
+                        v-if="boardEditing"
+                        @closed="boardEditing=false"
+                        @saved="boardUpdate"
+                        v-model="title"
+                    ></BoardEditor>
+                    <div v-else class="flex">
+                        <h2
+
+                            class="text-2xl font-semibold text-gray-900 leading-tight"
+                        >
+                            {{ board.title }}
+                        </h2>
+                        <button class="text-gray-600 hover:text-gray-800 cursor pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                 class="h-5 w-5"
+                                 viewBox="0 0 20 20"
+                                 fill="currentColor"
+                                 @click="boardEditing=true"
+                            >
+                                <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                            </svg>
+                        </button>
+                    </div>
                     <div class="mt-1 flex items-center sm:mt-0 sm:ml-6">
-                            <span class="-ml-2 rounded-full border-2 border-white">
-                                <img
-                                    class="h-6 w-6 rounded-full object-cover"
-                                    src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2.5&w=144&h=144&q=80"
-                                />
-                            </span>
+                        <span class="-ml-2 rounded-full border-2 border-white">
+                            <img
+                                class="h-6 w-6 rounded-full object-cover"
+                                src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2.5&w=144&h=144&q=80"
+                            />
+                        </span>
                         <span class="-ml-2 rounded-full border-2 border-white">
                             <img
                                 class="h-6 w-6 rounded-full object-cover"
@@ -147,11 +168,14 @@
 import { mapState } from "vuex";
 import BoardAddModal from "./BoardAddModal";
 import Logout from "./../graphql/Logout.gql";
+import BoardEditor from "./BoardEditor";
+import BoardUpdate from "../graphql/BoardUpdate.gql";
+import {EVENT_BOARD_UPDATED} from "../constants";
 
 export default {
-    components: {BoardAddModal},
+    components: {BoardEditor, BoardAddModal},
     props: {
-        title: String,
+        board: Object,
         borderColor: Object,
         textColor: Object,
         buttonColor: Object,
@@ -167,7 +191,9 @@ export default {
         return {
             sidebarOpen: false,
             isDropDownOpen: false,
-            showModal: false
+            showModal: false,
+            boardEditing: false,
+            title: this.board.title
         }
     },
     methods: {
@@ -179,6 +205,27 @@ export default {
             if (response.data?.logout?.id) {
                 this.$store.dispatch("logout");
             }
+        },
+        async boardUpdate() {
+            const self = this;
+
+            try {
+                await this.$apollo.mutate({
+                    mutation: BoardUpdate,
+                    variables: {
+                        id: this.board.id,
+                        title: this.title
+                    },
+                    update(store, { data: boardUpdate }) {
+                        self.$emit("board-updated", {
+                            store,
+                            data: boardUpdate,
+                            type: EVENT_BOARD_UPDATED
+                        });
+                        self.boardEditing = false;
+                    }
+                });
+            } catch (error) {}
         },
     }
 }

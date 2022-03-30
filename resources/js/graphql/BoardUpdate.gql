@@ -1,0 +1,6 @@
+mutation BoardUpdate($id: ID!, $title: String) {
+    boardUpdate(id: $id, title: $title) {
+        id
+        title
+    }
+}
