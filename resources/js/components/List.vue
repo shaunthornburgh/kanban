@@ -2,17 +2,17 @@
     <div class="flex-shrink-0 flex flex-col w-80 bg-gray-100 rounded-md">
         <div class="flex justify-between pt-3 pb-1 px-3">
             <h3 class="flex-shrink-0 text-sm font-medium text-gray-700">{{ list.title }}</h3>
-            <button class="hover:text-gray-700 cursor pointer">
-            <svg
-                v-if="canDeleteList"
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-4 w-4"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                @click="listDelete"
-            >
-                <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
-            </svg>
+            <button class="text-gray-600 hover:text-gray-800 cursor pointer">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    v-if="canDeleteList"
+                    @click="listDelete"
+                >
+                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
             </button>
         </div>
         <div class="flex-1 min-h-0 overflow-y-auto">
