@@ -37425,7 +37425,7 @@ var render = function () {
                       "button",
                       {
                         staticClass:
-                          "text-gray-600 hover:text-gray-800 cursor pointer",
+                          "text-gray-600 pl-1 hover:text-gray-800 cursor pointer",
                       },
                       [
                         _c(

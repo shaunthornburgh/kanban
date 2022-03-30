@@ -104,7 +104,7 @@
                         >
                             {{ board.title }}
                         </h2>
-                        <button class="text-gray-600 hover:text-gray-800 cursor pointer">
+                        <button class="text-gray-600 pl-1 hover:text-gray-800 cursor pointer">
                             <svg xmlns="http://www.w3.org/2000/svg"
                                  class="h-5 w-5"
                                  viewBox="0 0 20 20"
