@@ -3,6 +3,9 @@
             id
             title
             color
+            owner {
+                id
+            }
             lists {
                 id
                 title

@@ -7640,6 +7640,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
 
 
 
@@ -7718,6 +7721,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     email: function email(state) {
       return state.user.email;
+    },
+    canAddList: function canAddList(state) {
+      return this.board.owner.id === state.user.id;
     }
   })),
   apollo: {
@@ -7803,7 +7809,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     return {
       sidebarOpen: false,
       isDropDownOpen: false,
-      editing: false
+      listEditing: false
     };
   }
 });
@@ -8651,6 +8657,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 
 
@@ -8681,6 +8688,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return this.list.board.owner.id === state.user.id;
     },
     canDeleteList: function canDeleteList(state) {
+      return this.list.board.owner.id === state.user.id;
+    },
+    canUpdateList: function canUpdateList(state) {
       return this.list.board.owner.id === state.user.id;
     }
   }),
@@ -11164,8 +11174,8 @@ gql["default"] = gql;
 /***/ ((module) => {
 
 
-    var doc = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"BoardWithListsAndCards"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}},"directives":[]}],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"board"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"title"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"color"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"lists"},"arguments":[],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"title"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"board_id"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"board"},"arguments":[],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"owner"},"arguments":[],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"},"arguments":[],"directives":[]}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"cards"},"arguments":[],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"title"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"order"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"owner"},"arguments":[],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"},"arguments":[],"directives":[]}]}}]}}]}}]}}]}}],"loc":{"start":0,"end":550}};
-    doc.loc.source = {"body":"    query BoardWithListsAndCards($id: ID!) {\n        board(id: $id) {\n            id\n            title\n            color\n            lists {\n                id\n                title\n                board_id\n                board {\n                    owner {\n                        id\n                    }\n                }\n                cards {\n                    id\n                    title\n                    order\n                    owner {\n                        id\n                    }\n                }\n            }\n        }\n    }\n","name":"GraphQL request","locationOffset":{"line":1,"column":1}};
+    var doc = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"BoardWithListsAndCards"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}},"directives":[]}],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"board"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"title"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"color"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"owner"},"arguments":[],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"},"arguments":[],"directives":[]}]}},{"kind":"Field","name":{"kind":"Name","value":"lists"},"arguments":[],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"title"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"board_id"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"board"},"arguments":[],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"owner"},"arguments":[],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"},"arguments":[],"directives":[]}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"cards"},"arguments":[],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"title"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"order"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"owner"},"arguments":[],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"},"arguments":[],"directives":[]}]}}]}}]}}]}}]}}],"loc":{"start":0,"end":603}};
+    doc.loc.source = {"body":"    query BoardWithListsAndCards($id: ID!) {\n        board(id: $id) {\n            id\n            title\n            color\n            owner {\n                id\n            }\n            lists {\n                id\n                title\n                board_id\n                board {\n                    owner {\n                        id\n                    }\n                }\n                cards {\n                    id\n                    title\n                    order\n                    owner {\n                        id\n                    }\n                }\n            }\n        }\n    }\n","name":"GraphQL request","locationOffset":{"line":1,"column":1}};
   
 
     var names = {};
@@ -35962,12 +35972,12 @@ var render = function () {
                       })
                     }),
                     _vm._v(" "),
-                    _vm.editing
+                    _vm.listEditing
                       ? _c("ListAddEditor", {
                           attrs: { board: _vm.board.id },
                           on: {
                             closed: function ($event) {
-                              _vm.editing = false
+                              _vm.listEditing = false
                             },
                             "list-added": function ($event) {
                               return _vm.updateQueryCache($event)
@@ -35976,11 +35986,11 @@ var render = function () {
                         })
                       : _vm._e(),
                     _vm._v(" "),
-                    !_vm.editing
+                    !_vm.listEditing && _vm.canAddList
                       ? _c("ListAddButton", {
                           on: {
                             click: function ($event) {
-                              _vm.editing = true
+                              _vm.listEditing = true
                             },
                           },
                         })
@@ -37167,29 +37177,31 @@ var render = function () {
                     "text-gray-600 hover:text-gray-800 cursor pointer",
                 },
                 [
-                  _c(
-                    "svg",
-                    {
-                      staticClass: "h-5 w-5 pr-1",
-                      attrs: {
-                        xmlns: "http://www.w3.org/2000/svg",
-                        viewBox: "0 0 20 20",
-                        fill: "currentColor",
-                      },
-                      on: {
-                        click: function ($event) {
-                          _vm.listEditing = true
+                  _vm.canUpdateList
+                    ? _c(
+                        "svg",
+                        {
+                          staticClass: "h-5 w-5 pr-1",
+                          attrs: {
+                            xmlns: "http://www.w3.org/2000/svg",
+                            viewBox: "0 0 20 20",
+                            fill: "currentColor",
+                          },
+                          on: {
+                            click: function ($event) {
+                              _vm.listEditing = true
+                            },
+                          },
                         },
-                      },
-                    },
-                    [
-                      _c("path", {
-                        attrs: {
-                          d: "M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z",
-                        },
-                      }),
-                    ]
-                  ),
+                        [
+                          _c("path", {
+                            attrs: {
+                              d: "M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z",
+                            },
+                          }),
+                        ]
+                      )
+                    : _vm._e(),
                 ]
               ),
               _vm._v(" "),

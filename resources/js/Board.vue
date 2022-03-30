@@ -27,12 +27,15 @@
                         @list-updated="updateQueryCache($event)"
                     ></List>
                     <ListAddEditor
-                        v-if="editing"
+                        v-if="listEditing"
                         :board="board.id"
-                        @closed="editing=false"
+                        @closed="listEditing=false"
                         @list-added="updateQueryCache($event)"
                     ></ListAddEditor>
-                    <ListAddButton v-if="!editing" @click="editing=true"></ListAddButton>
+                    <ListAddButton
+                        v-if="!listEditing && canAddList"
+                        @click="listEditing=true"
+                    ></ListAddButton>
                 </main>
             </div>
         </div>
@@ -113,7 +116,10 @@ export default {
             isLoggedIn: "isLoggedIn",
             userId: state => state.user.id,
             name: state => state.user.name,
-            email: state => state.user.email
+            email: state => state.user.email,
+            canAddList(state) {
+                return this.board.owner.id === state.user.id
+            },
         })
     },
     apollo: {
@@ -185,7 +191,7 @@ export default {
         return {
             sidebarOpen: false,
             isDropDownOpen: false,
-            editing: false
+            listEditing: false
         }
     }
 };
