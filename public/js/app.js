@@ -7586,12 +7586,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _graphql_BoardWithListsAndCards_gql__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./graphql/BoardWithListsAndCards.gql */ "./resources/js/graphql/BoardWithListsAndCards.gql");
 /* harmony import */ var _graphql_BoardWithListsAndCards_gql__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_graphql_BoardWithListsAndCards_gql__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./constants */ "./resources/js/constants.js");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _graphql_UserBoards_gql__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./graphql/UserBoards.gql */ "./resources/js/graphql/UserBoards.gql");
 /* harmony import */ var _graphql_UserBoards_gql__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_graphql_UserBoards_gql__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./utils */ "./resources/js/utils.js");
 /* harmony import */ var _components_UserBoardsMenu__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/UserBoardsMenu */ "./resources/js/components/UserBoardsMenu.vue");
 /* harmony import */ var _components_HeaderMenu__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/HeaderMenu */ "./resources/js/components/HeaderMenu.vue");
+/* harmony import */ var _components_ListAddButton__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/ListAddButton */ "./resources/js/components/ListAddButton.vue");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -7632,6 +7633,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -7643,6 +7651,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
+    ListAddButton: _components_ListAddButton__WEBPACK_IMPORTED_MODULE_8__["default"],
     HeaderMenu: _components_HeaderMenu__WEBPACK_IMPORTED_MODULE_7__["default"],
     List: _components_List__WEBPACK_IMPORTED_MODULE_0__["default"],
     UserBoardsMenu: _components_UserBoardsMenu__WEBPACK_IMPORTED_MODULE_6__["default"],
@@ -7698,7 +7707,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         "bg-white": this.$apollo.loading
       }, _utils__WEBPACK_IMPORTED_MODULE_5__.circleBorderColor[(_this$board7 = this.board) === null || _this$board7 === void 0 ? void 0 : _this$board7.color], true);
     }
-  }, (0,vuex__WEBPACK_IMPORTED_MODULE_8__.mapState)({
+  }, (0,vuex__WEBPACK_IMPORTED_MODULE_9__.mapState)({
     isLoggedIn: "isLoggedIn",
     userId: function userId(state) {
       return state.user.id;
@@ -7786,7 +7795,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   data: function data() {
     return {
       sidebarOpen: false,
-      isDropDownOpen: false
+      isDropDownOpen: false,
+      editing: false
     };
   }
 });
@@ -8176,13 +8186,9 @@ __webpack_require__.r(__webpack_exports__);
       return state.user.id;
     }
   }),
-  mounted: function mounted() {
-    this.$refs.card.focus();
-  },
   methods: {
     addCard: function addCard() {
       var self = this;
-      this.$emit("click");
       this.$apollo.mutate({
         mutation: (_graphql_CardAdd_gql__WEBPACK_IMPORTED_MODULE_0___default()),
         variables: {
@@ -8701,53 +8707,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vue_clickaway__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-clickaway */ "./node_modules/vue-clickaway/dist/vue-clickaway.common.js");
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../constants */ "./resources/js/constants.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./resources/js/constants.js");
+/* harmony import */ var _ListEditor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ListEditor */ "./resources/js/components/ListEditor.vue");
 /* harmony import */ var _graphql_ListAdd_gql__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../graphql/ListAdd.gql */ "./resources/js/graphql/ListAdd.gql");
 /* harmony import */ var _graphql_ListAdd_gql__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_graphql_ListAdd_gql__WEBPACK_IMPORTED_MODULE_2__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -8756,20 +8719,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    ListEditor: _ListEditor__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
   props: ["board"],
   data: function data() {
     return {
-      editing: false,
       title: null
     };
   },
-  directives: {
-    onClickaway: vue_clickaway__WEBPACK_IMPORTED_MODULE_0__.directive
-  },
   methods: {
-    hideEditor: function hideEditor() {
-      this.editing = false;
-    },
     startEditing: function startEditing() {
       var _this = this;
 
@@ -8791,11 +8750,74 @@ __webpack_require__.r(__webpack_exports__);
           self.$emit("list-added", {
             store: store,
             data: listAdd,
-            type: _constants__WEBPACK_IMPORTED_MODULE_1__.EVENT_LIST_ADDED
+            type: _constants__WEBPACK_IMPORTED_MODULE_0__.EVENT_LIST_ADDED
           });
-          self.hideEditor();
+          self.closed();
         }
       });
+    },
+    closed: function closed() {
+      this.$emit('closed');
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ListEditor.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ListEditor.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ["value", "label"],
+  mounted: function mounted() {
+    this.$refs.list.focus();
+  },
+  methods: {
+    closed: function closed() {
+      this.$emit("closed");
+    },
+    saved: function saved() {
+      this.$emit("saved");
     }
   }
 });
@@ -34387,99 +34409,6 @@ if (GlobalVue) {
 
 /***/ }),
 
-/***/ "./node_modules/vue-clickaway/dist/vue-clickaway.common.js":
-/*!*****************************************************************!*\
-  !*** ./node_modules/vue-clickaway/dist/vue-clickaway.common.js ***!
-  \*****************************************************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-"use strict";
-
-
-var Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
-Vue = 'default' in Vue ? Vue['default'] : Vue;
-
-var version = '2.2.2';
-
-var compatible = (/^2\./).test(Vue.version);
-if (!compatible) {
-  Vue.util.warn('VueClickaway ' + version + ' only supports Vue 2.x, and does not support Vue ' + Vue.version);
-}
-
-
-
-// @SECTION: implementation
-
-var HANDLER = '_vue_clickaway_handler';
-
-function bind(el, binding, vnode) {
-  unbind(el);
-
-  var vm = vnode.context;
-
-  var callback = binding.value;
-  if (typeof callback !== 'function') {
-    if (true) {
-      Vue.util.warn(
-        'v-' + binding.name + '="' +
-        binding.expression + '" expects a function value, ' +
-        'got ' + callback
-      );
-    }
-    return;
-  }
-
-  // @NOTE: Vue binds directives in microtasks, while UI events are dispatched
-  //        in macrotasks. This causes the listener to be set up before
-  //        the "origin" click event (the event that lead to the binding of
-  //        the directive) arrives at the document root. To work around that,
-  //        we ignore events until the end of the "initial" macrotask.
-  // @REFERENCE: https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/
-  // @REFERENCE: https://github.com/simplesmiler/vue-clickaway/issues/8
-  var initialMacrotaskEnded = false;
-  setTimeout(function() {
-    initialMacrotaskEnded = true;
-  }, 0);
-
-  el[HANDLER] = function(ev) {
-    // @NOTE: this test used to be just `el.containts`, but working with path is better,
-    //        because it tests whether the element was there at the time of
-    //        the click, not whether it is there now, that the event has arrived
-    //        to the top.
-    // @NOTE: `.path` is non-standard, the standard way is `.composedPath()`
-    var path = ev.path || (ev.composedPath ? ev.composedPath() : undefined);
-    if (initialMacrotaskEnded && (path ? path.indexOf(el) < 0 : !el.contains(ev.target))) {
-      return callback.call(vm, ev);
-    }
-  };
-
-  document.documentElement.addEventListener('click', el[HANDLER], false);
-}
-
-function unbind(el) {
-  document.documentElement.removeEventListener('click', el[HANDLER], false);
-  delete el[HANDLER];
-}
-
-var directive = {
-  bind: bind,
-  update: function(el, binding) {
-    if (binding.value === binding.oldValue) return;
-    bind(el, binding);
-  },
-  unbind: unbind,
-};
-
-var mixin = {
-  directives: { onClickaway: directive },
-};
-
-exports.version = version;
-exports.directive = directive;
-exports.mixin = mixin;
-
-/***/ }),
-
 /***/ "./resources/js/Board.vue":
 /*!********************************!*\
   !*** ./resources/js/Board.vue ***!
@@ -34829,6 +34758,43 @@ component.options.__file = "resources/js/components/List.vue"
 
 /***/ }),
 
+/***/ "./resources/js/components/ListAddButton.vue":
+/*!***************************************************!*\
+  !*** ./resources/js/components/ListAddButton.vue ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _ListAddButton_vue_vue_type_template_id_7968095a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ListAddButton.vue?vue&type=template&id=7968095a& */ "./resources/js/components/ListAddButton.vue?vue&type=template&id=7968095a&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+var script = {}
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
+  script,
+  _ListAddButton_vue_vue_type_template_id_7968095a___WEBPACK_IMPORTED_MODULE_0__.render,
+  _ListAddButton_vue_vue_type_template_id_7968095a___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/ListAddButton.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/ListAddEditor.vue":
 /*!***************************************************!*\
   !*** ./resources/js/components/ListAddEditor.vue ***!
@@ -34864,6 +34830,45 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
 /* hot reload */
 if (false) { var api; }
 component.options.__file = "resources/js/components/ListAddEditor.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/ListEditor.vue":
+/*!************************************************!*\
+  !*** ./resources/js/components/ListEditor.vue ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _ListEditor_vue_vue_type_template_id_a127a254___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ListEditor.vue?vue&type=template&id=a127a254& */ "./resources/js/components/ListEditor.vue?vue&type=template&id=a127a254&");
+/* harmony import */ var _ListEditor_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ListEditor.vue?vue&type=script&lang=js& */ "./resources/js/components/ListEditor.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ListEditor_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ListEditor_vue_vue_type_template_id_a127a254___WEBPACK_IMPORTED_MODULE_0__.render,
+  _ListEditor_vue_vue_type_template_id_a127a254___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/ListEditor.vue"
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
@@ -35246,6 +35251,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/ListEditor.vue?vue&type=script&lang=js&":
+/*!*************************************************************************!*\
+  !*** ./resources/js/components/ListEditor.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ListEditor_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ListEditor.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ListEditor.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ListEditor_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/components/Modal.vue?vue&type=script&lang=js&":
 /*!********************************************************************!*\
   !*** ./resources/js/components/Modal.vue?vue&type=script&lang=js& ***!
@@ -35495,6 +35516,23 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/ListAddButton.vue?vue&type=template&id=7968095a&":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/ListAddButton.vue?vue&type=template&id=7968095a& ***!
+  \**********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListAddButton_vue_vue_type_template_id_7968095a___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListAddButton_vue_vue_type_template_id_7968095a___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListAddButton_vue_vue_type_template_id_7968095a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ListAddButton.vue?vue&type=template&id=7968095a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ListAddButton.vue?vue&type=template&id=7968095a&");
+
+
+/***/ }),
+
 /***/ "./resources/js/components/ListAddEditor.vue?vue&type=template&id=07446e15&xmlns=http%3A%2F%2Fwww.w3.org%2F1999%2Fhtml&":
 /*!******************************************************************************************************************************!*\
   !*** ./resources/js/components/ListAddEditor.vue?vue&type=template&id=07446e15&xmlns=http%3A%2F%2Fwww.w3.org%2F1999%2Fhtml& ***!
@@ -35508,6 +35546,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListAddEditor_vue_vue_type_template_id_07446e15_xmlns_http_3A_2F_2Fwww_w3_org_2F1999_2Fhtml___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListAddEditor_vue_vue_type_template_id_07446e15_xmlns_http_3A_2F_2Fwww_w3_org_2F1999_2Fhtml___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ListAddEditor.vue?vue&type=template&id=07446e15&xmlns=http%3A%2F%2Fwww.w3.org%2F1999%2Fhtml& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ListAddEditor.vue?vue&type=template&id=07446e15&xmlns=http%3A%2F%2Fwww.w3.org%2F1999%2Fhtml&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/ListEditor.vue?vue&type=template&id=a127a254&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/ListEditor.vue?vue&type=template&id=a127a254& ***!
+  \*******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListEditor_vue_vue_type_template_id_a127a254___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListEditor_vue_vue_type_template_id_a127a254___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListEditor_vue_vue_type_template_id_a127a254___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ListEditor.vue?vue&type=template&id=a127a254& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ListEditor.vue?vue&type=template&id=a127a254&");
 
 
 /***/ }),
@@ -35687,14 +35742,29 @@ var render = function () {
                       })
                     }),
                     _vm._v(" "),
-                    _c("ListAddEditor", {
-                      attrs: { board: _vm.board.id },
-                      on: {
-                        "list-added": function ($event) {
-                          return _vm.updateQueryCache($event)
-                        },
-                      },
-                    }),
+                    _vm.editing
+                      ? _c("ListAddEditor", {
+                          attrs: { board: _vm.board.id },
+                          on: {
+                            closed: function ($event) {
+                              _vm.editing = false
+                            },
+                            "list-added": function ($event) {
+                              return _vm.updateQueryCache($event)
+                            },
+                          },
+                        })
+                      : _vm._e(),
+                    _vm._v(" "),
+                    !_vm.editing
+                      ? _c("ListAddButton", {
+                          on: {
+                            click: function ($event) {
+                              _vm.editing = true
+                            },
+                          },
+                        })
+                      : _vm._e(),
                   ],
                   2
                 )
@@ -36959,6 +37029,68 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ListAddButton.vue?vue&type=template&id=7968095a&":
+/*!*************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ListAddButton.vue?vue&type=template&id=7968095a& ***!
+  \*************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "w-80" }, [
+    _c(
+      "button",
+      {
+        staticClass:
+          "flex w-full items-center pl-2 pr-4 py-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-md hover:bg-gray-200",
+        on: {
+          click: function ($event) {
+            return _vm.$emit("click")
+          },
+        },
+      },
+      [
+        _c(
+          "svg",
+          {
+            staticClass: "h-5 w-5",
+            attrs: {
+              xmlns: "http://www.w3.org/2000/svg",
+              viewBox: "0 0 20 20",
+              fill: "currentColor",
+            },
+          },
+          [
+            _c("path", {
+              attrs: {
+                "fill-rule": "evenodd",
+                d: "M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z",
+                "clip-rule": "evenodd",
+              },
+            }),
+          ]
+        ),
+        _vm._v(" "),
+        _c("span", { staticClass: "ml-1" }, [_vm._v("Add list")]),
+      ]
+    ),
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ListAddEditor.vue?vue&type=template&id=07446e15&xmlns=http%3A%2F%2Fwww.w3.org%2F1999%2Fhtml&":
 /*!*********************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ListAddEditor.vue?vue&type=template&id=07446e15&xmlns=http%3A%2F%2Fwww.w3.org%2F1999%2Fhtml& ***!
@@ -36975,14 +37107,91 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return !_vm.editing
-    ? _c("div", { staticClass: "w-80" }, [
+  return _c("ListEditor", {
+    attrs: { label: "Add List" },
+    on: { closed: _vm.closed, saved: _vm.addList },
+    model: {
+      value: _vm.title,
+      callback: function ($$v) {
+        _vm.title = $$v
+      },
+      expression: "title",
+    },
+  })
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ListEditor.vue?vue&type=template&id=a127a254&":
+/*!**********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ListEditor.vue?vue&type=template&id=a127a254& ***!
+  \**********************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "w-80" }, [
+    _c("div", { staticClass: "pt-1" }, [
+      _c("textarea", {
+        ref: "list",
+        staticClass:
+          "rounded-md shadow py-1 px-2 outline-none w-full text-gray-900 text-sm bg-white h-16 resize-none",
+        attrs: { placeholder: "Enter list title..." },
+        domProps: { value: _vm.value },
+        on: {
+          keyup: function ($event) {
+            if (
+              !$event.type.indexOf("key") &&
+              _vm._k($event.keyCode, "esc", 27, $event.key, ["Esc", "Escape"])
+            ) {
+              return null
+            }
+            return _vm.closed.apply(null, arguments)
+          },
+          keypress: function ($event) {
+            if (
+              !$event.type.indexOf("key") &&
+              _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+            ) {
+              return null
+            }
+            return _vm.saved.apply(null, arguments)
+          },
+          input: function ($event) {
+            return _vm.$emit("input", $event.target.value)
+          },
+        },
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "flex" }, [
         _c(
           "button",
           {
             staticClass:
-              "flex w-full items-center pl-2 pr-4 py-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-md hover:bg-gray-200",
-            on: { click: _vm.startEditing },
+              "text-sm text-white mr-1 px-2 py-2 font-medium bg-gray-700 rounded-md hover:bg-gray-600 cursor pointer",
+            on: { click: _vm.saved },
+          },
+          [_c("span", [_vm._v(_vm._s(_vm.label))])]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass:
+              "text-sm px-2 py-2 text-white font-medium bg-gray-400 bg-gray-100 rounded-md hover:bg-gray-300",
+            on: { click: _vm.closed },
           },
           [
             _c(
@@ -36999,123 +37208,17 @@ var render = function () {
                 _c("path", {
                   attrs: {
                     "fill-rule": "evenodd",
-                    d: "M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z",
+                    d: "M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z",
                     "clip-rule": "evenodd",
                   },
                 }),
               ]
             ),
-            _vm._v(" "),
-            _c("span", { staticClass: "ml-1" }, [_vm._v("Add list")]),
           ]
         ),
-      ])
-    : _c(
-        "div",
-        {
-          directives: [
-            {
-              name: "on-clickaway",
-              rawName: "v-on-clickaway",
-              value: _vm.hideEditor,
-              expression: "hideEditor",
-            },
-          ],
-          staticClass:
-            "flex-shrink-0 flex flex-col w-80 bg-gray-100 rounded-md",
-        },
-        [
-          _c("div", { staticClass: "pt-4 pb-3 px-3" }, [
-            _c("textarea", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.title,
-                  expression: "title",
-                },
-              ],
-              ref: "title",
-              staticClass:
-                "rounded-md shadow py-1 px-2 outline-none w-full text-gray-900 text-sm bg-white h-16 resize-none",
-              attrs: { placeholder: "Enter list title..." },
-              domProps: { value: _vm.title },
-              on: {
-                keyup: function ($event) {
-                  if (
-                    !$event.type.indexOf("key") &&
-                    _vm._k($event.keyCode, "esc", 27, $event.key, [
-                      "Esc",
-                      "Escape",
-                    ])
-                  ) {
-                    return null
-                  }
-                  return _vm.hideEditor.apply(null, arguments)
-                },
-                keypress: function ($event) {
-                  if (
-                    !$event.type.indexOf("key") &&
-                    _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-                  ) {
-                    return null
-                  }
-                  return _vm.addList.apply(null, arguments)
-                },
-                input: function ($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.title = $event.target.value
-                },
-              },
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "flex" }, [
-              _c(
-                "button",
-                {
-                  staticClass:
-                    "text-sm text-white mr-1 px-2 py-2 font-medium bg-gray-700 rounded-md hover:bg-gray-600 cursor pointer",
-                  on: { click: _vm.addList },
-                },
-                [_c("span", [_vm._v("Add List")])]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass:
-                    "text-sm px-2 py-2 text-white font-medium bg-gray-400 bg-gray-100 rounded-md hover:bg-gray-300",
-                  on: { click: _vm.hideEditor },
-                },
-                [
-                  _c(
-                    "svg",
-                    {
-                      staticClass: "h-5 w-5",
-                      attrs: {
-                        xmlns: "http://www.w3.org/2000/svg",
-                        viewBox: "0 0 20 20",
-                        fill: "currentColor",
-                      },
-                    },
-                    [
-                      _c("path", {
-                        attrs: {
-                          "fill-rule": "evenodd",
-                          d: "M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z",
-                          "clip-rule": "evenodd",
-                        },
-                      }),
-                    ]
-                  ),
-                ]
-              ),
-            ]),
-          ]),
-        ]
-      )
+      ]),
+    ]),
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

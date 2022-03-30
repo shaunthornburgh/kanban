@@ -26,9 +26,12 @@
                         @list-deleted="updateQueryCache($event)"
                     ></List>
                     <ListAddEditor
+                        v-if="editing"
                         :board="board.id"
+                        @closed="editing=false"
                         @list-added="updateQueryCache($event)"
                     ></ListAddEditor>
+                    <ListAddButton v-if="!editing" @click="editing=true"></ListAddButton>
                 </main>
             </div>
         </div>
@@ -51,9 +54,11 @@ import UserBoards from "./graphql/UserBoards.gql";
 import {circleBorderColor, colorBorder, buttonColor, buttonColorHover, colorMainBoard, colorSidebar, textColor} from "./utils";
 import UserBoardsMenu from "./components/UserBoardsMenu";
 import HeaderMenu from "./components/HeaderMenu";
+import ListAddButton from "./components/ListAddButton";
 
 export default {
     components: {
+        ListAddButton,
         HeaderMenu,
         List,
         UserBoardsMenu,
@@ -106,7 +111,7 @@ export default {
             isLoggedIn: "isLoggedIn",
             userId: state => state.user.id,
             name: state => state.user.name,
-            email: state => state.user.email,
+            email: state => state.user.email
         })
     },
     apollo: {
@@ -173,7 +178,8 @@ export default {
     data() {
         return {
             sidebarOpen: false,
-            isDropDownOpen: false
+            isDropDownOpen: false,
+            editing: false
         }
     }
 };
