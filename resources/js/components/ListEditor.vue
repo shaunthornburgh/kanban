@@ -1,15 +1,16 @@
 <template>
     <div class="w-80">
         <div class="pt-1">
-            <textarea
-                class="rounded-md shadow py-1 px-2 outline-none w-full text-gray-900 text-sm bg-white h-16 resize-none"
+            <input
+                type="text"
+                class="rounded-md shadow py-2 px-2 mb-2 outline-none w-full text-gray-900 text-sm bg-white resize-none"
                 ref="list"
                 placeholder="Enter list title..."
                 @keyup.esc="closed"
                 @keypress.enter="saved"
                 :value="value"
                 @input="$emit('input', $event.target.value)"
-            ></textarea>
+            />
             <div class="flex">
                 <button
                     @click="saved"

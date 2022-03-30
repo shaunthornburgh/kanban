@@ -8807,6 +8807,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ["value", "label"],
   mounted: function mounted() {
@@ -37148,11 +37149,11 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "w-80" }, [
     _c("div", { staticClass: "pt-1" }, [
-      _c("textarea", {
+      _c("input", {
         ref: "list",
         staticClass:
-          "rounded-md shadow py-1 px-2 outline-none w-full text-gray-900 text-sm bg-white h-16 resize-none",
-        attrs: { placeholder: "Enter list title..." },
+          "rounded-md shadow py-2 px-2 mb-2 outline-none w-full text-gray-900 text-sm bg-white resize-none",
+        attrs: { type: "text", placeholder: "Enter list title..." },
         domProps: { value: _vm.value },
         on: {
           keyup: function ($event) {
