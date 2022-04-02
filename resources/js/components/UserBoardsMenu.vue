@@ -23,6 +23,17 @@
                         <span class="text-sm font-medium" :class="textColor">{{ board.title }}</span>
                         <div class="w-4 h-4 rounded-full border-2 border-white" :class="getBoardColor(board.color)"></div>
                     </router-link>
+                    <button
+                        v-if="isLoggedIn"
+                        @click="showModal = true"
+                        class="flex items-center pl-2 pr-4 py-2 text-sm font-medium text-white rounded-md"
+                        :class="textColor"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
+                        </svg>
+                        <span class="ml-1">Create New Board</span>
+                    </button>
                 </div>
                 <h3 class="mt-8 text-xs font-semibold uppercase tracking-wide" :class="textColor">Tags</h3>
                 <div class="mt-2 -mx-3">
@@ -53,6 +64,10 @@
                 </button>
             </nav>
         </div>
+        <BoardAddModal
+            :show="showModal"
+            @closed="showModal=false"
+        ></BoardAddModal>
     </div>
 </template>
 
@@ -60,8 +75,12 @@
 import UserBoards from "./../graphql/UserBoards.gql";
 import { mapState } from "vuex";
 import { colorMainBoard } from "../utils";
+import BoardAddModal from "./BoardAddModal";
 
 export default {
+    components: {
+        BoardAddModal
+    },
     props: {
         board: Object,
         borderColor: Object,
@@ -83,7 +102,8 @@ export default {
     data() {
         return {
             sidebarOpen: false,
-            isDropDownOpen: false
+            isDropDownOpen: false,
+            showModal: false
         }
     },
     computed: {

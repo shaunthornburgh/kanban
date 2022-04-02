@@ -7962,6 +7962,119 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/BoardDeleteModal.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/BoardDeleteModal.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Modal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Modal */ "./resources/js/components/Modal.vue");
+/* harmony import */ var _graphql_BoardDelete_gql__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../graphql/BoardDelete.gql */ "./resources/js/graphql/BoardDelete.gql");
+/* harmony import */ var _graphql_BoardDelete_gql__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_graphql_BoardDelete_gql__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../constants */ "./resources/js/constants.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: {
+    show: Boolean,
+    board: Object
+  },
+  components: {
+    Modal: _Modal__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  methods: {
+    boardDelete: function boardDelete() {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var self;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                self = _this;
+                _context.prev = 1;
+                _context.next = 4;
+                return _this.$apollo.mutate({
+                  mutation: (_graphql_BoardDelete_gql__WEBPACK_IMPORTED_MODULE_2___default()),
+                  variables: {
+                    id: _this.board.id
+                  },
+                  update: function update(store, _ref) {
+                    var boardDelete = _ref.data.boardDelete;
+                    self.$emit("board-deleted", {
+                      store: store,
+                      data: boardDelete,
+                      type: _constants__WEBPACK_IMPORTED_MODULE_3__.EVENT_BOARD_DELETED
+                    });
+                  }
+                });
+
+              case 4:
+                _context.next = 8;
+                break;
+
+              case 6:
+                _context.prev = 6;
+                _context.t0 = _context["catch"](1);
+
+              case 8:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[1, 6]]);
+      }))();
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/BoardEditor.vue?vue&type=script&lang=js&":
 /*!******************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/BoardEditor.vue?vue&type=script&lang=js& ***!
@@ -8392,13 +8505,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-/* harmony import */ var _BoardAddModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BoardAddModal */ "./resources/js/components/BoardAddModal.vue");
-/* harmony import */ var _graphql_Logout_gql__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../graphql/Logout.gql */ "./resources/js/graphql/Logout.gql");
-/* harmony import */ var _graphql_Logout_gql__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_graphql_Logout_gql__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _BoardEditor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./BoardEditor */ "./resources/js/components/BoardEditor.vue");
-/* harmony import */ var _graphql_BoardUpdate_gql__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../graphql/BoardUpdate.gql */ "./resources/js/graphql/BoardUpdate.gql");
-/* harmony import */ var _graphql_BoardUpdate_gql__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_graphql_BoardUpdate_gql__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../constants */ "./resources/js/constants.js");
+/* harmony import */ var _graphql_Logout_gql__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../graphql/Logout.gql */ "./resources/js/graphql/Logout.gql");
+/* harmony import */ var _graphql_Logout_gql__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_graphql_Logout_gql__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _BoardEditor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./BoardEditor */ "./resources/js/components/BoardEditor.vue");
+/* harmony import */ var _graphql_BoardUpdate_gql__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../graphql/BoardUpdate.gql */ "./resources/js/graphql/BoardUpdate.gql");
+/* harmony import */ var _graphql_BoardUpdate_gql__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_graphql_BoardUpdate_gql__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../constants */ "./resources/js/constants.js");
+/* harmony import */ var _BoardDeleteModal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./BoardDeleteModal */ "./resources/js/components/BoardDeleteModal.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -8577,6 +8690,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 
@@ -8585,8 +8699,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    BoardEditor: _BoardEditor__WEBPACK_IMPORTED_MODULE_3__["default"],
-    BoardAddModal: _BoardAddModal__WEBPACK_IMPORTED_MODULE_1__["default"]
+    BoardDeleteModal: _BoardDeleteModal__WEBPACK_IMPORTED_MODULE_5__["default"],
+    BoardEditor: _BoardEditor__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   props: {
     board: Object,
@@ -8605,9 +8719,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     return {
       sidebarOpen: false,
       isDropDownOpen: false,
-      showModal: false,
       boardEditing: false,
-      title: this.board.title
+      title: this.board.title,
+      showModal: false
     };
   },
   methods: {
@@ -8624,7 +8738,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               case 0:
                 _context.next = 2;
                 return _this.$apollo.mutate({
-                  mutation: (_graphql_Logout_gql__WEBPACK_IMPORTED_MODULE_2___default())
+                  mutation: (_graphql_Logout_gql__WEBPACK_IMPORTED_MODULE_1___default())
                 });
 
               case 2:
@@ -8655,7 +8769,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 _context2.prev = 1;
                 _context2.next = 4;
                 return _this2.$apollo.mutate({
-                  mutation: (_graphql_BoardUpdate_gql__WEBPACK_IMPORTED_MODULE_4___default()),
+                  mutation: (_graphql_BoardUpdate_gql__WEBPACK_IMPORTED_MODULE_3___default()),
                   variables: {
                     id: _this2.board.id,
                     title: _this2.title
@@ -8665,7 +8779,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                     self.$emit("board-updated", {
                       store: store,
                       data: boardUpdate,
-                      type: _constants__WEBPACK_IMPORTED_MODULE_5__.EVENT_BOARD_UPDATED
+                      type: _constants__WEBPACK_IMPORTED_MODULE_4__.EVENT_BOARD_UPDATED
                     });
                     self.boardEditing = false;
                   }
@@ -9102,8 +9216,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _graphql_UserBoards_gql__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../graphql/UserBoards.gql */ "./resources/js/graphql/UserBoards.gql");
 /* harmony import */ var _graphql_UserBoards_gql__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_graphql_UserBoards_gql__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils */ "./resources/js/utils.js");
+/* harmony import */ var _BoardAddModal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./BoardAddModal */ "./resources/js/components/BoardAddModal.vue");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -9168,10 +9283,29 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    BoardAddModal: _BoardAddModal__WEBPACK_IMPORTED_MODULE_2__["default"]
+  },
   props: {
     board: Object,
     borderColor: Object,
@@ -9193,10 +9327,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   data: function data() {
     return {
       sidebarOpen: false,
-      isDropDownOpen: false
+      isDropDownOpen: false,
+      showModal: false
     };
   },
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapState)({
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapState)({
     isLoggedIn: "isLoggedIn",
     userId: function userId(state) {
       return state.user.id;
@@ -10392,6 +10527,7 @@ window._ = lodash__WEBPACK_IMPORTED_MODULE_0__;
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "EVENT_BOARD_DELETED": () => (/* binding */ EVENT_BOARD_DELETED),
 /* harmony export */   "EVENT_BOARD_UPDATED": () => (/* binding */ EVENT_BOARD_UPDATED),
 /* harmony export */   "EVENT_CARD_ADDED": () => (/* binding */ EVENT_CARD_ADDED),
 /* harmony export */   "EVENT_CARD_DELETED": () => (/* binding */ EVENT_CARD_DELETED),
@@ -10407,6 +10543,7 @@ var EVENT_LIST_ADDED = 'EVENT_LIST_ADDED';
 var EVENT_LIST_DELETED = 'EVENT_LIST_DELETED';
 var EVENT_LIST_UPDATED = 'EVENT_LIST_UPDATED';
 var EVENT_BOARD_UPDATED = 'EVENT_BOARD_UPDATED';
+var EVENT_BOARD_DELETED = 'EVENT_BOARD_DELETED';
 
 /***/ }),
 
@@ -11289,6 +11426,136 @@ gql["default"] = gql;
     
         module.exports.BoardAdd = oneQuery(doc, "BoardAdd");
         
+
+
+/***/ }),
+
+/***/ "./resources/js/graphql/BoardDelete.gql":
+/*!**********************************************!*\
+  !*** ./resources/js/graphql/BoardDelete.gql ***!
+  \**********************************************/
+/***/ ((module) => {
+
+
+    var doc = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}},"directives":[]}],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"boardDelete"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"},"arguments":[],"directives":[]}]}}]}}],"loc":{"start":0,"end":67}};
+    doc.loc.source = {"body":"mutation($id: ID!) {\n    boardDelete(id: $id) {\n        id\n    }\n}\n","name":"GraphQL request","locationOffset":{"line":1,"column":1}};
+  
+
+    var names = {};
+    function unique(defs) {
+      return defs.filter(
+        function(def) {
+          if (def.kind !== 'FragmentDefinition') return true;
+          var name = def.name.value
+          if (names[name]) {
+            return false;
+          } else {
+            names[name] = true;
+            return true;
+          }
+        }
+      )
+    }
+  
+
+    // Collect any fragment/type references from a node, adding them to the refs Set
+    function collectFragmentReferences(node, refs) {
+      if (node.kind === "FragmentSpread") {
+        refs.add(node.name.value);
+      } else if (node.kind === "VariableDefinition") {
+        var type = node.type;
+        if (type.kind === "NamedType") {
+          refs.add(type.name.value);
+        }
+      }
+
+      if (node.selectionSet) {
+        node.selectionSet.selections.forEach(function(selection) {
+          collectFragmentReferences(selection, refs);
+        });
+      }
+
+      if (node.variableDefinitions) {
+        node.variableDefinitions.forEach(function(def) {
+          collectFragmentReferences(def, refs);
+        });
+      }
+
+      if (node.definitions) {
+        node.definitions.forEach(function(def) {
+          collectFragmentReferences(def, refs);
+        });
+      }
+    }
+
+    var definitionRefs = {};
+    (function extractReferences() {
+      doc.definitions.forEach(function(def) {
+        if (def.name) {
+          var refs = new Set();
+          collectFragmentReferences(def, refs);
+          definitionRefs[def.name.value] = refs;
+        }
+      });
+    })();
+
+    function findOperation(doc, name) {
+      for (var i = 0; i < doc.definitions.length; i++) {
+        var element = doc.definitions[i];
+        if (element.name && element.name.value == name) {
+          return element;
+        }
+      }
+    }
+
+    function oneQuery(doc, operationName) {
+      // Copy the DocumentNode, but clear out the definitions
+      var newDoc = {
+        kind: doc.kind,
+        definitions: [findOperation(doc, operationName)]
+      };
+      if (doc.hasOwnProperty("loc")) {
+        newDoc.loc = doc.loc;
+      }
+
+      // Now, for the operation we're running, find any fragments referenced by
+      // it or the fragments it references
+      var opRefs = definitionRefs[operationName] || new Set();
+      var allRefs = new Set();
+      var newRefs = new Set();
+
+      // IE 11 doesn't support "new Set(iterable)", so we add the members of opRefs to newRefs one by one
+      opRefs.forEach(function(refName) {
+        newRefs.add(refName);
+      });
+
+      while (newRefs.size > 0) {
+        var prevRefs = newRefs;
+        newRefs = new Set();
+
+        prevRefs.forEach(function(refName) {
+          if (!allRefs.has(refName)) {
+            allRefs.add(refName);
+            var childRefs = definitionRefs[refName] || new Set();
+            childRefs.forEach(function(childRef) {
+              newRefs.add(childRef);
+            });
+          }
+        });
+      }
+
+      allRefs.forEach(function(refName) {
+        var op = findOperation(doc, refName);
+        if (op) {
+          newDoc.definitions.push(op);
+        }
+      });
+
+      return newDoc;
+    }
+    
+    module.exports = doc;
+    
 
 
 /***/ }),
@@ -34972,6 +35239,45 @@ component.options.__file = "resources/js/components/BoardAddModal.vue"
 
 /***/ }),
 
+/***/ "./resources/js/components/BoardDeleteModal.vue":
+/*!******************************************************!*\
+  !*** ./resources/js/components/BoardDeleteModal.vue ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _BoardDeleteModal_vue_vue_type_template_id_12569967___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BoardDeleteModal.vue?vue&type=template&id=12569967& */ "./resources/js/components/BoardDeleteModal.vue?vue&type=template&id=12569967&");
+/* harmony import */ var _BoardDeleteModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BoardDeleteModal.vue?vue&type=script&lang=js& */ "./resources/js/components/BoardDeleteModal.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _BoardDeleteModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _BoardDeleteModal_vue_vue_type_template_id_12569967___WEBPACK_IMPORTED_MODULE_0__.render,
+  _BoardDeleteModal_vue_vue_type_template_id_12569967___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/BoardDeleteModal.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/BoardEditor.vue":
 /*!*************************************************!*\
   !*** ./resources/js/components/BoardEditor.vue ***!
@@ -35663,6 +35969,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/BoardDeleteModal.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/BoardDeleteModal.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BoardDeleteModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./BoardDeleteModal.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/BoardDeleteModal.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BoardDeleteModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/components/BoardEditor.vue?vue&type=script&lang=js&":
 /*!**************************************************************************!*\
   !*** ./resources/js/components/BoardEditor.vue?vue&type=script&lang=js& ***!
@@ -35933,6 +36255,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BoardAddModal_vue_vue_type_template_id_22244392___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BoardAddModal_vue_vue_type_template_id_22244392___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./BoardAddModal.vue?vue&type=template&id=22244392& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/BoardAddModal.vue?vue&type=template&id=22244392&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/BoardDeleteModal.vue?vue&type=template&id=12569967&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/BoardDeleteModal.vue?vue&type=template&id=12569967& ***!
+  \*************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BoardDeleteModal_vue_vue_type_template_id_12569967___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BoardDeleteModal_vue_vue_type_template_id_12569967___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BoardDeleteModal_vue_vue_type_template_id_12569967___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./BoardDeleteModal.vue?vue&type=template&id=12569967& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/BoardDeleteModal.vue?vue&type=template&id=12569967&");
 
 
 /***/ }),
@@ -36518,6 +36857,128 @@ var render = function () {
             [_vm._v("Cancel")]
           ),
         ]),
+      ]),
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/BoardDeleteModal.vue?vue&type=template&id=12569967&":
+/*!****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/BoardDeleteModal.vue?vue&type=template&id=12569967& ***!
+  \****************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "Modal",
+    {
+      attrs: { show: _vm.show },
+      on: {
+        closed: function ($event) {
+          return _vm.$emit("closed")
+        },
+      },
+    },
+    [
+      _c("div", { staticClass: "sm:flex sm:items-start" }, [
+        _c(
+          "div",
+          {
+            staticClass:
+              "mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10",
+          },
+          [
+            _c(
+              "svg",
+              {
+                staticClass: "h-6 w-6 text-red-600",
+                attrs: {
+                  xmlns: "http://www.w3.org/2000/svg",
+                  fill: "none",
+                  viewBox: "0 0 24 24",
+                  stroke: "currentColor",
+                  "aria-hidden": "true",
+                },
+              },
+              [
+                _c("path", {
+                  attrs: {
+                    "stroke-linecap": "round",
+                    "stroke-linejoin": "round",
+                    "stroke-width": "2",
+                    d: "M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z",
+                  },
+                }),
+              ]
+            ),
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left" },
+          [
+            _c(
+              "h3",
+              {
+                staticClass: "text-lg leading-6 font-medium text-gray-900",
+                attrs: { id: "modal-title" },
+              },
+              [_vm._v("Delete board: " + _vm._s(_vm.board.title))]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "mt-2" }, [
+              _c("p", { staticClass: "text-sm text-gray-500" }, [
+                _vm._v(
+                  "Are you sure you want to delete this board? All of your data will be permanently removed from our servers forever. This action cannot be undone."
+                ),
+              ]),
+            ]),
+          ]
+        ),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "mt-5 sm:mt-4 sm:flex sm:flex-row-reverse" }, [
+        _c(
+          "button",
+          {
+            staticClass:
+              "w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm",
+            attrs: { type: "button" },
+            on: { click: _vm.boardDelete },
+          },
+          [_vm._v("Delete")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass:
+              "mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:w-auto sm:text-sm",
+            attrs: { type: "button" },
+            on: {
+              click: function ($event) {
+                return _vm.$emit("closed")
+              },
+            },
+          },
+          [_vm._v("Cancel")]
+        ),
       ]),
     ]
   )
@@ -37489,7 +37950,7 @@ var render = function () {
                         _c("path", {
                           attrs: {
                             "fill-rule": "evenodd",
-                            d: "M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z",
+                            d: "M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z",
                             "clip-rule": "evenodd",
                           },
                         }),
@@ -37497,7 +37958,7 @@ var render = function () {
                     ),
                     _vm._v(" "),
                     _c("span", { staticClass: "ml-1" }, [
-                      _vm._v("Create New Board"),
+                      _vm._v("Delete Board"),
                     ]),
                   ]
                 )
@@ -37506,8 +37967,8 @@ var render = function () {
         ]),
       ]),
       _vm._v(" "),
-      _c("BoardAddModal", {
-        attrs: { show: _vm.showModal },
+      _c("BoardDeleteModal", {
+        attrs: { show: _vm.showModal, board: _vm.board },
         on: {
           closed: function ($event) {
             _vm.showModal = false
@@ -38113,254 +38574,333 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "border-r", class: _vm.borderColor }, [
-    _c("div", {
-      staticClass: "fixed inset-0 bg-black opacity-50 lg-hidden",
-      class: _vm.sidebarOpen ? "block" : "hidden",
-    }),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass:
-          "sidebar fixed z-30 inset-y-0 left-0 w-64 px-8 py-4 overflow-auto lg:static lg:inset-auto lg:translate-x-0",
-        class: _vm.sidebarOpen
-          ? "translate-x-0 ease-out transition-medium"
-          : "-translate-x-full ease-in transition-medium",
-      },
-      [
-        _c(
-          "div",
-          { staticClass: "-mx-3 pl-3 pr-1 flex items-center justify-between" },
-          [
-            _vm._m(0),
+  return _c(
+    "div",
+    { staticClass: "border-r", class: _vm.borderColor },
+    [
+      _c("div", {
+        staticClass: "fixed inset-0 bg-black opacity-50 lg-hidden",
+        class: _vm.sidebarOpen ? "block" : "hidden",
+      }),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "sidebar fixed z-30 inset-y-0 left-0 w-64 px-8 py-4 overflow-auto lg:static lg:inset-auto lg:translate-x-0",
+          class: _vm.sidebarOpen
+            ? "translate-x-0 ease-out transition-medium"
+            : "-translate-x-full ease-in transition-medium",
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass: "-mx-3 pl-3 pr-1 flex items-center justify-between",
+            },
+            [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "text-gray-700 lg:hidden",
+                  on: {
+                    click: function ($event) {
+                      _vm.sidebarOpen = false
+                    },
+                  },
+                },
+                [
+                  _c(
+                    "svg",
+                    {
+                      staticClass: "h-6 w-6",
+                      attrs: {
+                        xmlns: "http://www.w3.org/2000/svg",
+                        viewBox: "0 0 20 20",
+                        fill: "currentColor",
+                      },
+                    },
+                    [
+                      _c("path", {
+                        attrs: {
+                          "fill-rule": "evenodd",
+                          d: "M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z",
+                          "clip-rule": "evenodd",
+                        },
+                      }),
+                    ]
+                  ),
+                ]
+              ),
+            ]
+          ),
+          _vm._v(" "),
+          _c("nav", { staticClass: "mt-8" }, [
+            _c(
+              "h3",
+              {
+                staticClass: "text-xs font-semibold uppercase tracking-wide",
+                class: _vm.textColor,
+              },
+              [_vm._v("Boards")]
+            ),
+            _vm._v(" "),
+            _vm.isLoggedIn
+              ? _c(
+                  "div",
+                  { staticClass: "mt-2 -mx-3" },
+                  [
+                    _vm._l(_vm.userBoards, function (board) {
+                      return _c(
+                        "router-link",
+                        {
+                          key: board.id,
+                          staticClass:
+                            "flex justify-between items-center px-3 py-2 rounded-lg",
+                          attrs: {
+                            to: { name: "board", params: { id: board.id } },
+                          },
+                        },
+                        [
+                          _c(
+                            "span",
+                            {
+                              staticClass: "text-sm font-medium",
+                              class: _vm.textColor,
+                            },
+                            [_vm._v(_vm._s(board.title))]
+                          ),
+                          _vm._v(" "),
+                          _c("div", {
+                            staticClass:
+                              "w-4 h-4 rounded-full border-2 border-white",
+                            class: _vm.getBoardColor(board.color),
+                          }),
+                        ]
+                      )
+                    }),
+                    _vm._v(" "),
+                    _vm.isLoggedIn
+                      ? _c(
+                          "button",
+                          {
+                            staticClass:
+                              "flex items-center pl-2 pr-4 py-2 text-sm font-medium text-white rounded-md",
+                            class: _vm.textColor,
+                            on: {
+                              click: function ($event) {
+                                _vm.showModal = true
+                              },
+                            },
+                          },
+                          [
+                            _c(
+                              "svg",
+                              {
+                                staticClass: "h-5 w-5",
+                                attrs: {
+                                  xmlns: "http://www.w3.org/2000/svg",
+                                  viewBox: "0 0 20 20",
+                                  fill: "currentColor",
+                                },
+                              },
+                              [
+                                _c("path", {
+                                  attrs: {
+                                    "fill-rule": "evenodd",
+                                    d: "M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z",
+                                    "clip-rule": "evenodd",
+                                  },
+                                }),
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c("span", { staticClass: "ml-1" }, [
+                              _vm._v("Create New Board"),
+                            ]),
+                          ]
+                        )
+                      : _vm._e(),
+                  ],
+                  2
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _c(
+              "h3",
+              {
+                staticClass:
+                  "mt-8 text-xs font-semibold uppercase tracking-wide",
+                class: _vm.textColor,
+              },
+              [_vm._v("Tags")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "mt-2 -mx-3" }, [
+              _c(
+                "a",
+                {
+                  staticClass:
+                    "flex justify-between items-center px-3 py-2 rounded-lg",
+                  attrs: { href: "#" },
+                },
+                [
+                  _c(
+                    "span",
+                    {
+                      staticClass: "text-sm font-medium",
+                      class: _vm.textColor,
+                    },
+                    [_vm._v("Bug")]
+                  ),
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass:
+                    "flex justify-between items-center px-3 py-2 rounded-lg",
+                  attrs: { href: "#" },
+                },
+                [
+                  _c(
+                    "span",
+                    {
+                      staticClass: "text-sm font-medium",
+                      class: _vm.textColor,
+                    },
+                    [_vm._v("Feature Request")]
+                  ),
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass:
+                    "flex justify-between items-center px-3 py-2 rounded-lg",
+                  attrs: { href: "#" },
+                },
+                [
+                  _c(
+                    "span",
+                    {
+                      staticClass: "text-sm font-medium",
+                      class: _vm.textColor,
+                    },
+                    [_vm._v("Marketing")]
+                  ),
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass:
+                    "flex justify-between items-center px-3 py-2 rounded-lg",
+                  attrs: { href: "#" },
+                },
+                [
+                  _c(
+                    "span",
+                    {
+                      staticClass: "text-sm font-medium",
+                      class: _vm.textColor,
+                    },
+                    [_vm._v("v2.0")]
+                  ),
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass:
+                    "flex justify-between items-center px-3 py-2 rounded-lg",
+                  attrs: { href: "#" },
+                },
+                [
+                  _c(
+                    "span",
+                    {
+                      staticClass: "text-sm font-medium",
+                      class: _vm.textColor,
+                    },
+                    [_vm._v("Enhancement")]
+                  ),
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass:
+                    "flex justify-between items-center px-3 py-2 rounded-lg",
+                  attrs: { href: "#" },
+                },
+                [
+                  _c(
+                    "span",
+                    {
+                      staticClass: "text-sm font-medium",
+                      class: _vm.textColor,
+                    },
+                    [_vm._v("Design")]
+                  ),
+                ]
+              ),
+            ]),
             _vm._v(" "),
             _c(
               "button",
               {
-                staticClass: "text-gray-700 lg:hidden",
-                on: {
-                  click: function ($event) {
-                    _vm.sidebarOpen = false
-                  },
-                },
+                staticClass: "mt-2 -ml-1 flex items-center text-sm font-medium",
+                class: _vm.textColor,
               },
               [
                 _c(
                   "svg",
                   {
-                    staticClass: "h-6 w-6",
+                    staticClass: "h-5 w-5 ",
                     attrs: {
                       xmlns: "http://www.w3.org/2000/svg",
                       viewBox: "0 0 20 20",
-                      fill: "currentColor",
+                      fill: "none",
                     },
                   },
                   [
                     _c("path", {
                       attrs: {
+                        stroke: "currentColor",
                         "fill-rule": "evenodd",
-                        d: "M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z",
+                        d: "M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z",
                         "clip-rule": "evenodd",
                       },
                     }),
                   ]
                 ),
-              ]
-            ),
-          ]
-        ),
-        _vm._v(" "),
-        _c("nav", { staticClass: "mt-8" }, [
-          _c(
-            "h3",
-            {
-              staticClass: "text-xs font-semibold uppercase tracking-wide",
-              class: _vm.textColor,
-            },
-            [_vm._v("Boards")]
-          ),
-          _vm._v(" "),
-          _vm.isLoggedIn
-            ? _c(
-                "div",
-                { staticClass: "mt-2 -mx-3" },
-                _vm._l(_vm.userBoards, function (board) {
-                  return _c(
-                    "router-link",
-                    {
-                      key: board.id,
-                      staticClass:
-                        "flex justify-between items-center px-3 py-2 rounded-lg",
-                      attrs: {
-                        to: { name: "board", params: { id: board.id } },
-                      },
-                    },
-                    [
-                      _c(
-                        "span",
-                        {
-                          staticClass: "text-sm font-medium",
-                          class: _vm.textColor,
-                        },
-                        [_vm._v(_vm._s(board.title))]
-                      ),
-                      _vm._v(" "),
-                      _c("div", {
-                        staticClass:
-                          "w-4 h-4 rounded-full border-2 border-white",
-                        class: _vm.getBoardColor(board.color),
-                      }),
-                    ]
-                  )
-                }),
-                1
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          _c(
-            "h3",
-            {
-              staticClass: "mt-8 text-xs font-semibold uppercase tracking-wide",
-              class: _vm.textColor,
-            },
-            [_vm._v("Tags")]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "mt-2 -mx-3" }, [
-            _c(
-              "a",
-              {
-                staticClass:
-                  "flex justify-between items-center px-3 py-2 rounded-lg",
-                attrs: { href: "#" },
-              },
-              [
-                _c(
-                  "span",
-                  { staticClass: "text-sm font-medium", class: _vm.textColor },
-                  [_vm._v("Bug")]
-                ),
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass:
-                  "flex justify-between items-center px-3 py-2 rounded-lg",
-                attrs: { href: "#" },
-              },
-              [
-                _c(
-                  "span",
-                  { staticClass: "text-sm font-medium", class: _vm.textColor },
-                  [_vm._v("Feature Request")]
-                ),
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass:
-                  "flex justify-between items-center px-3 py-2 rounded-lg",
-                attrs: { href: "#" },
-              },
-              [
-                _c(
-                  "span",
-                  { staticClass: "text-sm font-medium", class: _vm.textColor },
-                  [_vm._v("Marketing")]
-                ),
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass:
-                  "flex justify-between items-center px-3 py-2 rounded-lg",
-                attrs: { href: "#" },
-              },
-              [
-                _c(
-                  "span",
-                  { staticClass: "text-sm font-medium", class: _vm.textColor },
-                  [_vm._v("v2.0")]
-                ),
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass:
-                  "flex justify-between items-center px-3 py-2 rounded-lg",
-                attrs: { href: "#" },
-              },
-              [
-                _c(
-                  "span",
-                  { staticClass: "text-sm font-medium", class: _vm.textColor },
-                  [_vm._v("Enhancement")]
-                ),
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass:
-                  "flex justify-between items-center px-3 py-2 rounded-lg",
-                attrs: { href: "#" },
-              },
-              [
-                _c(
-                  "span",
-                  { staticClass: "text-sm font-medium", class: _vm.textColor },
-                  [_vm._v("Design")]
-                ),
+                _vm._v(" "),
+                _c("span", { staticClass: "ml-1" }, [_vm._v("New Project")]),
               ]
             ),
           ]),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "mt-2 -ml-1 flex items-center text-sm font-medium",
-              class: _vm.textColor,
-            },
-            [
-              _c(
-                "svg",
-                {
-                  staticClass: "h-5 w-5 ",
-                  attrs: {
-                    xmlns: "http://www.w3.org/2000/svg",
-                    viewBox: "0 0 20 20",
-                    fill: "none",
-                  },
-                },
-                [
-                  _c("path", {
-                    attrs: {
-                      stroke: "currentColor",
-                      "fill-rule": "evenodd",
-                      d: "M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z",
-                      "clip-rule": "evenodd",
-                    },
-                  }),
-                ]
-              ),
-              _vm._v(" "),
-              _c("span", { staticClass: "ml-1" }, [_vm._v("New Project")]),
-            ]
-          ),
-        ]),
-      ]
-    ),
-  ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("BoardAddModal", {
+        attrs: { show: _vm.showModal },
+        on: {
+          closed: function ($event) {
+            _vm.showModal = false
+          },
+        },
+      }),
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function () {

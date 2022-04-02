@@ -149,31 +149,35 @@
                         class="flex items-center pl-2 pr-4 py-2 text-sm font-medium text-white rounded-md"
                         :class="[buttonColor, buttonColorHover]"
                     >
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
+                            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                         </svg>
-                        <span class="ml-1">Create New Board</span>
+                        <span class="ml-1">Delete Board</span>
                     </button>
                 </div>
             </div>
         </header>
-        <BoardAddModal
+        <BoardDeleteModal
             :show="showModal"
             @closed="showModal=false"
-        ></BoardAddModal>
+            :board="board"
+        ></BoardDeleteModal>
     </div>
 </template>
 
 <script>
 import { mapState } from "vuex";
-import BoardAddModal from "./BoardAddModal";
 import Logout from "./../graphql/Logout.gql";
 import BoardEditor from "./BoardEditor";
 import BoardUpdate from "../graphql/BoardUpdate.gql";
 import {EVENT_BOARD_UPDATED} from "../constants";
+import BoardDeleteModal from "./BoardDeleteModal";
 
 export default {
-    components: {BoardEditor, BoardAddModal},
+    components: {
+        BoardDeleteModal,
+        BoardEditor
+    },
     props: {
         board: Object,
         borderColor: Object,
@@ -191,9 +195,9 @@ export default {
         return {
             sidebarOpen: false,
             isDropDownOpen: false,
-            showModal: false,
             boardEditing: false,
-            title: this.board.title
+            title: this.board.title,
+            showModal: false
         }
     },
     methods: {

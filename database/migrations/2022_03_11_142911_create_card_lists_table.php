@@ -18,7 +18,7 @@ class CreateCardListsTable extends Migration
             $table->timestamps();
             $table->string('title');
 
-            $table->foreignId('board_id')->constrained('boards');
+            $table->foreignId('board_id')->constrained('boards')->onDelete('cascade');;
         });
     }
 
