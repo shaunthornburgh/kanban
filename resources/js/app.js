@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import Board from './Board';
+import Board from './components/board/Board';
 import './bootstrap';
 import apolloProvider from './apollo.config';
 import router from "./router.config";

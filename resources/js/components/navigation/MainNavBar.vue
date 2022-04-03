@@ -1,9 +1,11 @@
 <template>
     <div class="w-full px-8 py-2 flex items-center justify-between bg-white border-b" :class="borderColor">
-        <div class="flex">
-            <span><img alt="Logo" class="h-9 w-9" src="/images/logo.svg" /></span>
-            <h3 class="pt-1 pl-2 font-bold text-xl text-gray-500">Kanban</h3>
-        </div>
+        <router-link :to="{ name: 'dashboard' }">
+            <div class="flex">
+                <span><img alt="Logo" class="h-9 w-9" src="/images/logo.svg" /></span>
+                <h3 class="pt-1 pl-2 font-bold text-xl text-gray-500">Kanban</h3>
+            </div>
+        </router-link>
         <div class="flex justify-between items-center header">
             <div class="flex-1 min-w-0 flex">
                 <button @click="sidebarOpen = true" class="text-gray-600 lg:hidden">
@@ -29,7 +31,7 @@
                 </div>
             </div>
             <div class="ml-4 flex-shrink-0 flex items-center">
-                <button :class="textColor">
+                <button class="text-gray-500">
                     <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24">
                         <path
                             stroke="currentColor"
@@ -110,8 +112,6 @@ export default {
         })
     },
     props: {
-        bgColorMainNav: Object,
-        textColor: Object,
         borderColor: Object,
     },
     data() {

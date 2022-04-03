@@ -1,8 +1,6 @@
 <template>
     <div>
         <MainNavBar
-            :bgColorMainNav="bgColorMain"
-            :textColor="textColor"
             :borderColor="borderColor"
         ></MainNavBar>
         <div class="h-screen flex overflow-hidden" :class="[bgColorMain, textColor]">
@@ -53,9 +51,9 @@
 </template>
 
 <script>
-import List from "./components/board/List";
-import ListAddEditor from "./components/board/ListAddEditor";
-import BoardQuery from "./graphql/BoardWithListsAndCards.gql";
+import List from "./List";
+import ListAddEditor from "./ListAddEditor";
+import BoardQuery from "../../graphql/BoardWithListsAndCards.gql";
 import {
     EVENT_CARD_ADDED,
     EVENT_CARD_DELETED,
@@ -64,14 +62,14 @@ import {
     EVENT_LIST_DELETED,
     EVENT_LIST_UPDATED,
     EVENT_BOARD_UPDATED
-} from "./constants";
+} from "../../constants";
 import { mapState } from "vuex";
-import UserBoards from "./graphql/UserBoards.gql";
-import {colorBorder, buttonFocusColor, buttonHoverColor, colorMainBoard, textColor, circleBorderColor} from "./utils";
-import UserBoardsMenu from "./components/board/UserBoardsMenu";
-import ListAddButton from "./components/board/ListAddButton";
-import BoardNavBar from "./components/board/BoardNavBar";
-import MainNavBar from "./components/board/MainNavBar";
+import UserBoards from "../../graphql/UserBoards.gql";
+import {colorBorder, buttonFocusColor, buttonHoverColor, colorMainBoard, textColor, circleBorderColor} from "../../utils";
+import UserBoardsMenu from "./UserBoardsMenu";
+import ListAddButton from "./ListAddButton";
+import BoardNavBar from "./BoardNavBar";
+import MainNavBar from "../navigation/MainNavBar";
 
 export default {
     components: {

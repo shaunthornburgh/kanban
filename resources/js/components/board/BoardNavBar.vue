@@ -32,25 +32,25 @@
                                 src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2.5&w=144&h=144&q=80"
                             />
                         </span>
-                    <span class="-ml-2 rounded-full border-2 border-white">
+                        <span class="-ml-2 rounded-full border-2 border-white">
                             <img
                                 class="h-6 w-6 rounded-full object-cover"
                                 src="https://images.unsplash.com/photo-1609132718484-cc90df3417f8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2.5&w=144&h=144"
                             />
                         </span>
-                    <span class="-ml-2 rounded-full border-2 border-white">
+                        <span class="-ml-2 rounded-full border-2 border-white">
                             <img
                                 class="h-6 w-6 rounded-full object-cover"
                                 src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2.5&w=144&h=144&q=80"
                             />
                         </span>
-                    <span class="-ml-2 rounded-full border-2 border-white">
+                        <span class="-ml-2 rounded-full border-2 border-white">
                             <img
                                 class="h-6 w-6 rounded-full object-cover"
                                 src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2.5&w=144&h=144&q=80"
                             />
                         </span>
-                </div>
+                    </div>
                     <button
                         v-if="isLoggedIn"
                         @click="showModal = true"
