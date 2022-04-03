@@ -10343,7 +10343,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   _this.$store.commit("setUser", user);
 
                   _this.$router.push({
-                    name: "board"
+                    name: "dashboard"
                   });
                 }
 
@@ -10544,7 +10544,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   _this.$store.commit("setUser", user);
 
                   _this.$router.push({
-                    name: "board"
+                    name: "dashboard"
                   });
                 }
 
