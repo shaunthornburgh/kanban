@@ -51,84 +51,64 @@ export const colorMainBoard = {
     white: "bg-white"
 }
 
-export const colorSidebar = {
-    teal: "bg-teal-200",
-    orange: "bg-orange-200",
-    gray: "bg-gray-200",
-    yellow: "bg-yellow-200",
-    purple: "bg-purple-200",
-    red: "bg-red-200",
-    green: "bg-green-200",
-    blue: "bg-blue-200",
-    indigo: "bg-indigo-200",
-    emerald: "bg-emerald-200",
-    lime: "bg-lime-200",
-    sky: "bg-sky-200",
-    violet: "bg-violet-200",
-    slate: "bg-slate-200",
-    rose: "bg-rose-200",
-    stone: "bg-stone-200",
-    white: "bg-gray-100"
-}
-
 export const colorBorder = {
-    teal: "border-teal-400",
-    orange: "border-orange-400",
-    gray: "border-gray-400",
-    yellow: "border-yellow-400",
-    purple: "border-purple-400",
-    red: "border-red-400",
-    green: "border-green-400",
-    blue: "border-blue-400",
-    indigo: "border-indigo-400",
-    emerald: "border-emerald-400",
-    lime: "border-lime-400",
-    sky: "border-sky-400",
-    violet: "border-violet-400",
-    slate: "border-slate-400",
-    rose: "border-rose-400",
-    stone: "border-stone-400",
-    white: "border-gray-300"
+    teal: "border-teal-200",
+    orange: "border-orange-200",
+    gray: "border-gray-200",
+    yellow: "border-yellow-200",
+    purple: "border-purple-200",
+    red: "border-red-200",
+    green: "border-green-200",
+    blue: "border-blue-200",
+    indigo: "border-indigo-200",
+    emerald: "border-emerald-200",
+    lime: "border-lime-200",
+    sky: "border-sky-200",
+    violet: "border-violet-200",
+    slate: "border-slate-200",
+    rose: "border-rose-200",
+    stone: "border-stone-200",
+    white: "border-gray-200"
 }
 
-export const buttonColor = {
-    teal: "bg-teal-800",
-    orange: "bg-orange-800",
-    gray: "bg-gray-800",
-    yellow: "bg-yellow-800",
-    purple: "bg-purple-800",
-    red: "bg-red-800",
-    green: "bg-green-800",
-    blue: "bg-blue-800",
-    indigo: "bg-indigo-800",
-    emerald: "bg-emerald-800",
-    lime: "bg-lime-800",
-    sky: "bg-sky-800",
-    violet: "bg-violet-800",
-    slate: "bg-slate-800",
-    rose: "bg-rose-800",
-    stone: "bg-stone-800",
-    white: "bg-gray-800"
+export const buttonFocusColor = {
+    teal: "focus:ring-teal-500",
+    orange: "focus:ring-orange-500",
+    gray: "focus:ring-gray-500",
+    yellow: "focus:ring-yellow-500",
+    purple: "focus:ring-purple-500",
+    red: "focus:ring-red-500",
+    green: "focus:ring-green-500",
+    blue: "focus:ring-blue-500",
+    indigo: "focus:ring-indigo-500",
+    emerald: "focus:ring-emerald-500",
+    lime: "focus:ring-lime-500",
+    sky: "focus:ring-sky-500",
+    violet: "focus:ring-violet-500",
+    slate: "focus:ring-slate-500",
+    rose: "focus:ring-rose-500",
+    stone: "focus:ring-stone-500",
+    white: "focus:ring-gray-500"
 }
 
-export const buttonColorHover = {
-    teal: "hover:bg-teal-700",
-    orange: "hover:bg-orange-700",
-    gray: "hover:bg-gray-700",
-    yellow: "hover:bg-yellow-700",
-    purple: "hover:bg-purple-700",
-    red: "hover:bg-red-700",
-    green: "hover:bg-green-700",
-    blue: "hover:bg-blue-700",
-    indigo: "hover:bg-indigo-700",
-    emerald: "hover:bg-emerald-700",
-    lime: "hover:bg-lime-700",
-    sky: "hover:bg-sky-700",
-    violet: "hover:bg-violet-700",
-    slate: "hover:bg-slate-700",
-    rose: "hover:bg-rose-700",
-    stone: "hover:bg-stone-700",
-    white: "hover:bg-gray-700"
+export const buttonHoverColor = {
+    teal: "hover:bg-teal-50",
+    orange: "hover:bg-orange-50",
+    gray: "hover:bg-gray-50",
+    yellow: "hover:bg-yellow-50",
+    purple: "hover:bg-purple-50",
+    red: "hover:bg-red-50",
+    green: "hover:bg-green-50",
+    blue: "hover:bg-blue-50",
+    indigo: "hover:bg-indigo-50",
+    emerald: "hover:bg-emerald-50",
+    lime: "hover:bg-lime-50",
+    sky: "hover:bg-sky-50",
+    violet: "hover:bg-violet-50",
+    slate: "hover:bg-slate-50",
+    rose: "hover:bg-rose-50",
+    stone: "hover:bg-stone-50",
+    white: "hover:bg-gray-50"
 }
 
 export const textColor = {
@@ -148,7 +128,7 @@ export const textColor = {
     slate: "text-white",
     rose: "text-white",
     stone: "text-white",
-    white: "text-gray-700"
+    white: "text-gray-500"
 }
 
 export const circleBorderColor = {
@@ -168,7 +148,7 @@ export const circleBorderColor = {
     slate: "border-white",
     rose: "border-white",
     stone: "border-white",
-    white: "border-gray-700"
+    white: "border-gray-300"
 }
 
 export const hexValues = {

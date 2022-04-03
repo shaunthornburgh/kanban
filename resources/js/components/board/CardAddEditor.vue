@@ -3,8 +3,8 @@
 </template>
 
 <script>
-import CardAdd from "../graphql/CardAdd.gql";
-import { EVENT_CARD_ADDED } from "../constants";
+import CardAdd from "../../graphql/CardAdd.gql";
+import { EVENT_CARD_ADDED } from "../../constants";
 import CardEditor from "./CardEditor";
 import { mapState } from "vuex";
 

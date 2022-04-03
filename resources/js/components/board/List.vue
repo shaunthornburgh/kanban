@@ -4,9 +4,9 @@
             v-if="!listEditing"
             class="flex justify-between pt-3 pb-1 px-3"
         >
-            <h3 class="flex-shrink-0 text-sm font-medium text-gray-700">{{ list.title }}</h3>
+            <h3 class="flex-shrink-0 text-sm font-medium text-gray-500">{{ list.title }}</h3>
             <div>
-                <button class="text-gray-600 hover:text-gray-800 cursor pointer">
+                <button class="text-gray-500 hover:text-gray-800 cursor pointer">
                     <svg xmlns="http://www.w3.org/2000/svg"
                          class="h-5 w-5 pr-1"
                          viewBox="0 0 20 20"
@@ -17,14 +17,14 @@
                         <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
                     </svg>
                 </button>
-                <button class="text-gray-600 hover:text-gray-800 cursor pointer">
+                <button class="text-gray-500 hover:text-gray-800 cursor pointer">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         class="h-5 w-5"
                         viewBox="0 0 20 20"
                         fill="currentColor"
                         v-if="canDeleteList"
-                        @click="listDelete"
+                        @click="showModal=true"
                     >
                         <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
                     </svg>
@@ -56,6 +56,15 @@
                 <CardAddButton v-if="!cardEditing && canAddCard" @click="cardEditing=true"></CardAddButton>
             </ul>
         </div>
+        <DeleteConfirmationModal
+            :show="showModal"
+            :model="'list'"
+            :event="'list-delete'"
+            @closed="showModal=false"
+            @list-delete="listDelete"
+            :title="list.title"
+            :id="getListId"
+        ></DeleteConfirmationModal>
     </div>
 </template>
 
@@ -64,17 +73,19 @@ import Card from "./Card";
 import CardAddButton from "./CardAddButton";
 import CardAddEditor from "./CardAddEditor";
 import {mapState} from "vuex";
-import ListDelete from "../graphql/ListDelete.gql";
-import {EVENT_LIST_UPDATED, EVENT_LIST_DELETED} from "../constants";
+import ListDelete from "../../graphql/ListDelete.gql";
+import {EVENT_LIST_UPDATED, EVENT_LIST_DELETED} from "../../constants";
 import ListEditor from "./ListEditor";
-import ListUpdate from "../graphql/ListUpdate.gql";
+import ListUpdate from "../../graphql/ListUpdate.gql";
+import DeleteConfirmationModal from "./DeleteConfirmationModal";
 
 export default {
     components: {
         ListEditor,
         CardAddButton,
         Card,
-        CardAddEditor
+        CardAddEditor,
+        DeleteConfirmationModal
     },
     props: {
         list: Object
@@ -83,20 +94,26 @@ export default {
         return {
             cardEditing: false,
             listEditing: false,
-            title: this.list.title
+            title: this.list.title,
+            showModal: false
         }
     },
-    computed: mapState({
-        canAddCard(state) {
-            return this.list.board.owner.id === state.user.id
+    computed: {
+        getListId: function() {
+            return Number(this.list.id);
         },
-        canDeleteList(state) {
-            return this.list.board.owner.id === state.user.id
-        },
-        canUpdateList(state) {
-            return this.list.board.owner.id === state.user.id
-        }
-    }),
+        ...mapState({
+            canAddCard(state) {
+                return this.list.board.owner.id === state.user.id
+            },
+            canDeleteList(state) {
+                return this.list.board.owner.id === state.user.id
+            },
+            canUpdateList(state) {
+                return this.list.board.owner.id === state.user.id
+            }
+        })
+    },
     methods: {
         async listUpdate() {
             const self = this;

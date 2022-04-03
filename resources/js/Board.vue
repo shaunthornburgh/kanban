@@ -1,51 +1,60 @@
 <template>
-    <div class="h-screen flex overflow-hidden" :class="bgColorSidebar">
-        <UserBoardsMenu
-            :borderColor="borderColor"
+    <div>
+        <MainNavBar
+            :bgColorMainNav="bgColorMain"
             :textColor="textColor"
-        ></UserBoardsMenu>
-        <div class="flex flex-1 flex-col min-w-0 overflow-hidden" :class="bgColorMain">
-            <div v-if="$apollo.loading">Loading...</div>
-            <HeaderMenu
-                v-else
-                :board="board"
+            :borderColor="borderColor"
+        ></MainNavBar>
+        <div class="h-screen flex overflow-hidden" :class="[bgColorMain, textColor]">
+            <UserBoardsMenu
                 :borderColor="borderColor"
                 :textColor="textColor"
-                :buttonColor="buttonColor"
-                :buttonColorHover="buttonColorHover"
-            ></HeaderMenu>
-            <div class="flex-1 overflow-auto">
-                <main class="p-3 flex inline-flex overflow-hidden h-full space-x-3" v-if="board">
-                    <List
-                        :list="list"
-                        v-for="list in board.lists"
-                        :key="list.id"
-                        @card-added="updateQueryCache($event)"
-                        @card-deleted="updateQueryCache($event)"
-                        @card-updated="updateQueryCache($event)"
-                        @list-deleted="updateQueryCache($event)"
-                        @list-updated="updateQueryCache($event)"
-                        @board-updated="updateQueryCache($event)"
-                    ></List>
-                    <ListAddEditor
-                        v-if="listEditing"
-                        :board="board.id"
-                        @closed="listEditing=false"
-                        @list-added="updateQueryCache($event)"
-                    ></ListAddEditor>
-                    <ListAddButton
-                        v-if="!listEditing && canAddList"
-                        @click="listEditing=true"
-                    ></ListAddButton>
-                </main>
+                :circleBorderColor="circleBorderColor"
+            ></UserBoardsMenu>
+            <div class="flex flex-1 flex-col min-w-0 overflow-hidden" :class="bgColorMain">
+                <div v-if="$apollo.loading">Loading...</div>
+                <BoardNavBar
+                    v-else
+                    :board="board"
+                    :borderColor="borderColor"
+                    :textColor="textColor"
+                    :buttonFocusColor="buttonFocusColor"
+                    :buttonHoverColor="buttonHoverColor"
+
+                ></BoardNavBar>
+                <div class="flex-1 overflow-auto">
+                    <main class="p-3 flex inline-flex overflow-hidden h-full space-x-3" v-if="board">
+                        <List
+                            :list="list"
+                            v-for="list in board.lists"
+                            :key="list.id"
+                            @card-added="updateQueryCache($event)"
+                            @card-deleted="updateQueryCache($event)"
+                            @card-updated="updateQueryCache($event)"
+                            @list-deleted="updateQueryCache($event)"
+                            @list-updated="updateQueryCache($event)"
+                            @board-updated="updateQueryCache($event)"
+                        ></List>
+                        <ListAddEditor
+                            v-if="listEditing"
+                            :board="board.id"
+                            @closed="listEditing=false"
+                            @list-added="updateQueryCache($event)"
+                        ></ListAddEditor>
+                        <ListAddButton
+                            v-if="!listEditing && canAddList"
+                            @click="listEditing=true"
+                        ></ListAddButton>
+                    </main>
+                </div>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import List from "./components/List";
-import ListAddEditor from "./components/ListAddEditor";
+import List from "./components/board/List";
+import ListAddEditor from "./components/board/ListAddEditor";
 import BoardQuery from "./graphql/BoardWithListsAndCards.gql";
 import {
     EVENT_CARD_ADDED,
@@ -58,15 +67,17 @@ import {
 } from "./constants";
 import { mapState } from "vuex";
 import UserBoards from "./graphql/UserBoards.gql";
-import {circleBorderColor, colorBorder, buttonColor, buttonColorHover, colorMainBoard, colorSidebar, textColor} from "./utils";
-import UserBoardsMenu from "./components/UserBoardsMenu";
-import HeaderMenu from "./components/HeaderMenu";
-import ListAddButton from "./components/ListAddButton";
+import {colorBorder, buttonFocusColor, buttonHoverColor, colorMainBoard, textColor, circleBorderColor} from "./utils";
+import UserBoardsMenu from "./components/board/UserBoardsMenu";
+import ListAddButton from "./components/board/ListAddButton";
+import BoardNavBar from "./components/board/BoardNavBar";
+import MainNavBar from "./components/board/MainNavBar";
 
 export default {
     components: {
+        MainNavBar,
+        BoardNavBar,
         ListAddButton,
-        HeaderMenu,
         List,
         UserBoardsMenu,
         ListAddEditor
@@ -78,28 +89,22 @@ export default {
                 [colorMainBoard[this.board?.color]]: true
             }
         },
-        bgColorSidebar() {
-            return {
-                "bg-white": this.$apollo.loading,
-                [colorSidebar[this.board?.color]]: true
-            }
-        },
         borderColor() {
             return {
                 "bg-white": this.$apollo.loading,
                 [colorBorder[this.board?.color]]: true
             }
         },
-        buttonColor() {
+        buttonFocusColor() {
             return {
                 "bg-white": this.$apollo.loading,
-                [buttonColor[this.board?.color]]: true
+                [buttonFocusColor[this.board?.color]]: true
             }
         },
-        buttonColorHover() {
+        buttonHoverColor() {
             return {
                 "bg-white": this.$apollo.loading,
-                [buttonColorHover[this.board?.color]]: true
+                [buttonHoverColor[this.board?.color]]: true
             }
         },
         textColor() {

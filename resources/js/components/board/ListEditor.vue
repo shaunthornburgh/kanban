@@ -1,6 +1,6 @@
 <template>
     <div class="w-80 pb-2">
-        <div class="pt-2 px-3">
+        <div class="pt- px-3">
             <input
                 type="text"
                 class="rounded-md shadow py-2 px-2 mb-2 outline-none w-full text-gray-900 text-sm bg-white resize-none"

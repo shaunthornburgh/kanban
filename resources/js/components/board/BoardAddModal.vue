@@ -16,7 +16,7 @@
                             id="title"
                             name="title"
                             v-model="title"
-                            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-rose-500 focus:border-rose-500 sm:text-sm"
+                            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-rose-500 focus:border-rose-500 sm:text-sm text-black"
                             placeholder="Enter a title for your board"
                         />
                     </div>
@@ -51,10 +51,10 @@
 import Modal from './Modal'
 import VSwatches from 'vue-swatches'
 import 'vue-swatches/dist/vue-swatches.css'
-import BoardAdd from './../graphql/BoardAdd.gql';
-import UserBoards from './../graphql/UserBoards.gql';
+import BoardAdd from '../../graphql/BoardAdd.gql';
+import UserBoards from '../../graphql/UserBoards.gql';
 import {mapState} from 'vuex';
-import {hexValues} from '../utils';
+import {hexValues} from '../../utils';
 
 export default {
     props: {

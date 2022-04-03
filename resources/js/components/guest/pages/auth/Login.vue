@@ -95,7 +95,7 @@
 import Header from "../../layout/Header";
 import Login from "../../../../graphql/Login.gql";
 import {gqlErrors} from "../../../../utils";
-import Errors from "../../../Errors";
+import Errors from "../../../board/Errors";
 
 export default {
     components: {

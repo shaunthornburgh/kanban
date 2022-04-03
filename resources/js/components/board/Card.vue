@@ -11,7 +11,7 @@
                     </span>
                 </div>
                 <div class="flex justify-between items-baseline">
-                    <p class="text-sm text-gray-600">
+                    <p class="text-sm text-gray-400">
                         Sep 14
                     </p>
                     <div class="mt-2">
@@ -39,7 +39,7 @@
                          class="h-4 w-4 hover:text-gray-700"
                          viewBox="0 0 20 20"
                          fill="currentColor"
-                         @click="cardDelete"
+                         @click="showModal=true"
                     >
                         <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
                     </svg>
@@ -53,28 +53,47 @@
             @closed="editing=false"
             @saved="cardUpdate"
         ></CardEditor>
+        <DeleteConfirmationModal
+            :show="showModal"
+            :model="'card'"
+            :event="'card-delete'"
+            @closed="showModal=false"
+            @card-delete="cardDelete"
+            :title="card.title"
+            :id="getCardId"
+        ></DeleteConfirmationModal>
     </div>
 </template>
 
 <script>
-import CardDelete from "./../graphql/CardDelete.gql";
-import CardUpdate from "./../graphql/CardUpdate.gql";
-import {EVENT_CARD_DELETED, EVENT_CARD_UPDATED} from "../constants";
+import CardDelete from "../../graphql/CardDelete.gql";
+import CardUpdate from "../../graphql/CardUpdate.gql";
+import {EVENT_CARD_DELETED, EVENT_CARD_UPDATED} from "../../constants";
 import CardEditor from "./CardEditor";
 import { mapState } from "vuex";
+import DeleteConfirmationModal from "./DeleteConfirmationModal";
 
 export default {
-    components: { CardEditor },
+    components: {
+        CardEditor,
+        DeleteConfirmationModal
+    },
     props: {
         card: Object
     },
-    computed: mapState({
-        userId: state => state.user.id,
-    }),
+    computed: {
+        getCardId: function() {
+            return Number(this.card.id);
+        },
+        ...mapState({
+            userId: state => state.user.id
+        })
+    },
     data() {
         return {
             editing: false,
-            title: this.card.title
+            title: this.card.title,
+            showModal: false
         }
     },
     methods: {

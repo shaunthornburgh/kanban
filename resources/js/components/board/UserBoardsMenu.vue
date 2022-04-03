@@ -2,16 +2,14 @@
     <div class="border-r" :class="borderColor">
         <div :class="sidebarOpen ? 'block' : 'hidden'" class="fixed inset-0 bg-black opacity-50 lg-hidden"></div>
         <div :class="sidebarOpen ? 'translate-x-0 ease-out transition-medium' : '-translate-x-full ease-in transition-medium'" class="sidebar fixed z-30 inset-y-0 left-0 w-64 px-8 py-4 overflow-auto lg:static lg:inset-auto lg:translate-x-0">
-
             <div class="-mx-3 pl-3 pr-1 flex items-center justify-between">
-                <span><img class="h-9 w-9" src="/images/logo.svg"></span>
                 <button @click="sidebarOpen = false" class="text-gray-700 lg:hidden">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
                     </svg>
                 </button>
             </div>
-            <nav class="mt-8">
+            <nav class="mt-3">
                 <h3 class="text-xs font-semibold uppercase tracking-wide" :class="textColor">Boards</h3>
                 <div class="mt-2 -mx-3" v-if="isLoggedIn">
                     <router-link
@@ -21,7 +19,7 @@
                         class="flex justify-between items-center px-3 py-2 rounded-lg"
                     >
                         <span class="text-sm font-medium" :class="textColor">{{ board.title }}</span>
-                        <div class="w-4 h-4 rounded-full border-2 border-white" :class="getBoardColor(board.color)"></div>
+                        <div class="w-4 h-4 rounded-full border-2" :class="[getBoardColor(board.color), circleBorderColor]"></div>
                     </router-link>
                     <button
                         v-if="isLoggedIn"
@@ -72,9 +70,9 @@
 </template>
 
 <script>
-import UserBoards from "./../graphql/UserBoards.gql";
+import UserBoards from "../../graphql/UserBoards.gql";
 import { mapState } from "vuex";
-import { colorMainBoard } from "../utils";
+import {circleBorderColor, colorMainBoard} from "../../utils";
 import BoardAddModal from "./BoardAddModal";
 
 export default {
@@ -84,7 +82,8 @@ export default {
     props: {
         board: Object,
         borderColor: Object,
-        textColor: Object
+        textColor: Object,
+        circleBorderColor: Object
     },
     apollo: {
         userBoards: {
@@ -115,7 +114,7 @@ export default {
     methods: {
         getBoardColor(color) {
             return [colorMainBoard[color]];
-        },
+        }
     }
 };
 </script>

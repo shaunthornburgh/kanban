@@ -3,9 +3,9 @@
 </template>
 
 <script>
-import { EVENT_LIST_ADDED } from "../constants";
+import { EVENT_LIST_ADDED } from "../../constants";
 import ListEditor from "./ListEditor";
-import ListAdd from "./../graphql/ListAdd.gql";
+import ListAdd from "../../graphql/ListAdd.gql";
 
 export default {
     components: {ListEditor},
