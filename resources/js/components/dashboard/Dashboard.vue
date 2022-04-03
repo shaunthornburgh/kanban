@@ -20,9 +20,16 @@
                         :id="getBoardId(board.id)"
                         :color="board.color"
                     ></BoardListItem>
+                    <AddBoardButton
+                        @click="showModal=true"
+                    ></AddBoardButton>
                 </div>
             </div>
         </div>
+        <BoardAddModal
+            :show="showModal"
+            @closed="showModal=false"
+        ></BoardAddModal>
     </div>
 </template>
 
@@ -32,11 +39,15 @@ import BoardListItem from "./BoardListItem";
 import {colorBorder} from "../../utils";
 import UserBoards from "../../graphql/UserBoards.gql";
 import {mapState} from "vuex";
+import AddBoardButton from "./AddBoardButton";
+import BoardAddModal from "./../board/BoardAddModal";
 
 export default {
     components: {
+        AddBoardButton,
         MainNavBar,
-        BoardListItem
+        BoardListItem,
+        BoardAddModal
     },
     computed: {
         borderColor() {
@@ -66,6 +77,11 @@ export default {
     methods: {
         getBoardId: function(id) {
             return Number(id);
+        }
+    },
+    data() {
+        return {
+            showModal: false
         }
     }
 }

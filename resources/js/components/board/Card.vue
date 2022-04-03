@@ -10,7 +10,7 @@
                             src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2.5&w=144&h=144&q=80" />
                     </span>
                 </div>
-                <div class="flex justify-between items-baseline">
+                <div class="mt-2 flex justify-between items-baseline">
                     <p class="text-sm text-gray-400">
                         Sep 14
                     </p>

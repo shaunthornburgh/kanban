@@ -3,11 +3,9 @@
         <router-link :to="{ name: 'board', params: { id } }" class="block">
             <div class="flex-1 p-6 flex flex-col justify-between" :class="getBoardColor(color)">
             <div class="flex-1">
-
-                    <h3 class="text-xl leading-7 font-semibold text-gray-500">
-                        {{ title }}
-                    </h3>
-
+                <h3 class="text-xl leading-7 font-semibold text-gray-500">
+                    {{ title }}
+                </h3>
             </div>
             <div class="mt-6 flex justify-between">
                 <div class="">

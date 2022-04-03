@@ -636,6 +636,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .h-56 {
   height: 14rem;
 }
+.h-80 {
+  height: 20rem;
+}
 .min-h-0 {
   min-height: 0px;
 }
@@ -1529,6 +1532,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .text-center {
   text-align: center;
+}
+.align-middle {
+  vertical-align: middle;
 }
 .align-bottom {
   vertical-align: bottom;

@@ -9378,8 +9378,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
@@ -9412,7 +9410,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils */ "./resources/js/utils.js");
 /* harmony import */ var _graphql_UserBoards_gql__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../graphql/UserBoards.gql */ "./resources/js/graphql/UserBoards.gql");
 /* harmony import */ var _graphql_UserBoards_gql__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_graphql_UserBoards_gql__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _AddBoardButton__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AddBoardButton */ "./resources/js/components/dashboard/AddBoardButton.vue");
+/* harmony import */ var _board_BoardAddModal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./../board/BoardAddModal */ "./resources/js/components/board/BoardAddModal.vue");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -9447,6 +9447,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+
+
 
 
 
@@ -9454,8 +9463,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
+    AddBoardButton: _AddBoardButton__WEBPACK_IMPORTED_MODULE_4__["default"],
     MainNavBar: _navigation_MainNavBar__WEBPACK_IMPORTED_MODULE_0__["default"],
-    BoardListItem: _BoardListItem__WEBPACK_IMPORTED_MODULE_1__["default"]
+    BoardListItem: _BoardListItem__WEBPACK_IMPORTED_MODULE_1__["default"],
+    BoardAddModal: _board_BoardAddModal__WEBPACK_IMPORTED_MODULE_5__["default"]
   },
   computed: _objectSpread({
     borderColor: function borderColor() {
@@ -9465,7 +9476,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         "bg-white": this.$apollo.loading
       }, _utils__WEBPACK_IMPORTED_MODULE_2__.colorBorder[(_this$board = this.board) === null || _this$board === void 0 ? void 0 : _this$board.color], true);
     }
-  }, (0,vuex__WEBPACK_IMPORTED_MODULE_4__.mapState)({
+  }, (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapState)({
     isLoggedIn: "isLoggedIn",
     userId: function userId(state) {
       return state.user.id;
@@ -9488,6 +9499,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     getBoardId: function getBoardId(id) {
       return Number(id);
     }
+  },
+  data: function data() {
+    return {
+      showModal: false
+    };
   }
 });
 
@@ -36101,6 +36117,43 @@ component.options.__file = "resources/js/components/board/UserBoardsMenu.vue"
 
 /***/ }),
 
+/***/ "./resources/js/components/dashboard/AddBoardButton.vue":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/dashboard/AddBoardButton.vue ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _AddBoardButton_vue_vue_type_template_id_23b2599d___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AddBoardButton.vue?vue&type=template&id=23b2599d& */ "./resources/js/components/dashboard/AddBoardButton.vue?vue&type=template&id=23b2599d&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+var script = {}
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
+  script,
+  _AddBoardButton_vue_vue_type_template_id_23b2599d___WEBPACK_IMPORTED_MODULE_0__.render,
+  _AddBoardButton_vue_vue_type_template_id_23b2599d___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/dashboard/AddBoardButton.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/dashboard/BoardListItem.vue":
 /*!*************************************************************!*\
   !*** ./resources/js/components/dashboard/BoardListItem.vue ***!
@@ -36982,6 +37035,23 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/dashboard/AddBoardButton.vue?vue&type=template&id=23b2599d&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/dashboard/AddBoardButton.vue?vue&type=template&id=23b2599d& ***!
+  \*********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddBoardButton_vue_vue_type_template_id_23b2599d___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddBoardButton_vue_vue_type_template_id_23b2599d___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddBoardButton_vue_vue_type_template_id_23b2599d___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./AddBoardButton.vue?vue&type=template&id=23b2599d& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dashboard/AddBoardButton.vue?vue&type=template&id=23b2599d&");
+
+
+/***/ }),
+
 /***/ "./resources/js/components/dashboard/BoardListItem.vue?vue&type=template&id=2347b9fe&":
 /*!********************************************************************************************!*\
   !*** ./resources/js/components/dashboard/BoardListItem.vue?vue&type=template&id=2347b9fe& ***!
@@ -37797,7 +37867,7 @@ var render = function () {
                 _vm._v(" "),
                 _c(
                   "div",
-                  { staticClass: "flex justify-between items-baseline" },
+                  { staticClass: "mt-2 flex justify-between items-baseline" },
                   [
                     _c("p", { staticClass: "text-sm text-gray-400" }, [
                       _vm._v("\n                    Sep 14\n                "),
@@ -39195,17 +39265,16 @@ var render = function () {
                 _c(
                   "svg",
                   {
-                    staticClass: "h-5 w-5 ",
+                    staticClass: "h-5 w-5",
                     attrs: {
                       xmlns: "http://www.w3.org/2000/svg",
                       viewBox: "0 0 20 20",
-                      fill: "none",
+                      fill: "currentColor",
                     },
                   },
                   [
                     _c("path", {
                       attrs: {
-                        stroke: "currentColor",
                         "fill-rule": "evenodd",
                         d: "M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z",
                         "clip-rule": "evenodd",
@@ -39214,7 +39283,7 @@ var render = function () {
                   ]
                 ),
                 _vm._v(" "),
-                _c("span", { staticClass: "ml-1" }, [_vm._v("New Project")]),
+                _c("span", { staticClass: "ml-1" }, [_vm._v("Create New Tag")]),
               ]
             ),
           ]),
@@ -39231,6 +39300,84 @@ var render = function () {
       }),
     ],
     1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dashboard/AddBoardButton.vue?vue&type=template&id=23b2599d&":
+/*!************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dashboard/AddBoardButton.vue?vue&type=template&id=23b2599d& ***!
+  \************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "flex flex-col rounded-lg shadow-lg overflow-hidden" },
+    [
+      _c(
+        "div",
+        {
+          staticClass:
+            "h-full p-6 flex flex-col bg-white justify-center items-center",
+        },
+        [
+          _c(
+            "button",
+            {
+              staticClass: "flex text-gray-500 items-center",
+              on: {
+                click: function ($event) {
+                  return _vm.$emit("click")
+                },
+              },
+            },
+            [
+              _c(
+                "svg",
+                {
+                  staticClass: "h-5 w-5",
+                  attrs: {
+                    xmlns: "http://www.w3.org/2000/svg",
+                    viewBox: "0 0 20 20",
+                    fill: "currentColor",
+                  },
+                },
+                [
+                  _c("path", {
+                    attrs: {
+                      "fill-rule": "evenodd",
+                      d: "M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z",
+                      "clip-rule": "evenodd",
+                    },
+                  }),
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "h3",
+                { staticClass: "text-xl leading-7 font-semibold ml-2" },
+                [_vm._v("\n                Create Board\n            ")]
+              ),
+            ]
+          ),
+        ]
+      ),
+    ]
   )
 }
 var staticRenderFns = []
@@ -39283,9 +39430,9 @@ var render = function () {
                   },
                   [
                     _vm._v(
-                      "\n                    " +
+                      "\n                " +
                         _vm._s(_vm.title) +
-                        "\n                "
+                        "\n            "
                     ),
                   ]
                 ),
@@ -39442,28 +39589,47 @@ var render = function () {
                   staticClass:
                     "mt-6 grid gap-5 max-w-lg mx-auto lg:grid-cols-4 lg:max-w-none",
                 },
-                _vm._l(_vm.userBoards, function (board, index) {
-                  return _c(
-                    "BoardListItem",
-                    _vm._b(
-                      {
-                        key: index,
-                        attrs: {
-                          title: board.title,
-                          id: _vm.getBoardId(board.id),
-                          color: board.color,
-                        },
-                      },
+                [
+                  _vm._l(_vm.userBoards, function (board, index) {
+                    return _c(
                       "BoardListItem",
-                      _vm.userBoards,
-                      false
+                      _vm._b(
+                        {
+                          key: index,
+                          attrs: {
+                            title: board.title,
+                            id: _vm.getBoardId(board.id),
+                            color: board.color,
+                          },
+                        },
+                        "BoardListItem",
+                        _vm.userBoards,
+                        false
+                      )
                     )
-                  )
-                }),
-                1
+                  }),
+                  _vm._v(" "),
+                  _c("AddBoardButton", {
+                    on: {
+                      click: function ($event) {
+                        _vm.showModal = true
+                      },
+                    },
+                  }),
+                ],
+                2
               ),
             ]),
       ]),
+      _vm._v(" "),
+      _c("BoardAddModal", {
+        attrs: { show: _vm.showModal },
+        on: {
+          closed: function ($event) {
+            _vm.showModal = false
+          },
+        },
+      }),
     ],
     1
   )
