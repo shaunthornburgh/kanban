@@ -8133,6 +8133,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 
@@ -8156,6 +8157,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     isLoggedIn: "isLoggedIn",
     userId: function userId(state) {
       return state.user.id;
+    },
+    canDeleteBoard: function canDeleteBoard(state) {
+      return this.board.owner.id === state.user.id;
+    },
+    canUpdateBoard: function canUpdateBoard(state) {
+      return this.board.owner.id === state.user.id;
     }
   })), {}, {
     getBoardId: function getBoardId() {
@@ -37608,29 +37615,31 @@ var render = function () {
                           "text-gray-600 pl-1 hover:text-gray-800 cursor pointer",
                       },
                       [
-                        _c(
-                          "svg",
-                          {
-                            staticClass: "h-5 w-5",
-                            attrs: {
-                              xmlns: "http://www.w3.org/2000/svg",
-                              viewBox: "0 0 20 20",
-                              fill: "currentColor",
-                            },
-                            on: {
-                              click: function ($event) {
-                                _vm.boardEditing = true
+                        _vm.canUpdateBoard
+                          ? _c(
+                              "svg",
+                              {
+                                staticClass: "h-5 w-5",
+                                attrs: {
+                                  xmlns: "http://www.w3.org/2000/svg",
+                                  viewBox: "0 0 20 20",
+                                  fill: "currentColor",
+                                },
+                                on: {
+                                  click: function ($event) {
+                                    _vm.boardEditing = true
+                                  },
+                                },
                               },
-                            },
-                          },
-                          [
-                            _c("path", {
-                              attrs: {
-                                d: "M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z",
-                              },
-                            }),
-                          ]
-                        ),
+                              [
+                                _c("path", {
+                                  attrs: {
+                                    d: "M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z",
+                                  },
+                                }),
+                              ]
+                            )
+                          : _vm._e(),
                       ]
                     ),
                   ]),
@@ -37641,7 +37650,7 @@ var render = function () {
           _c("div", { staticClass: "flex" }, [
             _vm._m(0),
             _vm._v(" "),
-            _vm.isLoggedIn
+            _vm.isLoggedIn && _vm.canUpdateBoard
               ? _c(
                   "button",
                   {
@@ -37685,7 +37694,7 @@ var render = function () {
                 )
               : _vm._e(),
             _vm._v(" "),
-            _vm.isLoggedIn
+            _vm.isLoggedIn && _vm.canDeleteBoard
               ? _c(
                   "button",
                   {

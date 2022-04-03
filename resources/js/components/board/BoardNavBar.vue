@@ -13,6 +13,7 @@
                         <h2 class="text-2xl font-semibold text-gray-500 leading-tight">{{ board.title }}</h2>
                         <button class="text-gray-600 pl-1 hover:text-gray-800 cursor pointer">
                             <svg xmlns="http://www.w3.org/2000/svg"
+                                 v-if="canUpdateBoard"
                                  class="h-5 w-5"
                                  viewBox="0 0 20 20"
                                  fill="currentColor"
@@ -52,7 +53,7 @@
                         </span>
                     </div>
                     <button
-                        v-if="isLoggedIn"
+                        v-if="isLoggedIn && canUpdateBoard"
                         @click="showModal = true"
                         class="ml-4 inline-flex items-center px-4 py-2 border shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-offset-2"
                         :class="[borderColor, buttonHoverColor, buttonFocusColor]"
@@ -63,7 +64,7 @@
                         <span class="ml-1">Manage Collaborators</span>
                     </button>
                     <button
-                        v-if="isLoggedIn"
+                        v-if="isLoggedIn && canDeleteBoard"
                         @click="showModal = true"
                         class="ml-4 inline-flex items-center px-4 py-2 border shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-offset-2"
                         :class="[borderColor, buttonHoverColor, buttonFocusColor]"
@@ -112,11 +113,17 @@ export default {
     computed: {
         ...mapState({
             isLoggedIn: "isLoggedIn",
-            userId: state => state.user.id
+            userId: state => state.user.id,
+            canDeleteBoard(state) {
+                return this.board.owner.id === state.user.id
+            },
+            canUpdateBoard(state) {
+                return this.board.owner.id === state.user.id
+            },
         }),
         getBoardId: function() {
             return Number(this.board.id);
-        }
+        },
     },
     data() {
         return {
