@@ -29,6 +29,7 @@
                             @card-added="updateQueryCache($event)"
                             @card-deleted="updateQueryCache($event)"
                             @card-updated="updateQueryCache($event)"
+                            @card-placement-updated="updateQueryCache($event)"
                             @list-deleted="updateQueryCache($event)"
                             @list-updated="updateQueryCache($event)"
                             @board-updated="updateQueryCache($event)"
@@ -61,7 +62,7 @@ import {
     EVENT_LIST_ADDED,
     EVENT_LIST_DELETED,
     EVENT_LIST_UPDATED,
-    EVENT_BOARD_UPDATED
+    EVENT_BOARD_UPDATED, EVENT_CARD_PLACEMENT_UPDATED
 } from "../../constants";
 import { mapState } from "vuex";
 import UserBoards from "../../graphql/UserBoards.gql";
@@ -177,6 +178,26 @@ export default {
                 case EVENT_CARD_UPDATED:
                     listById().cards.filter(card => card.id === event.data.id).title =
                         event.data.title;
+                    break;
+                case EVENT_CARD_PLACEMENT_UPDATED:
+                    // Check if card list has changed
+                    console.log(listById().cards.filter(card => card.id === event.data.id).length);
+                    const processedItems = [];
+                    const card = function (card) {
+                        return card.id === event.data.id;
+                    };
+
+                    listById().cards.filter(card);
+                        // listById().cards = listById().cards.filter(
+                        //     card => card.id !== event.data.id
+                        // );
+                        // listById().cards.push(event.data);
+
+                    // If so remove from old list and add to new list
+                    // listById().cards.filter(card => card.id === event.data.id).list.id =
+                    //     event.data.list.id;
+                    // listById().cards.filter(card => card.id === event.data.id).order =
+                    //     event.data.order;
                     break;
                 case EVENT_CARD_DELETED:
                     listById().cards = listById().cards.filter(

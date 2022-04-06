@@ -22,6 +22,9 @@
                     owner {
                         id
                     }
+                    list {
+                        id
+                    }
                 }
             }
         }

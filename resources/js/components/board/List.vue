@@ -39,22 +39,36 @@
             @saved="listUpdate"
         ></ListEditor>
         <div class="flex-1 min-h-0 overflow-y-auto">
-            <ul class="pt-1 pb-3 px-3 space-y-3">
-                <Card
-                    v-for="card in list.cards"
-                    :key="card.id"
-                    :card="card"
-                    @card-deleted="$emit('card-deleted', {...$event, listId: list.id})"
-                    @card-updated="$emit('card-updated', {...$event, listId: list.id})"
-                ></Card>
+            <div class="pt-1 pb-3 px-3">
+                <draggable
+                    :list="list.cards"
+                    :animation="200"
+                    ghost-class="ghost-card"
+                    group="cards"
+                    class="space-y-3"
+                    :move="onMove"
+                >
+                    <Card
+                        v-for="card in list.cards"
+                        :key="card.id"
+                        :card="card"
+                        @card-deleted="$emit('card-deleted', {...$event, listId: list.id})"
+                        @card-updated="$emit('card-updated', {...$event, listId: list.id})"
+                    ></Card>
+                </draggable>
                 <CardAddEditor
                     v-if="cardEditing"
                     @closed="cardEditing=false"
                     :list="list"
                     @added="$emit('card-added', {...$event, listId: list.id})"
+                    :class="{'mt-3' : list.cards.length > 0 }"
                 ></CardAddEditor>
-                <CardAddButton v-if="!cardEditing && canAddCard" @click="cardEditing=true"></CardAddButton>
-            </ul>
+                <CardAddButton
+                    v-if="!cardEditing && canAddCard"
+                    @click="cardEditing=true"
+                    :class="{'mt-3' : list.cards.length > 0 }"
+                >{{ list.length }}</CardAddButton>
+            </div>
         </div>
         <DeleteConfirmationModal
             :show="showModal"
@@ -74,10 +88,12 @@ import CardAddButton from "./CardAddButton";
 import CardAddEditor from "./CardAddEditor";
 import {mapState} from "vuex";
 import ListDelete from "../../graphql/ListDelete.gql";
-import {EVENT_LIST_UPDATED, EVENT_LIST_DELETED} from "../../constants";
+import {EVENT_LIST_UPDATED, EVENT_LIST_DELETED, EVENT_CARD_PLACEMENT_UPDATED} from "../../constants";
 import ListEditor from "./ListEditor";
 import ListUpdate from "../../graphql/ListUpdate.gql";
 import DeleteConfirmationModal from "./DeleteConfirmationModal";
+import draggable from 'vuedraggable'
+import cardUpdatePlacement from "../../graphql/CardUpdatePlacement.gql"
 
 export default {
     components: {
@@ -85,7 +101,13 @@ export default {
         CardAddButton,
         Card,
         CardAddEditor,
-        DeleteConfirmationModal
+        DeleteConfirmationModal,
+        draggable
+    },
+    watch: {
+        'list.cards'(newValue, oldValue){
+            console.log(newValue, oldValue);
+        }
     },
     props: {
         list: Object
@@ -123,7 +145,7 @@ export default {
                     mutation: ListUpdate,
                     variables: {
                         id: this.list.id,
-                        title: this.title
+                        title: this.title,
                     },
                     update(store, { data: listUpdate }) {
                         self.$emit("list-updated", {
@@ -156,6 +178,42 @@ export default {
             } catch (error) {
             }
         },
+        async cardUpdatePlacement(cardId, listId, order) {
+            const self = this;
+
+            try {
+                await this.$apollo.mutate({
+                    mutation: cardUpdatePlacement,
+                    variables: {
+                        id: cardId,
+                        listId: listId,
+                        order: order
+                    },
+                    update(store, { data: {cardUpdatePlacement} }) {
+                        self.$emit("card-placement-updated", {
+                            store,
+                            data: cardUpdatePlacement,
+                            listId: listId,
+                            type: EVENT_CARD_PLACEMENT_UPDATED
+                        });
+                    }
+                });
+            } catch (error) {}
+        },
+        onMove({ relatedContext, draggedContext }) {
+            let order = draggedContext.futureIndex;
+            order++;
+
+            this.cardUpdatePlacement(draggedContext.element.id, relatedContext.element.list.id, order);
+        },
     }
 }
 </script>
+
+<style scoped>
+.ghost-card {
+    opacity: 0.5;
+    background: #F7FAFC;
+    border: 1px solid #4299e1;
+}
+</style>

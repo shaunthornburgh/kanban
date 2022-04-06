@@ -10,7 +10,7 @@
                 </button>
             </div>
             <nav class="mt-3">
-                <h3 class="text-xs font-semibold uppercase tracking-wide" :class="textColor">Boards</h3>
+                <h3 class="text-xs font-semibold uppercase tracking-wide text-gray-500">Boards</h3>
                 <div class="mt-2 -mx-3" v-if="isLoggedIn">
                     <router-link
                         :to="{name: 'board', params: {id: board.id}}"
@@ -18,14 +18,13 @@
                         :key="board.id"
                         class="flex justify-between items-center px-3 py-2 rounded-lg"
                     >
-                        <span class="text-sm font-medium" :class="textColor">{{ board.title }}</span>
+                        <span class="text-sm font-medium text-gray-500">{{ board.title }}</span>
                         <div class="w-4 h-4 rounded-full border-2" :class="[getBoardColor(board.color), circleBorderColor]"></div>
                     </router-link>
                     <button
                         v-if="isLoggedIn"
                         @click="showModal = true"
-                        class="flex items-center pl-2 pr-4 py-2 text-sm font-medium text-white rounded-md"
-                        :class="textColor"
+                        class="flex items-center pl-2 pr-4 py-2 text-sm font-medium text-white rounded-md text-gray-500"
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
@@ -33,28 +32,28 @@
                         <span class="ml-1">Create New Board</span>
                     </button>
                 </div>
-                <h3 class="mt-8 text-xs font-semibold uppercase tracking-wide" :class="textColor">Tags</h3>
+                <h3 class="mt-8 text-xs font-semibold uppercase tracking-wide text-gray-500">Tags</h3>
                 <div class="mt-2 -mx-3">
                     <a href="#" class="flex justify-between items-center px-3 py-2 rounded-lg">
-                        <span class="text-sm font-medium" :class="textColor">Bug</span>
+                        <span class="text-sm font-medium text-gray-500">Bug</span>
                     </a>
                     <a href="#" class="flex justify-between items-center px-3 py-2 rounded-lg">
-                        <span class="text-sm font-medium" :class="textColor">Feature Request</span>
+                        <span class="text-sm font-medium text-gray-500">Feature Request</span>
                     </a>
                     <a href="#" class="flex justify-between items-center px-3 py-2 rounded-lg">
-                        <span class="text-sm font-medium" :class="textColor">Marketing</span>
+                        <span class="text-sm font-medium text-gray-500">Marketing</span>
                     </a>
                     <a href="#" class="flex justify-between items-center px-3 py-2 rounded-lg">
-                        <span class="text-sm font-medium" :class="textColor">v2.0</span>
+                        <span class="text-sm font-medium text-gray-500">v2.0</span>
                     </a>
                     <a href="#" class="flex justify-between items-center px-3 py-2 rounded-lg">
-                        <span class="text-sm font-medium" :class="textColor">Enhancement</span>
+                        <span class="text-sm font-medium text-gray-500">Enhancement</span>
                     </a>
                     <a href="#" class="flex justify-between items-center px-3 py-2 rounded-lg">
-                        <span class="text-sm font-medium" :class="textColor">Design</span>
+                        <span class="text-sm font-medium text-gray-500">Design</span>
                     </a>
                 </div>
-                <button class="mt-2 -ml-1 flex items-center text-sm font-medium" :class="textColor">
+                <button class="mt-2 -ml-1 flex items-center text-sm font-medium text-gray-500">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
                     </svg>

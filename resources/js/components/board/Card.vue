@@ -1,6 +1,6 @@
 <template>
     <div>
-        <li v-if="!editing">
+        <div v-if="!editing">
             <a href="#" class="block p-5 rounded-md shadow bg-white relative hover:bg-gray-50 group">
                 <div class="flex justify-between">
                     <p class="text-sm font-medium leading-snug text-gray-900">{{ card.title }}</p>
@@ -45,7 +45,7 @@
                     </svg>
                 </div>
             </a>
-        </li>
+        </div>
         <CardEditor
             v-else
             v-model="title"

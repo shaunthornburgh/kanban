@@ -1,0 +1,9 @@
+mutation CardUpdatePlacement($id: ID!, $listId: ID!, $order: Int!) {
+    cardUpdatePlacement(id: $id, list: $listId, order: $order) {
+        id
+        list {
+            id
+        }
+        order
+    }
+}
