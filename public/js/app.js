@@ -7594,12 +7594,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ListAddButton__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./ListAddButton */ "./resources/js/components/board/ListAddButton.vue");
 /* harmony import */ var _BoardNavBar__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./BoardNavBar */ "./resources/js/components/board/BoardNavBar.vue");
 /* harmony import */ var _navigation_MainNavBar__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../navigation/MainNavBar */ "./resources/js/components/navigation/MainNavBar.vue");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -7799,21 +7817,44 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           console.log(listById().cards.filter(function (card) {
             return card.id === event.data.id;
           }).length);
-          var processedItems = [];
 
-          var card = function card(_card) {
-            return _card.id === event.data.id;
-          };
+          var _listById$cards$filte = listById().cards.filter(function (card) {
+            return card.id === event.data.id;
+          }),
+              _listById$cards$filte2 = _slicedToArray(_listById$cards$filte, 1),
+              card = _listById$cards$filte2[0];
 
-          listById().cards.filter(card); // listById().cards = listById().cards.filter(
-          //     card => card.id !== event.data.id
-          // );
-          // listById().cards.push(event.data);
+          if (card) {
+            var _data$board$lists$fil = data.board.lists.filter(function (list) {
+              return list.id === card.list.id;
+            }),
+                _data$board$lists$fil2 = _slicedToArray(_data$board$lists$fil, 1),
+                previous = _data$board$lists$fil2[0];
+
+            previous.cards = previous.cards.filter(function (c) {
+              return c.id !== event.data.id;
+            });
+            card.list.id = event.data.list.id;
+
+            if (listById().cards.filter(function (card) {
+              return card.id === event.data.id;
+            }).length === 0) {
+              listById().cards.push(card);
+            } //listById().cards.push(event.data);
+
+          } //   const data = (listById().cards = listById().cards.filter(
+          //     (card) => card.id == event.data.id
+          //   )).forEach((c) => {
+          //     c.listId = event.data.listId;
+          //   });
+          //   console.log(data);
+          ///listById().cards.push(event.data);
           // If so remove from old list and add to new list
           // listById().cards.filter(card => card.id === event.data.id).list.id =
           //     event.data.list.id;
           // listById().cards.filter(card => card.id === event.data.id).order =
           //     event.data.order;
+
 
           break;
 
@@ -8905,6 +8946,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -8926,8 +8978,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     draggable: (vuedraggable__WEBPACK_IMPORTED_MODULE_9___default())
   },
   watch: {
-    'list.cards': function listCards(newValue, oldValue) {
-      console.log(newValue, oldValue);
+    "list.cards": function listCards(newValue, oldValue) {
+      console.log({
+        newValue: newValue,
+        oldValue: oldValue,
+        list: this.list.title
+      });
     }
   },
   props: {
@@ -8938,7 +8994,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       cardEditing: false,
       listEditing: false,
       title: this.list.title,
-      showModal: false
+      showModal: false,
+      cards: []
     };
   },
   computed: _objectSpread({
@@ -10904,7 +10961,7 @@ __webpack_require__.r(__webpack_exports__);
 
 vue__WEBPACK_IMPORTED_MODULE_3__["default"].use(vue_apollo__WEBPACK_IMPORTED_MODULE_0__["default"]);
 var apolloClient = new apollo_boost__WEBPACK_IMPORTED_MODULE_4__["default"]({
-  uri: 'http://kanban.test/graphql',
+  uri: '/graphql',
   headers: {
     'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
   },
@@ -11474,7 +11531,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.ghost-card[data-v-4aed695c] {\n    opacity: 0.5;\n    background: #F7FAFC;\n    border: 1px solid #4299e1;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.ghost-card[data-v-4aed695c] {\n  opacity: 0.5;\n  background: #f7fafc;\n  border: 1px solid #4299e1;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -42491,7 +42548,7 @@ var render = function () {
               {
                 staticClass: "flex-shrink-0 text-sm font-medium text-gray-500",
               },
-              [_vm._v(_vm._s(_vm.list.title))]
+              [_vm._v("\n      " + _vm._s(_vm.list.title) + "\n    ")]
             ),
             _vm._v(" "),
             _c("div", [
