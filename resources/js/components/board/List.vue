@@ -1,11 +1,11 @@
 <template>
   <div class="flex-shrink-0 flex flex-col w-80 bg-gray-100 rounded-md">
-    <div v-if="!listEditing" class="flex justify-between pt-3 pb-1 px-3">
+      <div v-if="!listEditing" class="group flex justify-between pt-3 pb-1 px-3">
       <h3 class="flex-shrink-0 text-sm font-medium text-gray-500">
         {{ list.title }}
       </h3>
-      <div>
-        <button class="text-gray-500 hover:text-gray-800 cursor pointer">
+        <div class="opacity-0 group-hover:opacity-100">
+          <button class="text-gray-500 hover:text-gray-800 cursor pointer">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-5 w-5 pr-1"

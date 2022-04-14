@@ -2,7 +2,7 @@
     <div class="header border-b flex-shrink-0" :class="borderColor">
         <header class="px-6">
             <div class="flex items-center justify-between py-2">
-                <div class="sm:flex sm:items-center">
+                <div class="sm:flex sm:items-center group">
                     <BoardEditor
                         v-if="boardEditing"
                         @closed="boardEditing=false"
@@ -11,7 +11,7 @@
                     ></BoardEditor>
                     <div v-else class="flex">
                         <h2 class="text-2xl font-semibold text-gray-500 leading-tight">{{ board.title }}</h2>
-                        <button class="text-gray-600 pl-1 hover:text-gray-800 cursor pointer">
+                        <button class="text-gray-600 pl-1 hover:text-gray-800 cursor pointer opacity-0 group-hover:opacity-100">
                             <svg xmlns="http://www.w3.org/2000/svg"
                                  v-if="canUpdateBoard"
                                  class="h-5 w-5"

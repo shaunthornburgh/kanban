@@ -41662,7 +41662,7 @@ var render = function () {
         _c("div", { staticClass: "flex items-center justify-between py-2" }, [
           _c(
             "div",
-            { staticClass: "sm:flex sm:items-center" },
+            { staticClass: "sm:flex sm:items-center group" },
             [
               _vm.boardEditing
                 ? _c("BoardEditor", {
@@ -41694,7 +41694,7 @@ var render = function () {
                       "button",
                       {
                         staticClass:
-                          "text-gray-600 pl-1 hover:text-gray-800 cursor pointer",
+                          "text-gray-600 pl-1 hover:text-gray-800 cursor pointer opacity-0 group-hover:opacity-100",
                       },
                       [
                         _vm.canUpdateBoard
@@ -42542,89 +42542,94 @@ var render = function () {
     { staticClass: "flex-shrink-0 flex flex-col w-80 bg-gray-100 rounded-md" },
     [
       !_vm.listEditing
-        ? _c("div", { staticClass: "flex justify-between pt-3 pb-1 px-3" }, [
-            _c(
-              "h3",
-              {
-                staticClass: "flex-shrink-0 text-sm font-medium text-gray-500",
-              },
-              [_vm._v("\n      " + _vm._s(_vm.list.title) + "\n    ")]
-            ),
-            _vm._v(" "),
-            _c("div", [
+        ? _c(
+            "div",
+            { staticClass: "group flex justify-between pt-3 pb-1 px-3" },
+            [
               _c(
-                "button",
+                "h3",
                 {
                   staticClass:
-                    "text-gray-500 hover:text-gray-800 cursor pointer",
+                    "flex-shrink-0 text-sm font-medium text-gray-500",
                 },
-                [
-                  _vm.canUpdateList
-                    ? _c(
-                        "svg",
-                        {
-                          staticClass: "h-5 w-5 pr-1",
-                          attrs: {
-                            xmlns: "http://www.w3.org/2000/svg",
-                            viewBox: "0 0 20 20",
-                            fill: "currentColor",
-                          },
-                          on: {
-                            click: function ($event) {
-                              _vm.listEditing = true
-                            },
-                          },
-                        },
-                        [
-                          _c("path", {
-                            attrs: {
-                              d: "M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z",
-                            },
-                          }),
-                        ]
-                      )
-                    : _vm._e(),
-                ]
+                [_vm._v("\n      " + _vm._s(_vm.list.title) + "\n    ")]
               ),
               _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass:
-                    "text-gray-500 hover:text-gray-800 cursor pointer",
-                },
-                [
-                  _vm.canDeleteList
-                    ? _c(
-                        "svg",
-                        {
-                          staticClass: "h-5 w-5",
-                          attrs: {
-                            xmlns: "http://www.w3.org/2000/svg",
-                            viewBox: "0 0 20 20",
-                            fill: "currentColor",
-                          },
-                          on: {
-                            click: function ($event) {
-                              _vm.showModal = true
-                            },
-                          },
-                        },
-                        [
-                          _c("path", {
+              _c("div", { staticClass: "opacity-0 group-hover:opacity-100" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass:
+                      "text-gray-500 hover:text-gray-800 cursor pointer",
+                  },
+                  [
+                    _vm.canUpdateList
+                      ? _c(
+                          "svg",
+                          {
+                            staticClass: "h-5 w-5 pr-1",
                             attrs: {
-                              "fill-rule": "evenodd",
-                              d: "M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z",
-                              "clip-rule": "evenodd",
+                              xmlns: "http://www.w3.org/2000/svg",
+                              viewBox: "0 0 20 20",
+                              fill: "currentColor",
                             },
-                          }),
-                        ]
-                      )
-                    : _vm._e(),
-                ]
-              ),
-            ]),
-          ])
+                            on: {
+                              click: function ($event) {
+                                _vm.listEditing = true
+                              },
+                            },
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                d: "M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z",
+                              },
+                            }),
+                          ]
+                        )
+                      : _vm._e(),
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass:
+                      "text-gray-500 hover:text-gray-800 cursor pointer",
+                  },
+                  [
+                    _vm.canDeleteList
+                      ? _c(
+                          "svg",
+                          {
+                            staticClass: "h-5 w-5",
+                            attrs: {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              viewBox: "0 0 20 20",
+                              fill: "currentColor",
+                            },
+                            on: {
+                              click: function ($event) {
+                                _vm.showModal = true
+                              },
+                            },
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                "fill-rule": "evenodd",
+                                d: "M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z",
+                                "clip-rule": "evenodd",
+                              },
+                            }),
+                          ]
+                        )
+                      : _vm._e(),
+                  ]
+                ),
+              ]),
+            ]
+          )
         : _c("ListEditor", {
             attrs: { label: "Save List" },
             on: {
@@ -42859,7 +42864,7 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "w-80 pb-2" }, [
-    _c("div", { staticClass: "pt- px-3" }, [
+    _c("div", { staticClass: "pt-3 px-3" }, [
       _c("input", {
         ref: "list",
         staticClass:
