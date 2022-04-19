@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="flex flex-col h-screen">
     <MainNavBar :borderColor="borderColor"></MainNavBar>
     <div
       class="h-screen flex overflow-hidden"
