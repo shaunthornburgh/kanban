@@ -194,50 +194,7 @@ export default {
             event.data.title;
           break;
         case EVENT_CARD_PLACEMENT_UPDATED:
-          // Check if card list has changed
-          console.log(
-            listById().cards.filter((card) => card.id === event.data.id).length
-          );
-
-          const [card] = listById().cards.filter(
-            (card) => card.id === event.data.id
-          );
-
-          if (card) {
-            const [previous] = data.board.lists.filter(
-              (list) => list.id === card.list.id
-            );
-
-            previous.cards = previous.cards.filter(
-              (c) => c.id !== event.data.id
-            );
-
-            card.list.id = event.data.list.id;
-
-            if (
-              listById().cards.filter((card) => card.id === event.data.id)
-                .length === 0
-            ) {
-              listById().cards.push(card);
-            }
-
-            //listById().cards.push(event.data);
-          }
-          //   const data = (listById().cards = listById().cards.filter(
-          //     (card) => card.id == event.data.id
-          //   )).forEach((c) => {
-          //     c.listId = event.data.listId;
-          //   });
-
-          //   console.log(data);
-
-          ///listById().cards.push(event.data);
-
-          // If so remove from old list and add to new list
-          // listById().cards.filter(card => card.id === event.data.id).list.id =
-          //     event.data.list.id;
-          // listById().cards.filter(card => card.id === event.data.id).order =
-          //     event.data.order;
+          
           break;
         case EVENT_CARD_DELETED:
           listById().cards = listById().cards.filter(
