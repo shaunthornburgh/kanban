@@ -10,7 +10,7 @@ scalar DateTimeTz
     @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTimeTz")
 
 type Query {
-    users: [User!]! @paginate(defaultCount: 10)
+    users: [User!]! @all
     user(id: ID @eq): User @find
     userBoards(owner_id: ID! @where): [Board!]
         @all
