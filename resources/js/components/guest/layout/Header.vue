@@ -1,12 +1,15 @@
 <template>
     <header>
         <div class="relative bg-white">
-            <div class="flex justify-between items-center max-w-7xl mx-auto px-4 py-6 sm:px-6 md:justify-start md:space-x-10 lg:px-8">
+            <div class="flex justify-between items-center max-w-7xl mx-auto px-4 py-2 border-b sm:px-6 md:justify-start md:space-x-10 lg:px-8">
                 <div class="flex justify-start lg:w-0 lg:flex-1">
                     <a href="#">
-                        <span class="sr-only">Workflow</span>
-                        <router-link :to="{ name: 'landing' }">
-                            <img class="h-8 w-auto sm:h-10" src="https://tailwindui.com/img/logos/workflow-mark-purple-600-to-indigo-600.svg" alt="">
+                        <span class="sr-only">Kanban</span>
+                        <router-link :to="{ name: 'auth-login' }">
+                            <div class="flex">
+                                <span><img alt="Logo" class="h-9 w-9" src="/images/logo.svg" /></span>
+                                <h3 class="pt-1 pl-2 font-bold text-xl text-gray-500">Kanban</h3>
+                            </div>
                         </router-link>
                     </a>
                 </div>
@@ -28,7 +31,7 @@
                     </router-link>
                     <router-link
                         router-link :to="{name: 'auth-register'}"
-                        class="ml-8 whitespace-nowrap inline-flex items-center justify-center bg-gradient-to-r from-purple-600 to-indigo-600 bg-origin-border px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white hover:from-purple-700 hover:to-indigo-700">
+                        class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm">
                         Sign up
                     </router-link>
                 </div>
@@ -47,7 +50,7 @@
                     </div>
                     <div class="py-6 px-5">
                         <div class="mt-6">
-                            <a href="#" class="w-full flex items-center justify-center bg-gradient-to-r from-purple-600 to-indigo-600 bg-origin-border px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white hover:from-purple-700 hover:to-indigo-700">
+                            <a href="#" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm">
                                 Sign up
                             </a>
                             <p class="mt-6 text-center text-base font-medium text-gray-500">
